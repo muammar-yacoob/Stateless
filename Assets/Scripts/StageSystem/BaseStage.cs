@@ -5,7 +5,7 @@ using BornCore.Scene;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Born.Maji.StageSystem
+namespace StageSystem
 {
     [RequireComponent(typeof(Collider))]
     public abstract class BaseStage : SceneBehaviour, IStage

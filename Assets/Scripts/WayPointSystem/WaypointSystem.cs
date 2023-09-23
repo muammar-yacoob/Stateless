@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Maji.WayPointSystem
+namespace WayPointSystem
 {
     public class WaypointSystem : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Maji.Editor
+namespace Editor
 {
     [CustomEditor(typeof(WaypointFollower))]
     public class WaypointFollowerEditor : UnityEditor.Editor

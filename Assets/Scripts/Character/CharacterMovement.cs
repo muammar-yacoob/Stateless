@@ -1,8 +1,7 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Maji.Character
+namespace Character
 {
     [RequireComponent(typeof(Animator))]
     public class CharacterMovement : MonoBehaviour

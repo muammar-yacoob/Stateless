@@ -1,7 +1,6 @@
-﻿#if UNITY_EDITOR
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Born.Maji.Player
+namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
@@ -17,4 +16,3 @@ namespace Born.Maji.Player
         }
     }
 }
-#endif

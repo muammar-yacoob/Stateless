@@ -1,12 +1,12 @@
 using System;
 using System.Threading;
-using Born.Maji.StageSystem;
 using BornCore.Scene;
 using Cysharp.Threading.Tasks;
+using StageSystem;
 using UnityEngine;
 using VContainer;
 
-namespace Born.Maji.Player
+namespace Player
 {
     [RequireComponent(typeof(Collider))]
     [RequireComponent(typeof(Rigidbody))]

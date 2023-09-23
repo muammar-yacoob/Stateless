@@ -897,8 +897,9 @@ GameObject:
   - component: {fileID: 3240288862073273857}
   - component: {fileID: 5086395722683496877}
   - component: {fileID: 6980460014800492444}
+  - component: {fileID: 4118993550768746674}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -944,7 +945,7 @@ Animator:
   m_GameObject: {fileID: 3828298266461905546}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c72c97e952bf7834b85e6164373d310d, type: 3}
-  m_Controller: {fileID: 9100000, guid: 1de385df2ff713a41adfcbbb63b8af91, type: 2}
+  m_Controller: {fileID: 9100000, guid: 93f9df8fb36d00a40b1f54a1f2ad7867, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -977,6 +978,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4118993550768746674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3828298266461905546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653506add4b54bc46a5b836edeeca773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypointSystem: {fileID: 0}
+  moveSpeed: 3
+  rotationSpeed: 5
 --- !u!1 &4847985199747068176
 GameObject:
   m_ObjectHideFlags: 0

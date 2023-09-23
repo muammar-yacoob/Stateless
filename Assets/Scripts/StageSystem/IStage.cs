@@ -3,7 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Born.Maji.StageSystem
+namespace StageSystem
 {
     public interface IStage
     {

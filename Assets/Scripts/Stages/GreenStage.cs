@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using Born.Maji.StageSystem;
+﻿using System.Threading;
 using Cysharp.Threading.Tasks;
+using StageSystem;
 using UnityEngine;
 
-namespace Born.Maji.Stages
+namespace Stages
 {
     public class GreenStage : BaseStage
     {
