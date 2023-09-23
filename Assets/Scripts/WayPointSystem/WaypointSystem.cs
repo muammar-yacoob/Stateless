@@ -9,11 +9,12 @@ namespace Maji.WayPointSystem
 
         private void OnDrawGizmos()
         {
-            if (waypoints.Count == 0) return;
+            if (waypoints == null) return;
 
             Gizmos.color = Color.green;
             for (int i = 0; i < waypoints.Count; i++)
             {
+                if(waypoints[i] == null) continue;
                 Gizmos.DrawSphere(waypoints[i].position, 0.01f);
                 if (i > 0) 
                 {
