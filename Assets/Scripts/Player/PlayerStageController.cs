@@ -1,8 +1,6 @@
 using System;
 using System.Threading;
-using BornCore;
-using BornCore.Scene;
-using Cysharp.Threading.Tasks;
+using SparkCore.Runtime.Injection;
 using StageSystem;
 using UnityEngine;
 using VContainer;
@@ -34,7 +32,7 @@ namespace Player
             cts?.Cancel();
             cts = new CancellationTokenSource();
             currentStage = newStage;
-            currentStage.EnterStageAsync(cts.Token).Forget();
+            _ = currentStage.EnterStageAsync(cts.Token);
         }
 
         private void OnTriggerExit(Collider other)
@@ -43,7 +41,7 @@ namespace Player
             if (currentStage != newStage) return;
 
             cts?.Cancel();
-            currentStage.ExitStageAsync(cts.Token).Forget();
+            _ = currentStage.ExitStageAsync(cts.Token);
             currentStage = null;
             cts = new CancellationTokenSource();
         }

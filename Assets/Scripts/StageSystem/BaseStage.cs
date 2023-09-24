@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using BornCore.Scene;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace StageSystem
 {
     [RequireComponent(typeof(Collider))]
-    public abstract class BaseStage : SceneBehaviour, IStage
+    public abstract class BaseStage : MonoBehaviour, IStage
     {
         public event Action<IStage> OnStageEnter;
         public event Action<IStage> OnStageExit;
@@ -19,9 +18,8 @@ namespace StageSystem
         
         protected List<StageStep> Steps;
 
-        protected override void Awake()
+        private  void Awake()
         {
-            base.Awake();
             GetComponent<Collider>().isTrigger = true;
             gameObjectsToActivate.ForEach(obj => obj.SetActive(false));
             

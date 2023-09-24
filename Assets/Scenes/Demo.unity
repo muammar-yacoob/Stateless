@@ -2824,24 +2824,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2120103389 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3828298266461905546, guid: 71b0f4e8a7af5664c9000126b9500d3c, type: 3}
-  m_PrefabInstance: {fileID: 6471573134631405084}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2120103395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120103389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b101c6317544f12bff932d3144f35e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1943942342}
 --- !u!4 &2124755441 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 6aad3078276ab4d47916c4d88e1722cd, type: 3}
@@ -2950,30 +2932,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Waypoint AI
       objectReference: {fileID: 0}
-    - target: {fileID: 4118993550768746674, guid: 71b0f4e8a7af5664c9000126b9500d3c, type: 3}
-      propertyPath: waypointSystem
+    - target: {fileID: 5916292325496039000, guid: 71b0f4e8a7af5664c9000126b9500d3c, type: 3}
+      propertyPath: target
       value: 
-      objectReference: {fileID: 855872355}
-    - target: {fileID: 5086395722683496877, guid: 71b0f4e8a7af5664c9000126b9500d3c, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6980460014800492444, guid: 71b0f4e8a7af5664c9000126b9500d3c, type: 3}
-      propertyPath: m_Speed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6980460014800492444, guid: 71b0f4e8a7af5664c9000126b9500d3c, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 0.01
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4118993550768746674, guid: 71b0f4e8a7af5664c9000126b9500d3c, type: 3}
+      objectReference: {fileID: 1943942342}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3828298266461905546, guid: 71b0f4e8a7af5664c9000126b9500d3c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2120103395}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71b0f4e8a7af5664c9000126b9500d3c, type: 3}
 --- !u!1001 &8724698466797401745
 PrefabInstance:
@@ -2986,10 +2952,6 @@ PrefabInstance:
     - target: {fileID: 6336957253283155218, guid: 122af1a6d120449439d5f862b7dc6792, type: 3}
       propertyPath: m_Name
       value: Player Stateless
-      objectReference: {fileID: 0}
-    - target: {fileID: 6913556813167258318, guid: 122af1a6d120449439d5f862b7dc6792, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8637640438586435678, guid: 122af1a6d120449439d5f862b7dc6792, type: 3}
       propertyPath: m_RootOrder
