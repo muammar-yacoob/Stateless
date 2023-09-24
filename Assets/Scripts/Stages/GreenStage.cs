@@ -1,7 +1,9 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
+using SparkCore.Runtime.Injection;
 using StageSystem;
 using UnityEngine;
+using VContainer;
 
 namespace Stages
 {

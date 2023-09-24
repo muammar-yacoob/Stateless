@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using SparkCore.Runtime.Injection;
 using UnityEngine;
+using VContainer;
 
 namespace StageSystem
 {
     [RequireComponent(typeof(Collider))]
+    [Injectable(Lifetime.Singleton)]
     public abstract class BaseStage : MonoBehaviour, IStage
     {
         public event Action<IStage> OnStageEnter;
