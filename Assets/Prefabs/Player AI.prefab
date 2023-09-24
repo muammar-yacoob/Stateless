@@ -897,7 +897,8 @@ GameObject:
   - component: {fileID: 3240288862073273857}
   - component: {fileID: 5086395722683496877}
   - component: {fileID: 6980460014800492444}
-  - component: {fileID: 4118993550768746674}
+  - component: {fileID: 7360002883659203779}
+  - component: {fileID: 5916292325496039000}
   m_Layer: 0
   m_Name: Player AI
   m_TagString: Untagged
@@ -933,7 +934,7 @@ Transform:
   - {fileID: 8603676663496741018}
   - {fileID: 2170371883464482052}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5086395722683496877
 Animator:
@@ -948,7 +949,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 93f9df8fb36d00a40b1f54a1f2ad7867, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -966,11 +967,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.01
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -978,7 +979,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4118993550768746674
+--- !u!114 &7360002883659203779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -987,12 +988,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 3828298266461905546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 653506add4b54bc46a5b836edeeca773, type: 3}
+  m_Script: {fileID: 11500000, guid: 454cd809bed84494b7b305bbec7a74ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypointSystem: {fileID: 0}
-  moveSpeed: 3
-  rotationSpeed: 5
+  turnSpeed: 20
+--- !u!114 &5916292325496039000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3828298266461905546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b101c6317544f12bff932d3144f35e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!1 &4847985199747068176
 GameObject:
   m_ObjectHideFlags: 0

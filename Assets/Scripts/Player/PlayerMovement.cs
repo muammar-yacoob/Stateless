@@ -11,11 +11,13 @@ namespace Player
         [SerializeField] private float turnSpeed = 20;
         private CharacterController _characterController;
         private Animator _animator;
+        private Transform cameraTransform;
         StatelessControlls _statelessControlls;
         private static readonly int Speed = Animator.StringToHash("Speed");
 
         private void Awake()
         {
+            cameraTransform = Camera.main.transform;
             _characterController = GetComponent<CharacterController>();
             _animator = GetComponent<Animator>();
 
@@ -39,12 +41,18 @@ namespace Player
 
         private void MoveCharacter(Vector2 input)
         {
-            Vector3 move = transform.right * input.x + transform.forward * input.y;
-            _characterController.Move(move * moveSpeed * Time.deltaTime);
+            // Take the camera's orientation into account for movement
+            Vector3 cameraForward = Vector3.Scale(cameraTransform.forward, new Vector3(1, 0, 1)).normalized;
+            Vector3 moveDirection = (cameraForward * input.y + cameraTransform.right * input.x).normalized;
 
+            // Move the character
+            Vector3 move = moveDirection * moveSpeed * Time.deltaTime;
+            _characterController.Move(move);
+
+            // Rotate the character based on input direction
             if (input.magnitude > 0)
             {
-                Quaternion newDirection = Quaternion.LookRotation(new Vector3(input.x, 0, input.y));
+                Quaternion newDirection = Quaternion.LookRotation(moveDirection);
                 transform.rotation = Quaternion.Slerp(transform.rotation, newDirection, turnSpeed * Time.deltaTime);
             }
 
