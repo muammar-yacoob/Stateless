@@ -1415,6 +1415,7 @@ GameObject:
   - component: {fileID: 7274770792705262572}
   - component: {fileID: 4835377797488739799}
   - component: {fileID: 5597587857087540932}
+  - component: {fileID: 1539049821477012415}
   m_Layer: 0
   m_Name: Player Stateless
   m_TagString: Untagged
@@ -1548,7 +1549,7 @@ CharacterController:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1564,6 +1565,23 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &1539049821477012415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6336957253283155218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b9e716fb0541549b3199bc01601ffa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastDistance: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  characterGroundOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &6807648492229428194
 GameObject:
   m_ObjectHideFlags: 0
