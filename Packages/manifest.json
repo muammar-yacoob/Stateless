@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "com.born.borncore": "0.11.8",
-    "com.born.borncore.interaction": "1.0.5-preview.1",
     "com.unity.ai.navigation": "1.1.4",
     "com.unity.collab-proxy": "2.0.5",
     "com.unity.ide.rider": "3.0.24",

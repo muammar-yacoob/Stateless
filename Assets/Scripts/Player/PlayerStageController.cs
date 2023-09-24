@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using BornCore;
 using BornCore.Scene;
 using Cysharp.Threading.Tasks;
 using StageSystem;
@@ -10,9 +11,9 @@ namespace Player
 {
     [RequireComponent(typeof(Collider))]
     [RequireComponent(typeof(Rigidbody))]
-    public class PlayerStageController : SceneBehaviour
+    public class PlayerStageController : InjectableMonoBehaviour
     {
-        [Inject] private IStage currentStage;
+            [Inject] private IStage currentStage;
         private CancellationTokenSource cts;
         private bool isUpdating;
 

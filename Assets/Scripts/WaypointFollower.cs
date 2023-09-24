@@ -1,13 +1,12 @@
 using System;
 using System.Threading;
-using BornCore;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEditor;
 using UnityEngine;
 using WayPointSystem;
 
-public class WaypointFollower : InjectableMonoBehaviour
+public class WaypointFollower : MonoBehaviour
 {
     [SerializeField] private WaypointSystem waypointSystem;
     [SerializeField] private float moveSpeed = 1f;
