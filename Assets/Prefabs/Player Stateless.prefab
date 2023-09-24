@@ -1413,6 +1413,7 @@ GameObject:
   - component: {fileID: 5789372270492233396}
   - component: {fileID: 1097140376234335388}
   - component: {fileID: 7274770792705262572}
+  - component: {fileID: 4835377797488739799}
   - component: {fileID: 5597587857087540932}
   m_Layer: 0
   m_Name: Player Stateless
@@ -1464,7 +1465,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 93f9df8fb36d00a40b1f54a1f2ad7867, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -1495,9 +1496,9 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &1097140376234335388
 MonoBehaviour:
@@ -1512,7 +1513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  turnSpeed: 100
+  turnSpeed: 20
 --- !u!114 &7274770792705262572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1523,6 +1524,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea2e4a9b162fa534a959c8261e09a5d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4835377797488739799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6336957253283155218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9546297fe8f544ffb525542fbff8da65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!143 &5597587857087540932

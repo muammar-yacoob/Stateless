@@ -1,62 +1,42 @@
-﻿using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using SparkCore.Runtime.Injection;
+using UnityEngine;
+using VContainer;
 
 namespace Player
 {
     [RequireComponent(typeof(CharacterController))]
-    [RequireComponent(typeof(Animator))]
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : InjectableMonoBehaviour
     {
         [SerializeField] private float moveSpeed = 5f;
-        [SerializeField] private float turnSpeed = 20;
+        [SerializeField] private float turnSpeed = 20f; // Add turn speed
+        [Inject] private IPlayerInput _playerInput;
         private CharacterController _characterController;
-        private Animator _animator;
-        private Transform cameraTransform;
-        StatelessControlls _statelessControlls;
-        private static readonly int Speed = Animator.StringToHash("Speed");
+        private Transform _cameraTransform;
 
-        private void Awake()
+        protected override void Awake()
         {
-            cameraTransform = Camera.main.transform;
+            base.Awake();
             _characterController = GetComponent<CharacterController>();
-            _animator = GetComponent<Animator>();
-
-            _statelessControlls = new StatelessControlls();
-            _statelessControlls.gameplay.Enable();
-            _statelessControlls.gameplay.move.performed += OnMove;
-            _statelessControlls.gameplay.move.canceled += OnMove;  // Subscribe to the canceled event
+            _cameraTransform = Camera.main.transform;
         }
 
-        private void OnDestroy()
+        private void Update()
         {
-            _statelessControlls.gameplay.move.performed -= OnMove;
-            _statelessControlls.gameplay.move.canceled -= OnMove;  // Unsubscribe from the canceled event
-        }
+            var input = _playerInput.Move;
+            if(input.magnitude == 0) return;
 
-        public void OnMove(InputAction.CallbackContext context)
-        {
-            Vector2 input = context.ReadValue<Vector2>();
-            MoveCharacter(input);
-        }
+            Vector3 moveDirection = _cameraTransform.forward * input.y + _cameraTransform.right * input.x;
+            moveDirection.y = 0;
+            moveDirection.Normalize();
 
-        private void MoveCharacter(Vector2 input)
-        {
-            // Take the camera's orientation into account for movement
-            Vector3 cameraForward = Vector3.Scale(cameraTransform.forward, new Vector3(1, 0, 1)).normalized;
-            Vector3 moveDirection = (cameraForward * input.y + cameraTransform.right * input.x).normalized;
-
-            // Move the character
-            Vector3 move = moveDirection * moveSpeed * Time.deltaTime;
-            _characterController.Move(move);
-
-            // Rotate the character based on input direction
-            if (input.magnitude > 0)
+            // Rotate the character to face the move direction
+            if (moveDirection != Vector3.zero)
             {
-                Quaternion newDirection = Quaternion.LookRotation(moveDirection);
-                transform.rotation = Quaternion.Slerp(transform.rotation, newDirection, turnSpeed * Time.deltaTime);
+                Quaternion rotation = Quaternion.LookRotation(moveDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed * Time.deltaTime);
             }
 
-            _animator.SetFloat(Speed, input.magnitude);
+            _characterController.Move(moveDirection * (moveSpeed * Time.deltaTime));
         }
     }
 }

@@ -3,7 +3,6 @@ using System.Threading;
 using SparkCore.Runtime.Injection;
 using StageSystem;
 using UnityEngine;
-using VContainer;
 
 namespace Player
 {
@@ -11,7 +10,7 @@ namespace Player
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerStageController : InjectableMonoBehaviour
     {
-            [Inject] private IStage currentStage;
+        private IStage currentStage;
         private CancellationTokenSource cts;
         private bool isUpdating;
 

@@ -2493,8 +2493,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypointSystem: {fileID: 855872355}
-  moveSpeed: 20
-  rotationSpeed: 60
+  moveSpeed: 10
+  rotationSpeed: 20
 --- !u!23 &1943942340
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2949,9 +2949,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5789372270492233396, guid: 122af1a6d120449439d5f862b7dc6792, type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789372270492233396, guid: 122af1a6d120449439d5f862b7dc6792, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6336957253283155218, guid: 122af1a6d120449439d5f862b7dc6792, type: 3}
       propertyPath: m_Name
       value: Player Stateless
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336957253283155218, guid: 122af1a6d120449439d5f862b7dc6792, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8637640438586435678, guid: 122af1a6d120449439d5f862b7dc6792, type: 3}
       propertyPath: m_RootOrder
@@ -2963,7 +2975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8637640438586435678, guid: 122af1a6d120449439d5f862b7dc6792, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.86
       objectReference: {fileID: 0}
     - target: {fileID: 8637640438586435678, guid: 122af1a6d120449439d5f862b7dc6792, type: 3}
       propertyPath: m_LocalPosition.z

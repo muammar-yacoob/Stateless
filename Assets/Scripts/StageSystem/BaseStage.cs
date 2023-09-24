@@ -9,7 +9,6 @@ using VContainer;
 namespace StageSystem
 {
     [RequireComponent(typeof(Collider))]
-    [Injectable(Lifetime.Singleton)]
     public abstract class BaseStage : MonoBehaviour, IStage
     {
         public event Action<IStage> OnStageEnter;
