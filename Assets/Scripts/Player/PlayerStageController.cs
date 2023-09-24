@@ -19,7 +19,6 @@ namespace Player
         protected override void Awake()
         {
             base.Awake();
-            GetComponent<Collider>().isTrigger = true;
             GetComponent<Rigidbody>().isKinematic = true;
             cts = new CancellationTokenSource();
         }

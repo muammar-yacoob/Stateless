@@ -112,7 +112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8013427645296615519
 Transform:
   m_ObjectHideFlags: 0
@@ -442,7 +442,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2288870605770611926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.04, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1410,10 +1410,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8637640438586435678}
   - component: {fileID: 6913556813167258318}
-  - component: {fileID: 813428757613593773}
   - component: {fileID: 5789372270492233396}
   - component: {fileID: 1097140376234335388}
   - component: {fileID: 7274770792705262572}
+  - component: {fileID: 5597587857087540932}
   m_Layer: 0
   m_Name: Player Stateless
   m_TagString: Untagged
@@ -1472,27 +1472,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &813428757613593773
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6336957253283155218}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2.7176642, z: 1}
-  m_Center: {x: 0, y: 1.3651037, z: 0}
 --- !u!54 &5789372270492233396
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1532,6 +1511,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b09f7583cb4d7f8e7063a46ca4bb80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
+  turnSpeed: 100
 --- !u!114 &7274770792705262572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1544,6 +1525,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2e4a9b162fa534a959c8261e09a5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &5597587857087540932
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6336957253283155218}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 3
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1 &6807648492229428194
 GameObject:
   m_ObjectHideFlags: 0
@@ -1592,7 +1599,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2643426925644990313
 Transform:
   m_ObjectHideFlags: 0
