@@ -6,6 +6,6 @@ namespace Player
     public interface IPlayerInput
     {
         Vector2 Move { get; }
-        event Action Speak;
+        event Action Jump;
     }
 }

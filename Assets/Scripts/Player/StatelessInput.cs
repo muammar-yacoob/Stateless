@@ -12,26 +12,24 @@ namespace Player
         private StatelessControlls _statelessControlls;
         public Vector2 Move => _statelessControlls.gameplay.move.ReadValue<Vector2>();
         
-        public event Action Speak;
+        public event Action Jump;
         
         public StatelessInput()
         {
             _statelessControlls = new StatelessControlls();
             _statelessControlls.gameplay.Enable();
             
-            _statelessControlls.gameplay.Speak.performed += SpeakPerformed;
+            _statelessControlls.gameplay.Jump.performed += JumpPerformed;
+            //_ = _statelessControlls.gameplay.Jump.interactions.Insert(0, "Press"); // Insert Press interaction at the beginning of the list to avoid the Hold interaction
         }
 
 
         public void Dispose()
         {
-            _statelessControlls.gameplay.Speak.performed -= SpeakPerformed;
+            _statelessControlls.gameplay.Jump.performed -= JumpPerformed;
             _statelessControlls.gameplay.Disable();
         }
         
-        private void SpeakPerformed(InputAction.CallbackContext ctx)
-        {
-            Speak?.Invoke();
-        }
+        private void JumpPerformed(InputAction.CallbackContext ctx) => Jump?.Invoke();
     }
 }

@@ -62,6 +62,15 @@ public partial class @StatelessControlls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""c55b67a7-8c5d-4be0-a05b-159cfe53f1a1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -196,6 +205,17 @@ public partial class @StatelessControlls: IInputActionCollection2, IDisposable
                     ""action"": ""Speak"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""49f6af40-3385-4761-8f8a-44b89bd3cd26"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -236,6 +256,7 @@ public partial class @StatelessControlls: IInputActionCollection2, IDisposable
         m_gameplay_move = m_gameplay.FindAction("move", throwIfNotFound: true);
         m_gameplay_look = m_gameplay.FindAction("look", throwIfNotFound: true);
         m_gameplay_Speak = m_gameplay.FindAction("Speak", throwIfNotFound: true);
+        m_gameplay_Jump = m_gameplay.FindAction("Jump", throwIfNotFound: true);
         // menu
         m_menu = asset.FindActionMap("menu", throwIfNotFound: true);
         m_menu_Newaction = m_menu.FindAction("New action", throwIfNotFound: true);
@@ -304,6 +325,7 @@ public partial class @StatelessControlls: IInputActionCollection2, IDisposable
     private readonly InputAction m_gameplay_move;
     private readonly InputAction m_gameplay_look;
     private readonly InputAction m_gameplay_Speak;
+    private readonly InputAction m_gameplay_Jump;
     public struct GameplayActions
     {
         private @StatelessControlls m_Wrapper;
@@ -312,6 +334,7 @@ public partial class @StatelessControlls: IInputActionCollection2, IDisposable
         public InputAction @move => m_Wrapper.m_gameplay_move;
         public InputAction @look => m_Wrapper.m_gameplay_look;
         public InputAction @Speak => m_Wrapper.m_gameplay_Speak;
+        public InputAction @Jump => m_Wrapper.m_gameplay_Jump;
         public InputActionMap Get() { return m_Wrapper.m_gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -333,6 +356,9 @@ public partial class @StatelessControlls: IInputActionCollection2, IDisposable
             @Speak.started += instance.OnSpeak;
             @Speak.performed += instance.OnSpeak;
             @Speak.canceled += instance.OnSpeak;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -349,6 +375,9 @@ public partial class @StatelessControlls: IInputActionCollection2, IDisposable
             @Speak.started -= instance.OnSpeak;
             @Speak.performed -= instance.OnSpeak;
             @Speak.canceled -= instance.OnSpeak;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -418,6 +447,7 @@ public partial class @StatelessControlls: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnSpeak(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

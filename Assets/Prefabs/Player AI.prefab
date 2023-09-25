@@ -899,6 +899,7 @@ GameObject:
   - component: {fileID: 6980460014800492444}
   - component: {fileID: 7360002883659203779}
   - component: {fileID: 5916292325496039000}
+  - component: {fileID: 2058095734966273586}
   m_Layer: 0
   m_Name: Player AI
   m_TagString: Untagged
@@ -1005,6 +1006,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!114 &2058095734966273586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3828298266461905546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b9e716fb0541549b3199bc01601ffa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastDistance: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  characterGroundOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &4847985199747068176
 GameObject:
   m_ObjectHideFlags: 0
