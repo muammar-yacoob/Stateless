@@ -8,6 +8,7 @@ namespace Player
     public class PlayerSpawner : MonoBehaviour, IPlayerSpawner
     {
         [SerializeField] private GameObject[] playerPrefabs;
+        [SerializeField] private GameObject[] spawnPoints;
 
         private void Awake()
         {
@@ -16,10 +17,17 @@ namespace Player
 
         public void SpawnPlayer(int playerIndex)
         {
-            var adjustedIndex = playerIndex - 1;
-            var playerInstance = Instantiate(playerPrefabs[adjustedIndex % playerPrefabs.Length]);
+            int adjustedIndex = playerIndex - 1;
+            Transform spawnPoint = spawnPoints[adjustedIndex % spawnPoints.Length].transform;
+    
+            GameObject playerInstance = Instantiate(
+                playerPrefabs[adjustedIndex % playerPrefabs.Length],
+                spawnPoint.position,
+                spawnPoint.rotation,
+                transform
+            );
+
             playerInstance.name = $"Player {playerIndex}";
-            playerInstance.transform.parent = transform;
             Selection.activeGameObject = playerInstance;
         }
     }
