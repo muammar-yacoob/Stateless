@@ -7,5 +7,6 @@ namespace Player
     {
         Vector2 Move { get; }
         event Action Jump;
+        event Action Join;
     }
 }
