@@ -24,21 +24,12 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     ""name"": ""GameControls"",
     ""maps"": [
         {
-            ""name"": ""gameplay"",
+            ""name"": ""GamePlay"",
             ""id"": ""265c38f5-dd18-4d34-b198-aec58e1627ff"",
             ""actions"": [
                 {
-                    ""name"": ""wave"",
-                    ""type"": ""Button"",
-                    ""id"": ""1077f913-a9f9-41b1-acb3-b9ee0adbc744"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Tap,SlowTap"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""move"",
-                    ""type"": ""Value"",
+                    ""name"": ""Move"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""50fd2809-3aa3-4a90-988e-1facf6773553"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -53,15 +44,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Speak"",
-                    ""type"": ""Button"",
-                    ""id"": ""3738aed1-6618-49b1-bb4f-f71d1e6b5b98"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Jump"",
@@ -85,45 +67,12 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""abb776f3-f329-4f7b-bbf8-b577d13be018"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""wave"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f65fd32e-b6c7-480b-b32d-ee00509558ca"",
-                    ""path"": ""<OculusTouchController>{RightHand}/primaryButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""wave"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""e1b8c4dd-7b3a-4db6-a93a-0889b59b1afc"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b8ba1ed1-49db-48c6-8887-2b4460a8dbc3"",
-                    ""path"": ""<OculusTouchController>{LeftHand}/thumbstick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""move"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -134,7 +83,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""move"",
+                    ""action"": ""Move"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -144,30 +93,30 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""d5506f6d-f82e-4b93-b401-7ac7c474afc7"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""move"",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
+                    ""id"": ""d5506f6d-f82e-4b93-b401-7ac7c474afc7"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
                     ""id"": ""9a074fc7-293d-4bb2-b1c4-209a6427bfd2"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""move"",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -177,63 +126,8 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Arrows"",
-                    ""id"": ""a24e642e-fcad-417c-be72-65ad291f8aad"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""8a11feec-fced-4d61-af43-11e94692566c"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""6706376f-c557-4084-949d-ad63879432c2"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""54bb34fe-2bb9-4c58-870d-6b0d2f2de5ae"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""95ea8013-36eb-4271-8607-3d3a2a7fd04f"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""move"",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -243,7 +137,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -254,19 +148,8 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Pointer>/delta"",
                     ""interactions"": """",
                     ""processors"": ""ScaleVector2(x=2,y=2)"",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1fe69a00-1db0-4cb9-ad96-eec041d5e280"",
-                    ""path"": ""<Keyboard>/ctrl"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Speak"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -276,7 +159,18 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7439f5e2-d30a-451a-9abe-57422a6565da"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -287,7 +181,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/anyKey"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""Join"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -298,55 +192,45 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Join"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""menu"",
-            ""id"": ""7d7e6cfb-e360-4999-a105-eddad4fac076"",
-            ""actions"": [
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""1c8e6f7f-ac69-4795-a1e5-78fdf58a4b83"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""acf47952-e896-47fc-99aa-01880fc87075"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Keyboard"",
+            ""bindingGroup"": ""Keyboard"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Gamepad"",
+            ""bindingGroup"": ""Gamepad"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Gamepad>"",
+                    ""isOptional"": true,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
-        // gameplay
-        m_gameplay = asset.FindActionMap("gameplay", throwIfNotFound: true);
-        m_gameplay_wave = m_gameplay.FindAction("wave", throwIfNotFound: true);
-        m_gameplay_move = m_gameplay.FindAction("move", throwIfNotFound: true);
-        m_gameplay_look = m_gameplay.FindAction("look", throwIfNotFound: true);
-        m_gameplay_Speak = m_gameplay.FindAction("Speak", throwIfNotFound: true);
-        m_gameplay_Jump = m_gameplay.FindAction("Jump", throwIfNotFound: true);
-        m_gameplay_Join = m_gameplay.FindAction("Join", throwIfNotFound: true);
-        // menu
-        m_menu = asset.FindActionMap("menu", throwIfNotFound: true);
-        m_menu_Newaction = m_menu.FindAction("New action", throwIfNotFound: true);
+        // GamePlay
+        m_GamePlay = asset.FindActionMap("GamePlay", throwIfNotFound: true);
+        m_GamePlay_Move = m_GamePlay.FindAction("Move", throwIfNotFound: true);
+        m_GamePlay_look = m_GamePlay.FindAction("look", throwIfNotFound: true);
+        m_GamePlay_Jump = m_GamePlay.FindAction("Jump", throwIfNotFound: true);
+        m_GamePlay_Join = m_GamePlay.FindAction("Join", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -405,46 +289,36 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // gameplay
-    private readonly InputActionMap m_gameplay;
-    private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
-    private readonly InputAction m_gameplay_wave;
-    private readonly InputAction m_gameplay_move;
-    private readonly InputAction m_gameplay_look;
-    private readonly InputAction m_gameplay_Speak;
-    private readonly InputAction m_gameplay_Jump;
-    private readonly InputAction m_gameplay_Join;
-    public struct GameplayActions
+    // GamePlay
+    private readonly InputActionMap m_GamePlay;
+    private List<IGamePlayActions> m_GamePlayActionsCallbackInterfaces = new List<IGamePlayActions>();
+    private readonly InputAction m_GamePlay_Move;
+    private readonly InputAction m_GamePlay_look;
+    private readonly InputAction m_GamePlay_Jump;
+    private readonly InputAction m_GamePlay_Join;
+    public struct GamePlayActions
     {
         private @GameControls m_Wrapper;
-        public GameplayActions(@GameControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @wave => m_Wrapper.m_gameplay_wave;
-        public InputAction @move => m_Wrapper.m_gameplay_move;
-        public InputAction @look => m_Wrapper.m_gameplay_look;
-        public InputAction @Speak => m_Wrapper.m_gameplay_Speak;
-        public InputAction @Jump => m_Wrapper.m_gameplay_Jump;
-        public InputAction @Join => m_Wrapper.m_gameplay_Join;
-        public InputActionMap Get() { return m_Wrapper.m_gameplay; }
+        public GamePlayActions(@GameControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_GamePlay_Move;
+        public InputAction @look => m_Wrapper.m_GamePlay_look;
+        public InputAction @Jump => m_Wrapper.m_GamePlay_Jump;
+        public InputAction @Join => m_Wrapper.m_GamePlay_Join;
+        public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(GameplayActions set) { return set.Get(); }
-        public void AddCallbacks(IGameplayActions instance)
+        public static implicit operator InputActionMap(GamePlayActions set) { return set.Get(); }
+        public void AddCallbacks(IGamePlayActions instance)
         {
-            if (instance == null || m_Wrapper.m_GameplayActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_GameplayActionsCallbackInterfaces.Add(instance);
-            @wave.started += instance.OnWave;
-            @wave.performed += instance.OnWave;
-            @wave.canceled += instance.OnWave;
-            @move.started += instance.OnMove;
-            @move.performed += instance.OnMove;
-            @move.canceled += instance.OnMove;
+            if (instance == null || m_Wrapper.m_GamePlayActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_GamePlayActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
             @look.started += instance.OnLook;
             @look.performed += instance.OnLook;
             @look.canceled += instance.OnLook;
-            @Speak.started += instance.OnSpeak;
-            @Speak.performed += instance.OnSpeak;
-            @Speak.canceled += instance.OnSpeak;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
@@ -453,20 +327,14 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Join.canceled += instance.OnJoin;
         }
 
-        private void UnregisterCallbacks(IGameplayActions instance)
+        private void UnregisterCallbacks(IGamePlayActions instance)
         {
-            @wave.started -= instance.OnWave;
-            @wave.performed -= instance.OnWave;
-            @wave.canceled -= instance.OnWave;
-            @move.started -= instance.OnMove;
-            @move.performed -= instance.OnMove;
-            @move.canceled -= instance.OnMove;
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
             @look.started -= instance.OnLook;
             @look.performed -= instance.OnLook;
             @look.canceled -= instance.OnLook;
-            @Speak.started -= instance.OnSpeak;
-            @Speak.performed -= instance.OnSpeak;
-            @Speak.canceled -= instance.OnSpeak;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
@@ -475,78 +343,44 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Join.canceled -= instance.OnJoin;
         }
 
-        public void RemoveCallbacks(IGameplayActions instance)
+        public void RemoveCallbacks(IGamePlayActions instance)
         {
-            if (m_Wrapper.m_GameplayActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_GamePlayActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IGameplayActions instance)
+        public void SetCallbacks(IGamePlayActions instance)
         {
-            foreach (var item in m_Wrapper.m_GameplayActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_GamePlayActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_GameplayActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_GamePlayActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public GameplayActions @gameplay => new GameplayActions(this);
-
-    // menu
-    private readonly InputActionMap m_menu;
-    private List<IMenuActions> m_MenuActionsCallbackInterfaces = new List<IMenuActions>();
-    private readonly InputAction m_menu_Newaction;
-    public struct MenuActions
+    public GamePlayActions @GamePlay => new GamePlayActions(this);
+    private int m_KeyboardSchemeIndex = -1;
+    public InputControlScheme KeyboardScheme
     {
-        private @GameControls m_Wrapper;
-        public MenuActions(@GameControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_menu_Newaction;
-        public InputActionMap Get() { return m_Wrapper.m_menu; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
-        public void AddCallbacks(IMenuActions instance)
+        get
         {
-            if (instance == null || m_Wrapper.m_MenuActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_MenuActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
-        }
-
-        private void UnregisterCallbacks(IMenuActions instance)
-        {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
-        }
-
-        public void RemoveCallbacks(IMenuActions instance)
-        {
-            if (m_Wrapper.m_MenuActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IMenuActions instance)
-        {
-            foreach (var item in m_Wrapper.m_MenuActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_MenuActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
+            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
+            return asset.controlSchemes[m_KeyboardSchemeIndex];
         }
     }
-    public MenuActions @menu => new MenuActions(this);
-    public interface IGameplayActions
+    private int m_GamepadSchemeIndex = -1;
+    public InputControlScheme GamepadScheme
     {
-        void OnWave(InputAction.CallbackContext context);
+        get
+        {
+            if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
+            return asset.controlSchemes[m_GamepadSchemeIndex];
+        }
+    }
+    public interface IGamePlayActions
+    {
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnSpeak(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnJoin(InputAction.CallbackContext context);
-    }
-    public interface IMenuActions
-    {
-        void OnNewaction(InputAction.CallbackContext context);
     }
 }

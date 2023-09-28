@@ -1,6 +1,7 @@
 ﻿using SparkCore.Runtime.Injection;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Player
 {
@@ -9,25 +10,27 @@ namespace Player
     {
         [SerializeField] private GameObject[] playerPrefabs;
         [SerializeField] private GameObject[] spawnPoints;
+        private PlayerInputManager inputManager;
 
         private void Awake()
         {
-            PlayersJoining.OnPlayerJoined += SpawnPlayer;
+            inputManager = FindObjectOfType<PlayerInputManager>();
+            inputManager.onPlayerJoined += SpawnPlayer;
         }
 
-        public void SpawnPlayer(int playerIndex)
+        public void SpawnPlayer(PlayerInput playerInput)
         {
-            int adjustedIndex = playerIndex - 1;
-            Transform spawnPoint = spawnPoints[adjustedIndex % spawnPoints.Length].transform;
+            int playerIndex = playerInput.playerIndex;
+            Transform spawnPoint = spawnPoints[playerIndex % spawnPoints.Length].transform;
     
             GameObject playerInstance = Instantiate(
-                playerPrefabs[adjustedIndex % playerPrefabs.Length],
+                playerPrefabs[playerIndex % playerPrefabs.Length],
                 spawnPoint.position,
                 spawnPoint.rotation,
                 transform
             );
 
-            playerInstance.name = $"Player {playerIndex}";
+            playerInstance.name = $"Player {playerIndex + 1}";
             Selection.activeGameObject = playerInstance;
         }
     }

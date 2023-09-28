@@ -1,7 +1,9 @@
-﻿namespace Player
+﻿using UnityEngine.InputSystem;
+
+namespace Player
 {
     public interface IPlayerSpawner
     {
-        void SpawnPlayer(int playerIndex);
+        void SpawnPlayer(PlayerInput playerInput);
     }
 }

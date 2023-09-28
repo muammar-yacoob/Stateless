@@ -1,4 +1,6 @@
-﻿public interface IEntryAnnouncer
+﻿using UnityEngine.InputSystem;
+
+public interface IEntryAnnouncer
 {
-    void AnnounceEntry(int playerIndex);
+    void AnnounceEntry(PlayerInput playerInput);
 }

@@ -1,15 +1,18 @@
 ﻿using SparkCore.Runtime.Injection;
 using UnityEngine;
-using VContainer;
 
 namespace Player
 {
     [RequireComponent(typeof(CharacterController))]
     public class PlayerMovement : InjectableMonoBehaviour
     {
+        [SerializeField] private int playerIndex;
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float turnSpeed = 20f; // Add turn speed
-        [Inject] private IPlayerInput _playerInput;
+
+        public int PlayerIndex => playerIndex;
+        public Vector2 Input { get; set; }
+        
         private CharacterController _characterController;
         private Transform _cameraTransform;
 
@@ -22,10 +25,9 @@ namespace Player
 
         private void Update()
         {
-            var input = _playerInput.Move;
-            if(input.magnitude == 0) return;
+            if(Input.magnitude == 0) return;
 
-            Vector3 moveDirection = _cameraTransform.forward * input.y + _cameraTransform.right * input.x;
+            Vector3 moveDirection = _cameraTransform.forward * Input.y + _cameraTransform.right * Input.x;
             moveDirection.y = 0;
             moveDirection.Normalize();
 
