@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,12 +9,20 @@ namespace Player
     {
         private PlayerInput playerInput;
         private PlayerMovement playerMovement;
+        private InputAction moveAction;
+        private InputAction jumpAction;
 
         private void Awake()
         {
             playerInput = GetComponent<PlayerInput>();
             GetPlayer();
-            playerInput.onActionTriggered += OnInput;
+            
+            moveAction = playerInput.actions.FindAction("Move");
+            jumpAction = playerInput.actions.FindAction("Jump");
+
+            jumpAction.started += OnInput;
+            jumpAction.performed += OnInput;
+            jumpAction.canceled += OnInput;
         }
 
         private void GetPlayer()
@@ -23,18 +32,25 @@ namespace Player
             playerMovement = players.FirstOrDefault(m => m.PlayerIndex == index);
         }
 
+        private void Update()
+        {
+            if(playerMovement == null) GetPlayer();
+            if(playerMovement == null) return;
+            if(moveAction.ReadValue<Vector2>() == Vector2.zero) return;
+            playerMovement.SetInput(moveAction.ReadValue<Vector2>());
+        }
+
         private void OnInput(InputAction.CallbackContext ctx)
         {
             switch (ctx.action.name)
             {
                 case "Move":
-                    Vector2 moveInput = ctx.ReadValue<Vector2>();
-                    playerMovement.Input = moveInput;
+                    //Handled in Update
                     break;
                 case "Jump":
                     if (ctx.performed)
                     {
-                        //playerMovement.Jump();
+                        playerMovement.Jump();
                     }
                     break;
             }
