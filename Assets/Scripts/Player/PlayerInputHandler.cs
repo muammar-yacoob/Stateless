@@ -34,8 +34,12 @@ namespace Player
 
         private void Update()
         {
-            if(playerMovement == null) GetPlayer();
-            if(playerMovement == null) return;
+            if(playerMovement == null)
+            {
+                GetPlayer();
+                return;
+            }
+            
             if(moveAction.ReadValue<Vector2>() == Vector2.zero) return;
             playerMovement.SetInput(moveAction.ReadValue<Vector2>());
         }
