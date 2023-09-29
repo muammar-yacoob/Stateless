@@ -1,22 +1,25 @@
-﻿using System;
-using System.Linq;
+﻿using SparkCore.Runtime.Injection;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using VContainer;
 
 namespace Player
 {
-    public class PlayerInputHandler : MonoBehaviour
+    public class PlayerInputHandler : InjectableMonoBehaviour
     {
+        [Inject] IPlayerMovementManager playerMovementManager;
+        
         private PlayerInput playerInput;
-        private PlayerMovement playerMovement;
+        private int playerIndex;
         private InputAction moveAction;
         private InputAction jumpAction;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             playerInput = GetComponent<PlayerInput>();
-            GetPlayer();
-            
+            playerIndex = playerInput.playerIndex;
+
             moveAction = playerInput.actions.FindAction("Move");
             jumpAction = playerInput.actions.FindAction("Jump");
 
@@ -25,38 +28,18 @@ namespace Player
             jumpAction.canceled += OnInput;
         }
 
-        private void GetPlayer()
-        {
-            var players = FindObjectsOfType<PlayerMovement>();
-            int index = playerInput.playerIndex;
-            playerMovement = players.FirstOrDefault(m => m.PlayerIndex == index);
-        }
-
         private void Update()
         {
-            if(playerMovement == null)
-            {
-                GetPlayer();
-                return;
-            }
-            
-            if(moveAction.ReadValue<Vector2>() == Vector2.zero) return;
-            playerMovement.SetInput(moveAction.ReadValue<Vector2>());
+            if(moveAction == null) return;
+            if (moveAction.ReadValue<Vector2>() == Vector2.zero) return;
+            playerMovementManager.SetInput(playerIndex, moveAction.ReadValue<Vector2>());
         }
 
         private void OnInput(InputAction.CallbackContext ctx)
         {
-            switch (ctx.action.name)
+            if (ctx.action == jumpAction && ctx.performed)
             {
-                case "Move":
-                    //Handled in Update
-                    break;
-                case "Jump":
-                    if (ctx.performed)
-                    {
-                        playerMovement.Jump();
-                    }
-                    break;
+                playerMovementManager.Jump(playerIndex);
             }
         }
     }

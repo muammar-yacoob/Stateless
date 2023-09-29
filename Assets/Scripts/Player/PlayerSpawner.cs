@@ -1,11 +1,9 @@
-﻿using SparkCore.Runtime.Injection;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Player
 {
-    [RuntimeObject(RuntimeObjectType.Singleton)]
     public class PlayerSpawner : MonoBehaviour, IPlayerSpawner
     {
         [SerializeField] private GameObject[] playerPrefabs;

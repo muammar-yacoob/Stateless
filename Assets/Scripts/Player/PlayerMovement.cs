@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using SparkCore.Runtime.Injection;
+using UnityEngine;
+using VContainer;
 
 namespace Player
 {
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(PlayerJump))]
-    public class PlayerMovement : MonoBehaviour, IPlayerMovement
+    public class PlayerMovement : InjectableMonoBehaviour, IPlayerMovement
     {
         [SerializeField] private int playerIndex;
         [SerializeField] private float moveSpeed = 5f;
@@ -15,12 +17,16 @@ namespace Player
         private CharacterController _characterController;
         private Transform _cameraTransform;
         private PlayerJump playerJump;
+        [Inject] IPlayerMovementManager playerMovementManager;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             _characterController = GetComponent<CharacterController>();
-            _cameraTransform = Camera.main.transform;
+            _cameraTransform = Camera.main?.transform;
             playerJump = GetComponent<PlayerJump>();
+            
+            playerMovementManager.RegisterPlayer(playerIndex, this);
         }
 
         public void SetInput(Vector2 input)
