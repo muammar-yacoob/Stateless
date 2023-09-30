@@ -18,7 +18,8 @@ namespace StageSystem
 
         public string HouseId => houseId;
         private AudioSource audioSource;
-
+        private UniTaskCompletionSource _stepReadySource;
+        
         public event Action<int> CandyCollected;
         public event Action<IHouse> HouseEntered;
         public event Action<IHouse> HouseExited;
@@ -28,6 +29,7 @@ namespace StageSystem
             GetComponent<Collider>().isTrigger = true;
             audioSource = GetComponent<AudioSource>();
             ResetSteps();
+            _stepReadySource = new UniTaskCompletionSource();
         }
 
 
@@ -58,8 +60,19 @@ namespace StageSystem
                     await UniTask.Delay((int)(step.VoiceOver.length * 1000), cancellationToken: token);
                 }
                 
+                _stepReadySource = new UniTaskCompletionSource();
+                await _stepReadySource.Task;
+                
                 await UniTask.DelayFrame(1, cancellationToken: token);
             }
+            Debug.Log("No more steps");
+            //ResetSteps();
+            
+        }
+        
+        public void ProceedToNextStep()
+        {
+            _stepReadySource?.TrySetResult();
         }
         
         public virtual async UniTask ExitHouseAsync(CancellationToken token)
