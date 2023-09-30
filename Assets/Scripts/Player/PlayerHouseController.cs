@@ -8,9 +8,9 @@ namespace Player
 {
     [RequireComponent(typeof(Collider))]
     [RequireComponent(typeof(Rigidbody))]
-    public class PlayerStageController : InjectableMonoBehaviour
+    public class PlayerHouseController : InjectableMonoBehaviour
     {
-        private IStage currentStage;
+        private IHouse currentHouse;
         private CancellationTokenSource cts;
         private bool isUpdating;
 
@@ -25,39 +25,39 @@ namespace Player
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.TryGetComponent<IStage>(out var newStage)) return;
-            if (newStage == currentStage) return;
+            if (!other.TryGetComponent<IHouse>(out var newHouse)) return;
+            if (newHouse == currentHouse) return;
 
             cts?.Cancel();
             cts = new CancellationTokenSource();
-            currentStage = newStage;
-            _ = currentStage.EnterStageAsync(cts.Token);
+            currentHouse = newHouse;
+            _ = currentHouse.EnterHouseAsync(cts.Token);
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (!other.TryGetComponent<IStage>(out var newStage)) return;
-            if (currentStage != newStage) return;
+            if (!other.TryGetComponent<IHouse>(out var newHouse)) return;
+            if (currentHouse != newHouse) return;
 
             cts?.Cancel();
-            _ = currentStage.ExitStageAsync(cts.Token);
-            currentStage = null;
+            _ = currentHouse.ExitHouseAsync(cts.Token);
+            currentHouse = null;
             cts = new CancellationTokenSource();
         }
 
 
         async void Update()
         {
-            if (currentStage == null || isUpdating) return;
+            if (currentHouse == null || isUpdating) return;
 
             isUpdating = true;
             try
             {
-                await currentStage.UpdateStageAsync(cts.Token);
+                await currentHouse.UpdateHouseAsync(cts.Token);
             }
             catch (OperationCanceledException)
             {
-                // Reset isUpdating flag here so Update can run again if needed
+                isUpdating = false;
             }
             finally
             {
