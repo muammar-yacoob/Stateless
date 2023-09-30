@@ -20,6 +20,7 @@ namespace Candy
             candyCounterUI.ForEach(x => x.text = $"x0");
             var houses = FindObjectsOfType<BaseHouse>();
             houses.ToList().ForEach(h => h.CandyCollected += OnPlayerCollectCandy);
+            Debug.Log($"{houses.Count()} houses found!");
         }
 
         private void OnDestroy()
@@ -30,6 +31,7 @@ namespace Candy
 
         private void OnPlayerCollectCandy(int playerId, int candy)
         {
+            playerScores.TryAdd(playerId, 0);
             playerScores[playerId] += candy;
             candyCounterUI[playerId].text = $"x{playerScores[playerId]}";
 

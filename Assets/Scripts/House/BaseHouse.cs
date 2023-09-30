@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace House
 {
@@ -12,14 +13,15 @@ namespace House
         [SerializeField] private string houseId;
         [SerializeField] protected string houseName;
         [Header("Candy")]
-        [SerializeField] protected int candyCount;
-        [SerializeField] protected int candyPerCollection;
+        [SerializeField] protected int initialCandyInventory;
+        [SerializeField] protected int candyCountPerCollection;
         [SerializeField] protected List<HouseStep> Steps;
 
         public string HouseName => houseId;
         private AudioSource audioSource;
         private UniTaskCompletionSource _stepReadySource;
         private int playerIndex;
+        private int currentCandyInventory;
 
         public event Action<int,int> CandyCollected;
         public event Action<IHouse> HouseEntered;
@@ -31,6 +33,7 @@ namespace House
             audioSource = GetComponent<AudioSource>();
             ResetSteps();
             _stepReadySource = new UniTaskCompletionSource();
+            currentCandyInventory = initialCandyInventory;
         }
 
 
@@ -67,9 +70,18 @@ namespace House
                 await UniTask.DelayFrame(1, cancellationToken: token);
             }
             Debug.Log("No more steps! Goodbye! Player" + playerIndex);
-            CandyCollected?.Invoke(playerIndex, candyPerCollection);
-            //ResetSteps();
             
+            var candyGiveAway = Mathf.Min(currentCandyInventory, candyCountPerCollection);
+            if(candyGiveAway > 0)
+            {
+                CandyCollected?.Invoke(playerIndex, candyGiveAway);
+                currentCandyInventory -= candyGiveAway;
+            }
+            else
+            {
+                Debug.Log($"Sorry! No more candy!");
+            }
+            //ResetSteps();
         }
         
         public void ProceedToNextStep()

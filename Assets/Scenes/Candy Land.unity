@@ -3290,6 +3290,14 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4233163056099267943, guid: dbbacfdfedb8a66469857558e9b04325, type: 3}
+      propertyPath: initialCandyInventory
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4233163056099267943, guid: dbbacfdfedb8a66469857558e9b04325, type: 3}
+      propertyPath: candyCountPerCollection
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4233163056099267943, guid: dbbacfdfedb8a66469857558e9b04325, type: 3}
       propertyPath: Steps.Array.data[0].TintColor.a
       value: 1
       objectReference: {fileID: 0}

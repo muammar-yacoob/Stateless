@@ -1,6 +1,5 @@
 using System;
 using System.Threading;
-using Cysharp.Threading.Tasks;
 using House;
 using UnityEngine;
 
@@ -56,7 +55,7 @@ namespace Player
             cts = new CancellationTokenSource();
         }
 
-        private async UniTask Update()
+        private async void Update()
         {
             if (currentHouse == null || isUpdating) return;
             isUpdating = true;
