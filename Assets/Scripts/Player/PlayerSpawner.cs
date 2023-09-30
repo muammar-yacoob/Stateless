@@ -8,11 +8,10 @@ namespace Player
     {
         [SerializeField] private GameObject[] playerPrefabs;
         [SerializeField] private GameObject[] spawnPoints;
-        private PlayerInputManager inputManager;
+        [SerializeField] private PlayerInputManager inputManager;
 
         private void Awake()
         {
-            inputManager = FindObjectOfType<PlayerInputManager>();
             inputManager.onPlayerJoined += SpawnPlayer;
         }
 
