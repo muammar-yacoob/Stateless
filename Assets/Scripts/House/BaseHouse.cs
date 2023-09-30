@@ -4,7 +4,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace StageSystem
+namespace House
 {
     [RequireComponent(typeof(Collider))]
     public abstract class BaseHouse : MonoBehaviour, IHouse
@@ -14,13 +14,14 @@ namespace StageSystem
         [Header("Candy")]
         [SerializeField] protected int candyCount;
         [SerializeField] protected int candyPerCollection;
-        [SerializeField] protected List<StageStep> Steps;
+        [SerializeField] protected List<HouseStep> Steps;
 
-        public string HouseId => houseId;
+        public string HouseName => houseId;
         private AudioSource audioSource;
         private UniTaskCompletionSource _stepReadySource;
-        
-        public event Action<int> CandyCollected;
+        private int playerIndex;
+
+        public event Action<int,int> CandyCollected;
         public event Action<IHouse> HouseEntered;
         public event Action<IHouse> HouseExited;
 
@@ -33,12 +34,12 @@ namespace StageSystem
         }
 
 
-        public virtual async UniTask EnterHouseAsync(CancellationToken token)
+        public virtual async UniTask EnterHouseAsync(CancellationToken token, int playerIndex)
         {
-            Debug.Log($"Welcome to the {houseName}!");
+            Debug.Log($"Welcome player{this.playerIndex} to the {houseName}!");
+            this.playerIndex = playerIndex;
             HouseEntered?.Invoke(this);
             await ExecuteStepsAsync(token);
-            CandyCollected?.Invoke(candyCount);
         }
 
         public virtual async UniTask UpdateHouseAsync(CancellationToken token)
@@ -65,7 +66,8 @@ namespace StageSystem
                 
                 await UniTask.DelayFrame(1, cancellationToken: token);
             }
-            Debug.Log("No more steps");
+            Debug.Log("No more steps! Goodbye! Player" + playerIndex);
+            CandyCollected?.Invoke(playerIndex, candyPerCollection);
             //ResetSteps();
             
         }

@@ -1,7 +1,6 @@
-﻿using StageSystem;
-using UnityEngine.InputSystem;
+﻿using UnityEngine.InputSystem;
 
-namespace Stages
+namespace House
 {
     public class GreenHouse : BaseHouse
     {

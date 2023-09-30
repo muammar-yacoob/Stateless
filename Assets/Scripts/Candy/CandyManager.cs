@@ -1,37 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using House;
+using SparkCore.Runtime.Utils;
 using TMPro;
 using UnityEngine;
 
 namespace Candy
 {
-    public class CandyManager : MonoBehaviour
+    public class CandyManager : PersistentSingleton<CandyManager>
     {
-        private Dictionary<string, int> playerScores = new();
+        private Dictionary<int, int> playerScores = new();
+        [SerializeField] private List<TMP_Text> candyCounterUI;
         public event Action OnGameOver;
-        private int targetCandyCount = 10;
+        private int targetCandyCount = 20;
 
-        [SerializeField] private TextMeshProUGUI candyCounterUI;
-
-        public void OnPlayerCollectCandy(string playerId, int candy)
+        private void Start()
         {
-            if (!playerScores.ContainsKey(playerId))
-            {
-                playerScores[playerId] = 0;
-            }
+            candyCounterUI.ForEach(x => x.text = $"x0");
+            var houses = FindObjectsOfType<BaseHouse>();
+            houses.ToList().ForEach(h => h.CandyCollected += OnPlayerCollectCandy);
+        }
 
+        private void OnDestroy()
+        {
+            var houses = FindObjectsOfType<BaseHouse>();
+            houses.ToList().ForEach(h => h.CandyCollected -= OnPlayerCollectCandy);
+        }
+
+        private void OnPlayerCollectCandy(int playerId, int candy)
+        {
             playerScores[playerId] += candy;
-            candyCounterUI.text = $"Player {playerId}: {playerScores[playerId]}";
+            candyCounterUI[playerId].text = $"x{playerScores[playerId]}";
 
-            if(playerScores[playerId] >= targetCandyCount/2)
-            {
-                Debug.Log($"Player {playerId} has a sweet tooth!");
-            }
-            
             if (playerScores.Values.Sum() >= targetCandyCount)
             {
-                Debug.Log("Game Over!");
+                Debug.Log("Mission Complete!");
                 OnGameOver?.Invoke();
             }
         }
