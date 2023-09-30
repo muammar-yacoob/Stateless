@@ -31,7 +31,7 @@ namespace Player
         private void Update()
         {
             if(moveAction == null) return;
-            if (moveAction.ReadValue<Vector2>() == Vector2.zero) return;
+            //if (moveAction.ReadValue<Vector2>() == Vector2.zero) return; //Idle animation needs the zero value
             playerMovementManager.SetInput(playerIndex, moveAction.ReadValue<Vector2>());
         }
 

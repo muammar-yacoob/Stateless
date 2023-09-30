@@ -1,7 +1,5 @@
 ﻿using SparkCore.Runtime.Injection;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using VContainer;
 
 namespace Player
 {
@@ -9,7 +7,7 @@ namespace Player
     public class PlayerAnimation : InjectableMonoBehaviour
     {
         private Animator _animator;
-        PlayerInput _playerInput;
+        private PlayerMovement playerMovement;
         private static readonly int Speed = Animator.StringToHash("Speed");
         private readonly float sensitivity = 0.05f;
 
@@ -17,12 +15,13 @@ namespace Player
         {
             base.Awake();
             _animator = GetComponent<Animator>();
+            playerMovement = GetComponent<PlayerMovement>();
         }
 
         private void Update()
         {
-            // var input = _playerInput.Move;
-            // _animator.SetFloat(Speed, input.magnitude <= sensitivity ? 0 : input.magnitude);
+            var playerMovementSpeed = playerMovement.Speed;
+            _animator.SetFloat(Speed, playerMovementSpeed <= sensitivity ? 0 : playerMovementSpeed);
         }
     }
 }

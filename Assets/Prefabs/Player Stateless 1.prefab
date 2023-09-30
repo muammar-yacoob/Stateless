@@ -1416,8 +1416,9 @@ GameObject:
   - component: {fileID: 4835377797488739799}
   - component: {fileID: 5597587857087540932}
   - component: {fileID: 7313019100500470016}
+  - component: {fileID: 7804563105084496727}
   m_Layer: 0
-  m_Name: Player Stateless
+  m_Name: Player Stateless 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1513,6 +1514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b09f7583cb4d7f8e7063a46ca4bb80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerIndex: 0
   moveSpeed: 5
   turnSpeed: 20
 --- !u!114 &7274770792705262572
@@ -1566,6 +1568,21 @@ CharacterController:
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!114 &7313019100500470016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6336957253283155218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9880da807ed4486b0cb7023536e62eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpHeight: 2
+  jumpDuration: 0.4
+  maxJumpCount: 2
+--- !u!114 &7804563105084496727
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
