@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using TMPro;
+using UI;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace House
 {
@@ -22,10 +23,11 @@ namespace House
         private UniTaskCompletionSource _stepReadySource;
         private int playerIndex;
         private int currentCandyInventory;
+        const float typingDurationPerCharacter = 0.02f;
+
 
         public event Action<int,int> CandyCollected;
         public event Action<IHouse> HouseEntered;
-        public event Action<IHouse> HouseExited;
 
         private  void Awake()
         {
@@ -52,6 +54,13 @@ namespace House
 
         private async UniTask ExecuteStepsAsync(CancellationToken token)
         {
+            var candyGiveAway = Mathf.Min(currentCandyInventory, candyCountPerCollection);
+            if(candyGiveAway <= 0)
+            {
+                GameEvents.HouseEvents.Instance.StartDialogue($"We're out of candy, Sorry!", token);
+                return;
+            }
+
             foreach (var step in Steps)
             {
                 //TODO: Play VoiceOver and animation here
@@ -65,25 +74,20 @@ namespace House
                 }
                 
                 _stepReadySource = new UniTaskCompletionSource();
-                await _stepReadySource.Task;
+                if(step.DialogText.Length > 0)
+                {
+                    GameEvents.HouseEvents.Instance.StartDialogue(step.DialogText, token);
+                    await _stepReadySource.Task;
+                }
                 
                 await UniTask.DelayFrame(1, cancellationToken: token);
             }
-            Debug.Log("No more steps! Goodbye! Player" + playerIndex);
             
-            var candyGiveAway = Mathf.Min(currentCandyInventory, candyCountPerCollection);
-            if(candyGiveAway > 0)
-            {
-                CandyCollected?.Invoke(playerIndex, candyGiveAway);
-                currentCandyInventory -= candyGiveAway;
-            }
-            else
-            {
-                Debug.Log($"Sorry! No more candy!");
-            }
-            //ResetSteps();
+            GameEvents.HouseEvents.Instance.StartDialogue($"Here's {candyGiveAway} Candies! \nThanks for visiting the {houseName}! Good night!", token);
+            CandyCollected?.Invoke(playerIndex, candyGiveAway);
+            currentCandyInventory -= candyGiveAway;
         }
-        
+
         public void ProceedToNextStep()
         {
             _stepReadySource?.TrySetResult();
@@ -92,10 +96,8 @@ namespace House
         public virtual async UniTask ExitHouseAsync(CancellationToken token)
         {
             ResetSteps();
-
-            Debug.Log($"Thanks for visiting the {houseName}! Goodbye!");
+            GameEvents.HouseEvents.Instance.ExitHouse();
             
-            HouseExited?.Invoke(this);
             await UniTask.DelayFrame(1, cancellationToken: token);
         }
 

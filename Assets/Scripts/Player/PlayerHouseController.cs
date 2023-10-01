@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using GameEvents;
 using House;
 using UnityEngine;
 
@@ -27,32 +28,24 @@ namespace Player
         {
             if (other.TryGetComponent<IHouse>(out var newHouse) && newHouse != currentHouse)
             {
-                HandleHouseEntry(newHouse);
+                HouseEvents.Instance.EnterHouse();
+                cts?.Cancel();
+                cts = new CancellationTokenSource();
+                currentHouse = newHouse;
+                _ = currentHouse.EnterHouseAsync(cts.Token, playerIndex);
             }
-        }
-
-        private void HandleHouseEntry(IHouse newHouse)
-        {
-            cts?.Cancel();
-            cts = new CancellationTokenSource();
-            currentHouse = newHouse;
-            _ = currentHouse.EnterHouseAsync(cts.Token, playerIndex);
         }
 
         private void OnTriggerExit(Collider other)
         {
             if (other.TryGetComponent<IHouse>(out var exitingHouse) && exitingHouse == currentHouse)
             {
-                HandleHouseExit();
+                HouseEvents.Instance.ExitHouse();
+                cts?.Cancel();
+                _ = currentHouse.ExitHouseAsync(cts.Token);
+                currentHouse = null;
+                cts = new CancellationTokenSource();
             }
-        }
-
-        private void HandleHouseExit()
-        {
-            cts?.Cancel();
-            _ = currentHouse.ExitHouseAsync(cts.Token);
-            currentHouse = null;
-            cts = new CancellationTokenSource();
         }
 
         private async void Update()
