@@ -35,6 +35,11 @@ namespace Candy
             playerScores[playerId] += candy;
             candyCounterUI[playerId].text = $"x{playerScores[playerId]}";
 
+            if (playerScores.Values.Sum() >= 5)
+            {
+                
+            }
+            
             if (playerScores.Values.Sum() >= targetCandyCount)
             {
                 Debug.Log("Mission Complete!");
