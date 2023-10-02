@@ -1,6 +1,6 @@
 ﻿using UnityEngine.InputSystem;
 
-namespace Player
+namespace Stateless.Player
 {
     public interface IPlayerSpawner
     {

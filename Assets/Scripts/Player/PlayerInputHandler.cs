@@ -1,10 +1,9 @@
 ﻿using SparkCore.Runtime.Core;
-using SparkCore.Runtime.Injection;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using VContainer;
 
-namespace Player
+namespace Stateless.Player
 {
     public class PlayerInputHandler : InjectableMonoBehaviour
     {

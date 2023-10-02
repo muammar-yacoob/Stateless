@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Stateless
+namespace Stateless.UI
 {
     public class EntryAnnouncer : MonoBehaviour, IEntryAnnouncer
     {

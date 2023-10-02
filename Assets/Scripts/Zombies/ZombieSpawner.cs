@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Cysharp.Threading.Tasks;
+using Stateless.Zombies.Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
@@ -55,7 +56,7 @@ namespace Stateless.Zombies
             newZombie.transform.parent = transform;
             currentZombieCount++;
 
-            GameEvents.ZombieEvents.Instance.SpawnZombie(newZombie);
+            ZombieEvents.Instance.SpawnZombie(newZombie);
         }
     }
 }

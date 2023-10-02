@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine.UI;
 
-    namespace GameEvents
+namespace Stateless.UI.Events
     {
         public class UIEvents
         {

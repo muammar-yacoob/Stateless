@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Player
+namespace Stateless.Player
 {
     public interface IPlayerMovement
     {

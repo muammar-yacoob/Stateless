@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Stateless.UI.Events;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +16,7 @@ namespace Stateless.UI
             healthBar.fillAmount = 1;
             healthText.text = "100%";
             
-            GameEvents.UIEvents.Instance.RegisterHealthBar(playerIndex, healthBar, healthText);
+            UIEvents.Instance.RegisterHealthBar(playerIndex, healthBar, healthText);
         }
     }
 }

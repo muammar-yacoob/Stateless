@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using DG.Tweening;
+using Stateless.House.Events;
 using TMPro;
-using UI;
 using UnityEngine;
 
 namespace Stateless.UI
@@ -22,9 +22,9 @@ namespace Stateless.UI
 
         private void OnEnable()
         {
-            GameEvents.HouseEvents.Instance.DialogueStarted += OnDialogueStarted;
-            GameEvents.HouseEvents.Instance.HouseEntered += OnHouseEntered;
-            GameEvents.HouseEvents.Instance.HouseExited += OnHouseExited;
+            HouseEvents.Instance.DialogueStarted += OnDialogueStarted;
+            HouseEvents.Instance.HouseEntered += OnHouseEntered;
+            HouseEvents.Instance.HouseExited += OnHouseExited;
             
             var position = dialogueBox.position;
             dialogueBox.position = new Vector3(position.x, initialY - dialogueBox.rect.height, position.z);
@@ -32,9 +32,9 @@ namespace Stateless.UI
 
         private void OnDisable()
         {
-            GameEvents.HouseEvents.Instance.DialogueStarted -= OnDialogueStarted;
-            GameEvents.HouseEvents.Instance.HouseEntered -= OnHouseEntered;
-            GameEvents.HouseEvents.Instance.HouseExited -= OnHouseExited;
+            HouseEvents.Instance.DialogueStarted -= OnDialogueStarted;
+            HouseEvents.Instance.HouseEntered -= OnHouseEntered;
+            HouseEvents.Instance.HouseExited -= OnHouseExited;
         }
         
         private async void OnDialogueStarted(string dialogue, CancellationToken token)

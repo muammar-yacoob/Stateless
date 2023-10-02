@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace House
+namespace Stateless.House
 {
     [Serializable]
     public class HouseStep

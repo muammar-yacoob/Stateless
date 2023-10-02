@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace WayPointSystem
+namespace Stateless.WayPointSystem
 {
     public class WaypointSystem : MonoBehaviour
     {

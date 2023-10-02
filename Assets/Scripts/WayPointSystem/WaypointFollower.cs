@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEditor;
 using UnityEngine;
 
-namespace WayPointSystem
+namespace Stateless.WayPointSystem
 {
     public class WaypointFollower : MonoBehaviour
     {

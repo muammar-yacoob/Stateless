@@ -1,10 +1,10 @@
 using System;
 using System.Threading;
-using GameEvents;
-using House;
+using Stateless.House;
+using Stateless.House.Events;
 using UnityEngine;
 
-namespace Player
+namespace Stateless.Player
 {
     [RequireComponent(typeof(Collider))]
     [RequireComponent(typeof(Rigidbody))]

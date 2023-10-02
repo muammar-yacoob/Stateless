@@ -1,9 +1,7 @@
 ﻿using SparkCore.Runtime.Core;
-using SparkCore.Runtime.Injection;
 using UnityEngine;
-using VContainer;
 
-namespace Player
+namespace Stateless.Player
 {
     [RequireComponent(typeof(CharacterController))]
     public class PlayerJump : InjectableMonoBehaviour

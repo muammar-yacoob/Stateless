@@ -1,8 +1,8 @@
-﻿using UnityEditor;
+﻿using Stateless.WayPointSystem;
+using UnityEditor;
 using UnityEngine;
-using WayPointSystem;
 
-namespace Editor
+namespace Stateless.Editor
 {
     [CustomEditor(typeof(WaypointFollower))]
     public class WaypointFollowerEditor : UnityEditor.Editor

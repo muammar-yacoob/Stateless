@@ -1,7 +1,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
-namespace House
+namespace Stateless.House
 {
     public interface IHouse
     {

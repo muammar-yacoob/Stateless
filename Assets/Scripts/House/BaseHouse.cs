@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using TMPro;
-using UI;
+using Stateless.House.Events;
 using UnityEngine;
 
-namespace House
+namespace Stateless.House
 {
     [RequireComponent(typeof(Collider))]
     public abstract class BaseHouse : MonoBehaviour, IHouse
@@ -57,7 +56,7 @@ namespace House
             var candyGiveAway = Mathf.Min(currentCandyInventory, candyCountPerCollection);
             if(candyGiveAway <= 0)
             {
-                GameEvents.HouseEvents.Instance.StartDialogue($"We're out of candy, Sorry!", token);
+                HouseEvents.Instance.StartDialogue($"We're out of candy, Sorry!", token);
                 return;
             }
 
@@ -76,14 +75,14 @@ namespace House
                 _stepReadySource = new UniTaskCompletionSource();
                 if(step.DialogText.Length > 0)
                 {
-                    GameEvents.HouseEvents.Instance.StartDialogue(step.DialogText, token);
+                    HouseEvents.Instance.StartDialogue(step.DialogText, token);
                     await _stepReadySource.Task;
                 }
                 
                 await UniTask.DelayFrame(1, cancellationToken: token);
             }
             
-            GameEvents.HouseEvents.Instance.StartDialogue($"Here's {candyGiveAway} Candies! \nThanks for visiting the {houseName}! Good night!", token);
+            HouseEvents.Instance.StartDialogue($"Here's {candyGiveAway} Candies! \nThanks for visiting the {houseName}! Good night!", token);
             CandyCollected?.Invoke(playerIndex, candyGiveAway);
             currentCandyInventory -= candyGiveAway;
         }
@@ -96,7 +95,7 @@ namespace House
         public virtual async UniTask ExitHouseAsync(CancellationToken token)
         {
             ResetSteps();
-            GameEvents.HouseEvents.Instance.ExitHouse();
+            HouseEvents.Instance.ExitHouse();
             
             await UniTask.DelayFrame(1, cancellationToken: token);
         }

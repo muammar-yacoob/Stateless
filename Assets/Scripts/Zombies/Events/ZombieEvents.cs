@@ -1,7 +1,6 @@
 ﻿using System;
-using Stateless.Zombies;
 
-namespace GameEvents
+namespace Stateless.Zombies.Events
 {
     public class ZombieEvents
     {

@@ -1,6 +1,9 @@
 ﻿using UnityEngine.InputSystem;
 
-public interface IEntryAnnouncer
+namespace Stateless.UI
 {
-    void AnnounceEntry(PlayerInput playerInput);
+    public interface IEntryAnnouncer
+    {
+        void AnnounceEntry(PlayerInput playerInput);
+    }
 }

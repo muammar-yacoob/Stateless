@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using Cysharp.Threading.Tasks;
-using Player;
+using Stateless.Player;
 using UnityEngine.InputSystem;
 
 namespace Stateless.Zombies
