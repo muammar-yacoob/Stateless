@@ -39,7 +39,7 @@ namespace Stateless.Zombies
                 {
                     SpawnZombie();
                 }
-                await UniTask.Delay(spawnDelay);
+                await UniTask.Delay(spawnDelay*1000);
             }
         }
 
