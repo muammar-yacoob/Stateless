@@ -1,5 +1,6 @@
 ﻿using SparkCore.Runtime.Injection;
 using System;
+using SparkCore.Runtime.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
