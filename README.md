@@ -1,36 +1,18 @@
-# Game Design Document (GDD)
+# 🎃 Halloween Candy Hunt
 
-## Game Title
-Halloween Candy Hunt
+## About 🌕
+Join forces in a 2-4 player haunted suburban escapade. Your mission? Collect 100 candies🍬 while dodging relentless zombies 🧟‍♀️. The setting is as eerie as the quest, complete with haunted houses and the undead.
 
-## Game Concept
-Halloween Candy Hunt is a cooperative local multiplayer game where players must work together to collect 100 candies from 20 houses while fending off zombies with candy attacks.
+![Controls Screenshot](images/GamePlay.png)
 
-## Game Mechanics
-- **Players:** 2-4 players.
-- **Collecting Candies:**
-  - Players collect candies by approaching houses and interacting with them.
-  - Different houses contain varying amounts of candies.
-- **Zombies:**
-  - Zombies appear after the first 3 houses are visited.
-  - Zombies chase players, causing damage to their health.
-  - Players can fight back by throwing candy at zombies, reducing the candy inventory but repelling the zombies.
-- **Health:**
-  - Each player has individual health.
-  - Taking damage from zombies reduces health.
-  - Running out of health results in a game over.
-- **Win Condition:**
-  - Players win if they collect 100 candies from the houses.
-  - They lose if all players run out of health.
+## How To Play 🎮
+- Team up for a 2-4 player experience.
+- **Collect Candies**: Visit houses to snag treats. 🍭
+- **Avoid Zombies**: Keep the undead at bay with your sugary arsenal. 🧟
+- **Health**: Stay alive by avoiding zombie attacks and eating healthy 🥦
 
-## Visual Design
-- Halloween-themed environment with spooky houses and decorations.
-- Cartoonish characters and zombies.
-- Candy-themed UI elements.
+![Game Screenshot](images/GameControls.png)
 
-## Game Flow
-1. Players start at a central point.
-2. They visit houses one by one, collecting candies.
-3. Zombies appear after the 3rd house.
-4. Players must defend against zombies while collecting candies.
-5. Winning or losing conditions are checked after visiting all 20 houses.
+## Credits 🌟
+- Game by Muammar Yacoob. 
+- Graphics by <a href='https://pngtree.com'>pngtree.com</a>
