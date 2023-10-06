@@ -339,10 +339,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statsPanels:
-  - {fileID: 1580154349}
-  - {fileID: 1262540886}
-  - {fileID: 884566647}
-  - {fileID: 87056644}
+  - {fileID: 3337670732934326912}
+  - {fileID: 1262540887}
+  - {fileID: 884566648}
+  - {fileID: 87056645}
 --- !u!1 &29765412
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,6 +484,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 16709005}
     m_Modifications:
+    - target: {fileID: 4743932553890310844, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
+      propertyPath: playerIndex
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6392390319755853367, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -584,6 +588,11 @@ PrefabInstance:
 --- !u!224 &87056644 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6392390319755853367, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
+  m_PrefabInstance: {fileID: 87056643}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &87056645 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7158940340096279122, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
   m_PrefabInstance: {fileID: 87056643}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &107662145 stripped
@@ -1650,6 +1659,42 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 1.5315075
       objectReference: {fileID: 0}
+    - target: {fileID: 4743932553890310844, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
+      propertyPath: playerIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743932553890310844, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
+      propertyPath: healthyColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743932553890310844, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
+      propertyPath: healthyColor.g
+      value: 0.8584906
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743932553890310844, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
+      propertyPath: healthyColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743932553890310844, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
+      propertyPath: injuredColor.b
+      value: 0.015686274
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743932553890310844, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
+      propertyPath: injuredColor.g
+      value: 0.7367084
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743932553890310844, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
+      propertyPath: criticalColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743932553890310844, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
+      propertyPath: criticalColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743932553890310844, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
+      propertyPath: criticalColor.r
+      value: 0.8113208
+      objectReference: {fileID: 0}
     - target: {fileID: 6392390319755853367, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1750,6 +1795,11 @@ PrefabInstance:
 --- !u!224 &884566647 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6392390319755853367, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
+  m_PrefabInstance: {fileID: 884566646}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &884566648 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7158940340096279122, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
   m_PrefabInstance: {fileID: 884566646}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &950388832 stripped
@@ -2486,6 +2536,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 16709005}
     m_Modifications:
+    - target: {fileID: 4743932553890310844, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
+      propertyPath: playerIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6392390319755853367, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -2586,6 +2640,11 @@ PrefabInstance:
 --- !u!224 &1262540886 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6392390319755853367, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
+  m_PrefabInstance: {fileID: 1262540885}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1262540887 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7158940340096279122, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
   m_PrefabInstance: {fileID: 1262540885}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1332493149
@@ -4627,6 +4686,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 16709005}
     m_Modifications:
+    - target: {fileID: 1643251779679240126, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743932553890310844, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
+      propertyPath: playerIndex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6392390319755853367, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -4720,6 +4787,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
+--- !u!224 &3337670732934326912 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7158940340096279122, guid: 90988be6565d0784e8b18f723f8c3929, type: 3}
+  m_PrefabInstance: {fileID: 3337670732934326911}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4125465291146211671
 PrefabInstance:
   m_ObjectHideFlags: 0

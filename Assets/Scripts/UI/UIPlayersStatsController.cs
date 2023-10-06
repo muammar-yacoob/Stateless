@@ -11,13 +11,19 @@ namespace Stateless.UI
 
         protected override void Awake()
         {
-            SubscribeEvent<PlayerSpawned>(OnPlayerSpawned);
+            base.Awake();
             statsPanels.ForEach(panel => panel.gameObject.SetActive(false));
+            SubscribeEvent<PlayerSpawned>(OnPlayerSpawned);
         }
-
+        
+        private void OnDestroy()
+        {
+            UnsubscribeEvent<PlayerSpawned>(OnPlayerSpawned);
+        }
+        
         private void OnPlayerSpawned(PlayerSpawned spawned)
         {
-            RectTransform statsPanel = statsPanels[spawned.PlayerIndex];
+            RectTransform statsPanel = statsPanels[spawned.PlayerStats.PlayerIndex];
             statsPanel.gameObject.SetActive(true);
         }
     }

@@ -4,7 +4,7 @@ namespace Stateless.Player
 {
     public class PlayerStats
     {
-        public int PlayerId { get; }
+        public int PlayerIndex { get; }
         
         private float health;
         public float Health 
@@ -13,7 +13,7 @@ namespace Stateless.Player
             set
             {
                 health = value;
-                HealthChanged?.Invoke(health, PlayerId);
+                HealthChanged?.Invoke(health, PlayerIndex);
             }
         }
 
@@ -24,16 +24,16 @@ namespace Stateless.Player
             set
             {
                 candies = value;
-                CandyCountChanged?.Invoke(candies, PlayerId);
+                CandyCountChanged?.Invoke(candies, PlayerIndex);
             }
         }
 
         public event Action<float, int> HealthChanged;
         public event Action<int, int> CandyCountChanged;
 
-        public PlayerStats(int playerId, float initialHealth, int initialCandies)
+        public PlayerStats(int playerIndex, float initialHealth, int initialCandies)
         {
-            PlayerId = playerId;
+            PlayerIndex = playerIndex;
             Health = initialHealth;
             Candies = initialCandies;
         }

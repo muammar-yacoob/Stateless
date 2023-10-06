@@ -5,12 +5,12 @@ namespace Stateless.Player.Events
     public class PlayerSpawned
     {
         public readonly GameObject PlayerInstance;
-        public readonly int PlayerIndex;
+        public readonly PlayerStats PlayerStats;
 
-        public PlayerSpawned(GameObject playerInstance, int playerIndex)
+        public PlayerSpawned(GameObject playerInstance, PlayerStats playerStats)
         {
             PlayerInstance = playerInstance;
-            PlayerIndex = playerIndex;
+            PlayerStats = playerStats;
         }
     }
 }

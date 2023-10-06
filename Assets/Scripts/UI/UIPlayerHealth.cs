@@ -1,4 +1,3 @@
-using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using SparkCore.Runtime.Core;
 using Stateless.Player;
@@ -23,12 +22,12 @@ namespace Stateless.UI
     
         private float currentHealth;
         private float maxHealth;
+        private PlayerStats playerStats;
 
 
         protected override void Awake()
         {
             base.Awake();
-            UniTask.Delay(1000);
             SubscribeEvent<PlayerSpawned>(OnPlayerSpawned);
             SubscribeEvent<PlayerDamaged>(OnPlayerDamaged);
         }
@@ -41,15 +40,19 @@ namespace Stateless.UI
 
         private void OnValidate()
         {
-            if (playerIndex < 0 || playerIndex > 3)
-                Debug.LogError("Player index must be between 0 and 3",this);
+            playerIndex = transform.GetSiblingIndex();
+            //if (playerIndex < 0 || playerIndex > 3) Debug.LogError("Player index must be between 0 and 3",this);
         }
 
-        private void OnPlayerSpawned(PlayerSpawned playerStats)
+        private void OnPlayerSpawned(PlayerSpawned playerSpawned)
         {
-            if (playerStats.PlayerIndex != playerIndex) return;
-            maxHealth = PlayersStatsManager.Instance.PlayerStats[playerStats.PlayerIndex].Health;
+            //Debug.Log($"Initializing player {playerIndex} health");
+            int spawnedPlayerIndex = playerSpawned.PlayerStats.PlayerIndex;
+            if (spawnedPlayerIndex != playerIndex) return;
+            Debug.Log($"Player {playerIndex} health initialized");
+            maxHealth = PlayersStatsManager.Instance.PlayerStats[spawnedPlayerIndex].Health;
             currentHealth = maxHealth;
+            this.playerStats = playerSpawned.PlayerStats;
         }
 
         private void OnDestroy() => UnsubscribeEvent<PlayerDamaged>(OnPlayerDamaged);
@@ -63,9 +66,12 @@ namespace Stateless.UI
             UpdateUI();
         }
 
-        private void UpdateUI()
+        private async void UpdateUI()
         {
             float fillValue = currentHealth / maxHealth;
+            fillValue = Mathf.Round(fillValue * 100) / 100;
+            fillValue = Mathf.Clamp(fillValue, 0, 1);
+            //Debug.Log($"Fill value: {fillValue}");
             
             if(healthText == null)
             {
@@ -74,26 +80,33 @@ namespace Stateless.UI
             }
             
             healthText.text = fillValue.ToString("P0");
-            healthBar.DOFillAmount(fillValue, 0.2f);
-        
+            //Debug.Log($"Ouch! {currentHealth}%");
+            await healthBar.DOFillAmount(fillValue, 0.2f).AsyncWaitForCompletion();
+
+            if(currentHealth <= 0)
+            {
+                PublishEvent(new PlayerDied(playerStats));
+                return;
+            }
+            
             if (currentHealth / maxHealth <= 0.2f)
             {
+                healthBar.DOKill();
                 healthBar.DOFade(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
-                healthBar.color = Color.red;
+                healthBar.color = criticalColor;
             }
             else if (currentHealth / maxHealth <= 0.5f)
             {
                 healthBar.DOKill(); 
-                healthBar.color = Color.yellow;
+                healthBar.color = injuredColor;
                 healthBar.DOFade(1f, 0.5f); 
             }
-            else
+            else if (currentHealth / maxHealth > 0.5f)
             {
-                healthBar.DOKill(); 
-                healthBar.color = Color.green;
+                healthBar.DOKill();
+                healthBar.color = healthyColor;
                 healthBar.DOFade(1f, 0.5f); 
             }
-            Debug.Log($"Ouch! {currentHealth}%");
         }
     }
 }

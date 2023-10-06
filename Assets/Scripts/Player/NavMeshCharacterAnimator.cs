@@ -7,7 +7,6 @@ namespace Stateless.Player
     [RequireComponent(typeof(Animator))]
     public class NavMeshCharacterAnimator : MonoBehaviour
     {
-        [SerializeField] private float turnSpeed = 20f;
         private NavMeshAgent _navMeshAgent;
         private Animator _animator;
         private static readonly int Speed = Animator.StringToHash("Speed");

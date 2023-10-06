@@ -22,7 +22,7 @@ namespace Stateless.Player
 
         public PlayerStats  GetPlayerStats(int playerId)
         {
-            return playerStats.Find(playerStat => playerStat.PlayerId == playerId);
+            return playerStats.Find(playerStat => playerStat.PlayerIndex == playerId);
         }
     }
 }

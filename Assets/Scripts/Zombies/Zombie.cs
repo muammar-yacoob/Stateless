@@ -51,7 +51,7 @@ namespace Stateless.Zombies
             if (targetPlayer != null && !isAttacking)
             {
                 StopRoaming();
-                Debug.Log($"Chasing {targetPlayer.PlayerIndex}");
+                //Debug.Log($"Chasing {targetPlayer.PlayerIndex}");
                 ChaseAndAttack(targetPlayer).Forget();
             }
         }
@@ -91,7 +91,7 @@ namespace Stateless.Zombies
                 navAgent.SetDestination(playerTransform.position);
                 if (navAgent.remainingDistance <= navAgent.stoppingDistance)
                 {
-                    Debug.Log($"Attacking Player {targetPlayer.PlayerIndex} with {damage} damage");
+                    //Debug.Log($"Attacking Player {targetPlayer.PlayerIndex} with {damage} damage");
                     PublishEvent(new PlayerDamaged(damage, targetPlayer.PlayerIndex));
                     await UniTask.Delay(1000);
                 }
