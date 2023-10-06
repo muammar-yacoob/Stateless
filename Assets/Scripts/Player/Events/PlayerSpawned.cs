@@ -2,14 +2,15 @@ using UnityEngine;
 
 namespace Stateless.Player.Events
 {
-    public class PlayerSpawnedEvent
+    public class PlayerSpawned
     {
         public readonly GameObject PlayerInstance;
+        public readonly int PlayerIndex;
 
-        public PlayerSpawnedEvent(GameObject playerInstance)
+        public PlayerSpawned(GameObject playerInstance, int playerIndex)
         {
             PlayerInstance = playerInstance;
+            PlayerIndex = playerIndex;
         }
-
     }
 }

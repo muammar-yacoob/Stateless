@@ -32,7 +32,8 @@ namespace Stateless.Player
             playerInstance.name = $"Player {playerIndex + 1}";
             Selection.activeGameObject = playerInstance;
             
-            PublishEvent(new PlayerSpawnedEvent(playerInstance));
+            PlayersStatsManager.Instance.AddPlayer(new PlayerStats(playerIndex,100,0));
+            PublishEvent(new PlayerSpawned(playerInstance, playerIndex));
         }
     }
 }

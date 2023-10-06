@@ -1417,9 +1417,8 @@ GameObject:
   - component: {fileID: 5597587857087540932}
   - component: {fileID: 7313019100500470016}
   - component: {fileID: 7804563105084496727}
-  - component: {fileID: 6528756733440896432}
   m_Layer: 0
-  m_Name: Player Stateless 1
+  m_Name: Player 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1598,24 +1597,6 @@ MonoBehaviour:
   jumpHeight: 2
   jumpDuration: 0.4
   maxJumpCount: 2
---- !u!114 &6528756733440896432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6336957253283155218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e22cb106c46441a79ec7c590c036aceb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  healthText: {fileID: 0}
-  healthBar: {fileID: 0}
-  healthyColor: {r: 0, g: 1, b: 0, a: 1}
-  injuredColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  criticalColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &6807648492229428194
 GameObject:
   m_ObjectHideFlags: 0

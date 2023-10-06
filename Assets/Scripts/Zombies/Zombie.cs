@@ -3,13 +3,15 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using Cysharp.Threading.Tasks;
+using SparkCore.Runtime.Core;
 using Stateless.Player;
+using Stateless.Zombies.Events;
 using UnityEngine.InputSystem;
 
 namespace Stateless.Zombies
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    public class Zombie : MonoBehaviour
+    public class Zombie : InjectableMonoBehaviour
     {
         [SerializeField] private float sightRange = 10f;
         [SerializeField] private float sightAngle = 60f;
@@ -49,6 +51,7 @@ namespace Stateless.Zombies
             if (targetPlayer != null && !isAttacking)
             {
                 StopRoaming();
+                Debug.Log($"Chasing {targetPlayer.PlayerIndex}");
                 ChaseAndAttack(targetPlayer).Forget();
             }
         }
@@ -79,8 +82,8 @@ namespace Stateless.Zombies
 
         private async UniTaskVoid ChaseAndAttack(PlayerMovement targetPlayer)
         {
+            if(targetPlayer == null) return;
             isAttacking = true;
-            var playerHealth = targetPlayer.GetComponent<PlayerHealth>();
             Transform playerTransform = targetPlayer.transform;
 
             while (IsPlayerInSight(playerTransform))
@@ -88,9 +91,12 @@ namespace Stateless.Zombies
                 navAgent.SetDestination(playerTransform.position);
                 if (navAgent.remainingDistance <= navAgent.stoppingDistance)
                 {
-                    playerHealth.TakeDamage(damage);
+                    Debug.Log($"Attacking Player {targetPlayer.PlayerIndex} with {damage} damage");
+                    PublishEvent(new PlayerDamaged(damage, targetPlayer.PlayerIndex));
                     await UniTask.Delay(1000);
                 }
+                //else Debug.Log($"Remaining: {navAgent.remainingDistance}, Stopping: {navAgent.stoppingDistance}");
+
                 await UniTask.Yield();
             }
             isAttacking = false;
@@ -102,6 +108,7 @@ namespace Stateless.Zombies
 
         private bool IsPlayerInSight(Transform playerTransform)
         {
+            if(playerTransform == null) return false;
             Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
             float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
             float angle = Vector3.Angle(transform.forward, directionToPlayer);
