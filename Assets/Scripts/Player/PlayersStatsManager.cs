@@ -13,16 +13,10 @@ namespace Stateless.Player
 
         public IReadOnlyList<PlayerStats> PlayerStats => playerStats;
 
-        private PlayersStatsManager() { }
+        public void AddPlayer(PlayerStats playerStat) => playerStats.Add(playerStat);
 
-        public void AddPlayer(PlayerStats playerStat)
-        {
-            playerStats.Add(playerStat);
-        }
+        public void RemovePlayer(PlayerStats playerStat) => playerStats.Remove(playerStat);
 
-        public PlayerStats  GetPlayerStats(int playerId)
-        {
-            return playerStats.Find(playerStat => playerStat.PlayerIndex == playerId);
-        }
+        public List<PlayerStats> GetPlayers() => playerStats;
     }
 }

@@ -1,10 +1,12 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Stateless.Player
 {
     public class PlayerStats
     {
         public int PlayerIndex { get; }
+        public GameObject PlayerInstance { get; }
         
         private float health;
         public float Health 
@@ -31,11 +33,12 @@ namespace Stateless.Player
         public event Action<float, int> HealthChanged;
         public event Action<int, int> CandyCountChanged;
 
-        public PlayerStats(int playerIndex, float initialHealth, int initialCandies)
+        public PlayerStats(GameObject playerInstance, int playerIndex, float initialHealth, int initialCandies)
         {
             PlayerIndex = playerIndex;
             Health = initialHealth;
             Candies = initialCandies;
+            PlayerInstance = playerInstance;
         }
     }
 }
