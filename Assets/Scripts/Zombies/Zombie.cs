@@ -31,16 +31,19 @@ namespace Stateless.Zombies
         }
         private void OnDestroy() => UnsubscribeEvent<PlayerSpawned>(OnPlayerSpawned);
 
-        private void OnPlayerSpawned(PlayerSpawned obj)
+        private void OnPlayerSpawned(PlayerSpawned player)
         {
+            UniTask.Delay(1000);
+            navAgent.SetDestination(player.PlayerStats.PlayerInstance.transform.position);
+            return;
             players = PlayersStatsManager.Instance.GetPlayers();
             //RoamToRandomLocation().Forget();
-            //ChaseAndAttack(players[0]).Forget();
+            ChaseAndAttack(player.PlayerStats).Forget();
         }
 
 
 
-        private void Update()
+        private void xUpdate()
         {
             if(players == null || players.Count == 0)
             {
@@ -167,8 +170,6 @@ namespace Stateless.Zombies
                 await UniTask.Delay(5000);
             }
         }
-
-
 
         private void StopRoaming()
         {

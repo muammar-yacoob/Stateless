@@ -34,7 +34,7 @@ namespace Stateless.Player
 
             var playerStats = new PlayerStats(playerInstance, playerIndex, 100, 0);
             PlayersStatsManager.Instance.AddPlayer(playerStats);
-            PublishEvent(new PlayerSpawned(playerInstance, playerStats));
+            PublishEvent(new PlayerSpawned(playerStats));
         }
     }
 }

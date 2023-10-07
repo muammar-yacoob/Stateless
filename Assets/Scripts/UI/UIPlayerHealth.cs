@@ -11,7 +11,7 @@ namespace Stateless.UI
 {
     public class UIPlayerHealth : InjectableMonoBehaviour
     {
-        [SerializeField] private int playerIndex;
+        private int playerIndex;
         [Header("UI Elements")]
         [SerializeField] private TMP_Text healthText;
         [SerializeField] private Image healthBar;
