@@ -2,7 +2,7 @@
 using SparkCore.Runtime.Injection;
 using UnityEngine;
 
-namespace Player
+namespace Stateless.Player
 {
     [RuntimeObject(RuntimeObjectType.Singleton)]
     public class PlayerMovementManager : IPlayerMovementManager

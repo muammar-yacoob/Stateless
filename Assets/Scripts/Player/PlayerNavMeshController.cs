@@ -1,8 +1,7 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
-namespace Player
+namespace Stateless.Player
 {
     [RequireComponent(typeof(NavMeshAgent))]
     public class PlayerNavMeshController : MonoBehaviour

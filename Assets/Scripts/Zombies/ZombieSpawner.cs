@@ -1,12 +1,15 @@
 ﻿using System.Linq;
 using Cysharp.Threading.Tasks;
+using SparkCore.Runtime.Core;
+using Stateless.Player.Events;
+using Stateless.Zombies.Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
 namespace Stateless.Zombies
 {
-    public class ZombieSpawner : MonoBehaviour
+    public class ZombieSpawner : InjectableMonoBehaviour
     {
         [Header("Spawning")]
         [SerializeField] private Zombie[] zombiePrefabs;
@@ -19,17 +22,15 @@ namespace Stateless.Zombies
         public int CurrentZombieCount => currentZombieCount;
         private PlayerInputManager inputManager;
 
-        private void Awake()
+        protected override void Awake()
         {
-            inputManager = FindObjectOfType<PlayerInputManager>();
-            inputManager.onPlayerJoined += StartSpawning;
-            Cleanup();
+            CleanupSceneObjects();
+            SubscribeEvent<PlayerSpawned>(OnPlayerSpawned);
         }
+        private void OnDestroy() => UnsubscribeEvent<PlayerSpawned>(OnPlayerSpawned);
 
-        private void OnDestroy() => inputManager.onPlayerJoined -= StartSpawning;
-        private void StartSpawning(PlayerInput playerInput) => SpawnZombiesPeriodically().Forget();
-
-        private void Cleanup() => FindObjectsOfType<Zombie>().ToList().ForEach(z => z.gameObject.SetActive(false));
+        private void OnPlayerSpawned(PlayerSpawned obj) => SpawnZombiesPeriodically().Forget();
+        private void CleanupSceneObjects() => FindObjectsOfType<Zombie>().ToList().ForEach(z => Destroy(z.gameObject));
 
         private async UniTaskVoid SpawnZombiesPeriodically()
         {
@@ -55,7 +56,7 @@ namespace Stateless.Zombies
             newZombie.transform.parent = transform;
             currentZombieCount++;
 
-            GameEvents.ZombieEvents.Instance.SpawnZombie(newZombie);
+            PublishEvent<ZombieSpawned>(new ZombieSpawned(newZombie));
         }
     }
 }

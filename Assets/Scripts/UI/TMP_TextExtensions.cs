@@ -4,7 +4,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using TMPro;
 
-namespace UI
+namespace Stateless.UI
 {
     public static class TMP_TextExtensions
     {

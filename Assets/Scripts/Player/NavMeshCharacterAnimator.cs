@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-namespace Player
+namespace Stateless.Player
 {
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(Animator))]
     public class NavMeshCharacterAnimator : MonoBehaviour
     {
-        [SerializeField] private float turnSpeed = 20f;
         private NavMeshAgent _navMeshAgent;
         private Animator _animator;
         private static readonly int Speed = Animator.StringToHash("Speed");

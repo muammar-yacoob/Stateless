@@ -1,10 +1,9 @@
-﻿using SparkCore.Runtime.Injection;
-using System;
+﻿using System;
 using SparkCore.Runtime.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Player
+namespace Stateless.Player
 {
     public class PlayersJoining : InjectableMonoBehaviour
     {

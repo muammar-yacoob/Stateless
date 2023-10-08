@@ -1,16 +1,18 @@
-﻿using UnityEditor;
+﻿using SparkCore.Runtime.Core;
+using Stateless.Player.Events;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Player
+namespace Stateless.Player
 {
-    public class PlayerSpawner : MonoBehaviour, IPlayerSpawner
+    public class PlayerSpawner : InjectableMonoBehaviour, IPlayerSpawner
     {
         [SerializeField] private GameObject[] playerPrefabs;
         [SerializeField] private GameObject[] spawnPoints;
         [SerializeField] private PlayerInputManager inputManager;
 
-        private void Awake()
+        protected override void Awake()
         {
             inputManager.onPlayerJoined += SpawnPlayer;
         }
@@ -29,6 +31,10 @@ namespace Player
 
             playerInstance.name = $"Player {playerIndex + 1}";
             Selection.activeGameObject = playerInstance;
+
+            var playerStats = new PlayerStats(playerInstance, playerIndex, 100, 0);
+            PlayersStatsManager.Instance.AddPlayer(playerStats);
+            PublishEvent(new PlayerSpawned(playerStats));
         }
     }
 }

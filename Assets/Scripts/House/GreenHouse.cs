@@ -1,6 +1,6 @@
 ﻿using UnityEngine.InputSystem;
 
-namespace House
+namespace Stateless.House
 {
     public class GreenHouse : BaseHouse
     {

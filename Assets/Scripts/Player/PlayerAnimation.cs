@@ -1,7 +1,7 @@
 ﻿using SparkCore.Runtime.Core;
 using UnityEngine;
 
-namespace Player
+namespace Stateless.Player
 {
     [RequireComponent(typeof(Animator))]
     public class PlayerAnimation : InjectableMonoBehaviour

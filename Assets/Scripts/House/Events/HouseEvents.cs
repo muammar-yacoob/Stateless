@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace GameEvents
+namespace Stateless.House.Events
 {
     public class HouseEvents 
     {
