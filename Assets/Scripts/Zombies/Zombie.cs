@@ -12,7 +12,7 @@ namespace Stateless.Zombies
     public class Zombie : MonoBehaviour
     {
         [SerializeField] private float sightRange = 10f;
-        [SerializeField] private float sightAngle = 60f;
+        [SerializeField] private float sightAngle = 120f;
         [SerializeField] private float damage = 10f;
 
         private NavMeshAgent navAgent;
@@ -64,9 +64,10 @@ namespace Stateless.Zombies
                 Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
                 float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
                 float angle = Vector3.Angle(transform.forward, directionToPlayer);
-
+                Debug.DrawRay(transform.position, directionToPlayer * sightRange, Color.red); 
                 if (distanceToPlayer <= sightRange && angle < sightAngle * 0.5f)
                 {
+                    Debug.DrawRay(transform.position, directionToPlayer * sightRange, Color.green); 
                     if (distanceToPlayer < closestDistance)
                     {
                         closestPlayer = player;
