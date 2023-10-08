@@ -111,6 +111,7 @@ namespace Stateless.Zombies
 
         private bool IsPlayerInSight(Transform playerTransform)
         {
+            if (playerTransform == null) return false;
             Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
             float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
             float angle = Vector3.Angle(transform.forward, directionToPlayer);
