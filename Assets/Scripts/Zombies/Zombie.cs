@@ -50,7 +50,7 @@ namespace Stateless.Zombies
 
         private PlayerStats FindClosestPlayerInSight()
         {
-            PlayerMovement closestPlayer = null;
+            PlayerStats closestPlayer = null;
             float closestDistance = sightRange;
 
             foreach (var player in players)
@@ -73,10 +73,10 @@ namespace Stateless.Zombies
             return closestPlayer;
         }
 
-        private async UniTaskVoid ChaseAndAttack(PlayerMovement targetPlayer)
+        private async UniTaskVoid ChaseAndAttack(PlayerStats targetPlayer)
         {
             isAttacking = true;
-            Transform playerTransform = targetPlayer.transform;
+            Transform playerTransform = targetPlayer.PlayerInstance.transform;
 
             while (IsPlayerInSight(playerTransform))
             {
