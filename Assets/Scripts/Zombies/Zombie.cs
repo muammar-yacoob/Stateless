@@ -23,29 +23,22 @@ namespace Stateless.Zombies
         private bool isAttacking;
         private bool inCooldown;
 
-        protected override void Awake()
+        private void Start()
         {
             base.Awake();
             navAgent = GetComponent<NavMeshAgent>();
             SubscribeEvent<PlayerSpawned>(OnPlayerSpawned);
+            RoamToRandomLocation();
         }
         private void OnDestroy() => UnsubscribeEvent<PlayerSpawned>(OnPlayerSpawned);
 
         private void OnPlayerSpawned(PlayerSpawned player)
         {
-            UniTask.Delay(500);
-            //var playerObject = player.PlayerStats.PlayerInstance;
-            //navAgent.SetDestination(playerObject.transform.position);
-            //return;
             players = PlayersStatsManager.Instance.GetPlayers();
             Debug.Log($"{players.Count} players found");
-            RoamToRandomLocation().Forget();
-            ChaseAndAttack(player.PlayerStats).Forget();
         }
 
-
-
-        private void xUpdate()
+        private void Update()
         {
             if(players == null || players.Count == 0)
             {
@@ -71,12 +64,6 @@ namespace Stateless.Zombies
 
         private PlayerStats FindClosestPlayerInSight()
         {
-            if (players == null || players.Count == 0)
-            {
-                Debug.LogWarning("Player list is empty or not initialized.");
-                return null;
-            }
-
             PlayerStats closestPlayer = null;
             float closestDistance = sightRange;
 
