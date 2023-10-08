@@ -12,9 +12,21 @@ namespace Stateless.Zombies
     [RequireComponent(typeof(NavMeshAgent))]
     public class Zombie : InjectableMonoBehaviour
     {
+        [Header("Zombie Attributes")]
         [SerializeField] private float sightRange = 10f;
         [SerializeField] private float sightAngle = 120f;
         [SerializeField] private float damage = 10f;
+
+        [Header("Cooldown and Delay Times (ms)")]
+        [SerializeField] private int attackCooldown = 1000; // in milliseconds
+        [SerializeField] private int roamCooldown = 5000; // in milliseconds
+        [SerializeField] private int attackDelay = 10000; // in milliseconds
+
+        [Header("Roaming Area")]
+        [SerializeField] private float roamMinX = -20f;
+        [SerializeField] private float roamMaxX = 20f;
+        [SerializeField] private float roamMinZ = -20f;
+        [SerializeField] private float roamMaxZ = 20f;
 
         private NavMeshAgent navAgent;
         private List<PlayerStats> players;
@@ -60,9 +72,11 @@ namespace Stateless.Zombies
                 float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
                 float angle = Vector3.Angle(transform.forward, directionToPlayer);
                 Debug.DrawRay(transform.position, directionToPlayer * sightRange, Color.red); 
+
                 if (distanceToPlayer <= sightRange && angle < sightAngle * 0.5f)
                 {
                     Debug.DrawRay(transform.position, directionToPlayer * sightRange, Color.green); 
+
                     if (distanceToPlayer < closestDistance)
                     {
                         closestPlayer = player;
@@ -84,13 +98,13 @@ namespace Stateless.Zombies
                 if (navAgent.remainingDistance <= navAgent.stoppingDistance)
                 {
                     PublishEvent(new PlayerDamaged(damage, targetPlayer.PlayerIndex));
-                    await UniTask.Delay(1000);
+                    await UniTask.Delay(attackCooldown);
                 }
                 await UniTask.Yield();
             }
             isAttacking = false;
             inCooldown = true;
-            await UniTask.Delay(10000);
+            await UniTask.Delay(attackDelay);
             inCooldown = false;
             RoamToRandomLocation().Forget();
         }
@@ -108,13 +122,13 @@ namespace Stateless.Zombies
             while (!isAttacking && !inCooldown)
             {
                 Vector3 randomPosition = new Vector3(
-                    UnityEngine.Random.Range(-20, 20),
+                    UnityEngine.Random.Range(roamMinX, roamMaxX),
                     0,
-                    UnityEngine.Random.Range(-20, 20)
+                    UnityEngine.Random.Range(roamMinZ, roamMaxZ)
                 );
 
                 navAgent.SetDestination(randomPosition);
-                await UniTask.Delay(5000);
+                await UniTask.Delay(roamCooldown);
             }
         }
 
