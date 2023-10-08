@@ -30,7 +30,7 @@ namespace Stateless.Zombies
         private void OnDestroy() => UnsubscribeEvent<PlayerSpawned>(OnPlayerSpawned);
 
         private void OnPlayerSpawned(PlayerSpawned obj) => SpawnZombiesPeriodically().Forget();
-        private void CleanupSceneObjects() => FindObjectsOfType<Zombie>().ToList().ForEach(z => z.gameObject.SetActive(false));
+        private void CleanupSceneObjects() => FindObjectsOfType<Zombie>().ToList().ForEach(z => Destroy(z.gameObject));
 
         private async UniTaskVoid SpawnZombiesPeriodically()
         {
