@@ -12,8 +12,8 @@ namespace Stateless.Zombies
     [RequireComponent(typeof(NavMeshAgent))]
     public class Zombie : InjectableMonoBehaviour
     {
-        [SerializeField] private float sightRange = 10f;
-        [SerializeField] private float sightAngle = 60f;
+        [SerializeField] private float sightRange = 20f;
+        [SerializeField] private float sightAngle = 120f;
         [SerializeField] private float damage = 10f;
         [SerializeField] private LayerMask playerLayer;
 
@@ -79,11 +79,11 @@ namespace Stateless.Zombies
                 Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
                 float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
                 float angle = Vector3.Angle(transform.forward, directionToPlayer);
-
+                Debug.DrawLine(transform.position, playerTransform.position, Color.red);
                 if (distanceToPlayer <= sightRange && angle < sightAngle * 0.5f)
                 {
                     RaycastHit hit;
-                    Debug.DrawLine(transform.position, directionToPlayer, Color.red);
+                    Debug.DrawLine(transform.position, playerTransform.position, Color.green);
                     if (Physics.Raycast(transform.position, directionToPlayer, out hit, sightRange, playerLayer))
                     {
                         if (hit.collider.gameObject == player.PlayerInstance)
@@ -156,7 +156,7 @@ namespace Stateless.Zombies
 
                 navAgent.SetDestination(randomPosition);
         
-                await UniTask.Delay(5000);
+                await UniTask.Delay(1000);
             }
         }
 
