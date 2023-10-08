@@ -8,13 +8,14 @@
       "hash": "cfe509a55602ba5be6df7fa0468b10298b8a053d"
     },
     "com.sparkgames.sparkcore": {
-      "version": "file:D:/Unity/SparkCore/Assets/Package",
+      "version": "https://github.com/muammar-yacoob/SparkCore.git?path=Assets/Package",
       "depth": 0,
-      "source": "local",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "37ba0ed3fe7c11b1479d3c0f29a75c2b552b114c"
     },
     "com.unity.ai.navigation": {
-      "version": "1.1.4",
+      "version": "1.1.5",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -31,13 +32,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.collab-proxy": {
-      "version": "2.0.5",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.unity.ext.nunit": {
       "version": "1.0.6",
       "depth": 1,
@@ -46,7 +40,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
-      "version": "3.0.24",
+      "version": "3.0.25",
       "depth": 0,
       "source": "registry",
       "dependencies": {
