@@ -20,7 +20,7 @@ namespace Stateless.Candy
             if(other.TryGetComponent<PlayerMovement>(out var playerMovement))
             {
                 int playerIndex = playerMovement.PlayerIndex;
-                Debug.Log($"Candy going to player {playerIndex}");
+                //Debug.Log($"Candy going to player {playerIndex}");
                 PublishEvent(new CandyCollected(transform, playerIndex, candyValue));
                 //Destroy(gameObject);
             }

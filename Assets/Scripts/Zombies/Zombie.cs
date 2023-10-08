@@ -33,11 +33,13 @@ namespace Stateless.Zombies
 
         private void OnPlayerSpawned(PlayerSpawned player)
         {
-            UniTask.Delay(1000);
-            navAgent.SetDestination(player.PlayerStats.PlayerInstance.transform.position);
-            return;
+            UniTask.Delay(500);
+            //var playerObject = player.PlayerStats.PlayerInstance;
+            //navAgent.SetDestination(playerObject.transform.position);
+            //return;
             players = PlayersStatsManager.Instance.GetPlayers();
-            //RoamToRandomLocation().Forget();
+            Debug.Log($"{players.Count} players found");
+            RoamToRandomLocation().Forget();
             ChaseAndAttack(player.PlayerStats).Forget();
         }
 
