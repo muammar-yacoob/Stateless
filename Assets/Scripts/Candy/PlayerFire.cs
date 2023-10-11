@@ -61,13 +61,14 @@ namespace Stateless.Candy
         public void Fire()
         {
             Debug.Log($"Fire()");
-            if (!isWithinFireRange) return;
-            if (playerStatsProvider.PlayerStats[0].Candies < fireCost) return;
-            playerStatsProvider.PlayerStats[0].Candies -= fireCost;
+            // if (!isWithinFireRange) return;
+            // if (playerStatsProvider.PlayerStats[0].Candies < fireCost) return;
+            // playerStatsProvider.PlayerStats[0].Candies -= fireCost;
             var candyPrefab = GetCandyPrefab();
             var candyInstance = Instantiate(candyPrefab, firePoint.position, firePoint.rotation);
             var rb = candyInstance.GetComponent<Rigidbody>();
-            rb.AddForce(firePoint.forward * fireForce);
+            rb.velocity = Vector3.zero;
+            rb.AddForce(firePoint.forward * fireForce, ForceMode.Impulse);
         }
 
         private CandyBullet GetCandyPrefab()

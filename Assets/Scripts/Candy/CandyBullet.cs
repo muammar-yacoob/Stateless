@@ -16,7 +16,7 @@ public class CandyBullet : InjectableMonoBehaviour
     {
         base.Awake();
         rb = GetComponent<Rigidbody>();
-        rb.isKinematic = true;
+        //rb.isKinematic = true;
 
         var boxCollider = GetComponent<BoxCollider>();
         boxCollider.isTrigger = true;
