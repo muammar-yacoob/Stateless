@@ -5,7 +5,8 @@ namespace Stateless.Player
 {
     public class PlayerStats
     {
-        public int PlayerIndex { get; }
+        private PlayerStats() => PlayerSpawner.PlayerSpawned += index => PlayerIndex = index;
+        public int PlayerIndex { get; private set; }
         public GameObject PlayerInstance { get; }
         
         private float health;

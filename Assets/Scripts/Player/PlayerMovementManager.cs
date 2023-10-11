@@ -29,5 +29,13 @@ namespace Stateless.Player
                 player.Jump();
             }
         }
+    
+        public void Fire(int playerIndex)
+        {
+            if (playerMovements.TryGetValue(playerIndex, out var player))
+            {
+                player.Fire();
+            }
+        }
     }
 }

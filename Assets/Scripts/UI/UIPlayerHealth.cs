@@ -6,6 +6,7 @@ using Stateless.Zombies.Events;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 namespace Stateless.UI
 {
@@ -19,6 +20,7 @@ namespace Stateless.UI
         [SerializeField] private Color healthyColor = Color.green;
         [SerializeField] private Color injuredColor = Color.yellow;
         [SerializeField] private Color criticalColor = Color.red;
+        [Inject] private IPlayerStatsProvider playerStatsProvider;
     
         private float currentHealth;
         private float maxHealth;
@@ -50,7 +52,7 @@ namespace Stateless.UI
             int spawnedPlayerIndex = playerSpawned.PlayerStats.PlayerIndex;
             if (spawnedPlayerIndex != playerIndex) return;
             Debug.Log($"Player {playerIndex} health initialized");
-            maxHealth = PlayersStatsManager.Instance.PlayerStats[spawnedPlayerIndex].Health;
+            maxHealth = playerStatsProvider.PlayerStats[spawnedPlayerIndex].Health;
             currentHealth = maxHealth;
             this.playerStats = playerSpawned.PlayerStats;
         }
