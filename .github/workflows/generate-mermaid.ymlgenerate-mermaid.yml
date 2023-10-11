@@ -19,7 +19,7 @@ jobs:
           node-version: 18  # Adjust to your Node.js version
 
       - name: Install Dependencies
-        run: npm install -g markdown-include-mermaid-cli
+        run: npm install -g @mermaid-js/mermaid-cli
 
       - name: Generate Mermaid Diagram
         run: |
