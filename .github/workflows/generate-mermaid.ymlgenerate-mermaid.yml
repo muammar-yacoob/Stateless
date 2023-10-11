@@ -1,0 +1,41 @@
+name: Generate Mermaid Diagram
+
+on:
+  push:
+    branches:
+      - main  # Adjust to your main branch name
+
+jobs:
+  generate-mermaid:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18  # Adjust to your Node.js version
+
+      - name: Install Dependencies
+        run: npm ci markdown-include-mermaid-cli
+
+      - name: Generate Mermaid Diagram
+        run: |
+          # Generate the Mermaid diagram from the scripts directory
+          mermaid-include -i Assets/Scripts -o ./diagrams/generated-diagram.mmd
+
+      # - name: Append to README
+      #   run: |
+      #     # Append the generated Mermaid diagram to the end of the README.md
+      #     cat generated-diagram.mmd >> README.md
+           
+
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add GDD.md
+          git commit -m "Update GDD with Mermaid diagram"
+          git push
