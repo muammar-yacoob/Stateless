@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using SparkCore.Runtime.Core;
 using Stateless.Player.Events;
 using UnityEditor;
@@ -16,7 +17,14 @@ namespace Stateless.Player
         [Inject] private IPlayerStatsProvider playerStatsProvider;
 
         public static Action<int> PlayerSpawned;
-        protected override void Awake() => inputManager.onPlayerJoined += SpawnPlayer;
+        protected override void Awake()
+        {
+            CleanupSceneObjects();
+            base.Awake();
+            inputManager.onPlayerJoined += SpawnPlayer;
+        }
+        private void CleanupSceneObjects() => FindObjectsOfType<PlayerMovement>().ToList().ForEach(p => Destroy(p.gameObject));
+
         private void OnDestroy() => inputManager.onPlayerJoined -= SpawnPlayer;
 
         public void SpawnPlayer(PlayerInput playerInput)

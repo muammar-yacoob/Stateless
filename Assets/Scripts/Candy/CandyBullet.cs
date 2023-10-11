@@ -1,7 +1,5 @@
-using System;
 using SparkCore.Runtime.Core;
 using Stateless.Candy.Events;
-using Stateless.Zombies;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -26,18 +24,11 @@ public class CandyBullet : InjectableMonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(typeof(ZombieDamage), out var zombie))
+        if (other.TryGetComponent<ZombieDamage>(out var zombieDamage))
         {
-            zombie(damageAmount);
+            zombieDamage.TakeDamage(damageAmount);
             PublishEvent(new CandyFired(fireCost));
+            Destroy(gameObject);
         }
-    }
-}
-
-public class ZombieDamage : InjectableMonoBehaviour
-{
-    public void TakeDamage(int damageAmount)
-    {
-        Debug.Log($"Outch {damageAmount}!");
     }
 }

@@ -32,6 +32,7 @@ namespace Stateless.Player
     
         public void Fire(int playerIndex)
         {
+            Debug.Log($"{playerIndex} firing...");
             if (playerMovements.TryGetValue(playerIndex, out var player))
             {
                 player.Fire();

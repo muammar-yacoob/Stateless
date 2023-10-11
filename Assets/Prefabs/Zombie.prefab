@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8833935658204221800}
   - component: {fileID: 3016516925943531010}
   - component: {fileID: 5547665135890087146}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 6325150066322372830}
   - component: {fileID: 3979462582269799576}
   - component: {fileID: 5706550355083692734}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Zombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 2568097069854522119}
   - component: {fileID: 7926640041686615434}
   - component: {fileID: 6176282933767595880}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 6439733008920400091}
   - component: {fileID: 2541620664159719729}
   - component: {fileID: 343362030734953913}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 237478325157074596}
   - component: {fileID: 4464118656523036029}
   - component: {fileID: 8872277169480557154}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
