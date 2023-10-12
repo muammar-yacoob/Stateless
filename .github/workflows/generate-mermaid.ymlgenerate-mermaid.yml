@@ -23,12 +23,14 @@ jobs:
 
       - name: Create Doxyfile
         run: |
-          echo "PROJECT_NAME           = 'My Class Diagrams'" > Doxyfile
-          echo "OUTPUT_DIRECTORY       = docs" >> Doxyfile
-          echo "INPUT                  = ./Assets/Scripts" >> Doxyfile
-          echo "GENERATE_HTML          = NO" >> Doxyfile
-          echo "GENERATE_LATEX         = NO" >> Doxyfile
-          echo "CLASS_DIAGRAMS         = YES" >> Doxyfile
+          PROJECT_NAME           = 'My Class Diagrams'
+          OUTPUT_DIRECTORY       = docs
+          INPUT                  = ./Assets/Scripts
+          RECURSIVE              = YES  # Recursively include subdirectories
+          GENERATE_HTML          = NO
+          GENERATE_LATEX         = NO
+          CLASS_DIAGRAMS         = YES
+
 
 
 
@@ -40,8 +42,9 @@ jobs:
           # Convert Graphviz diagrams to Mermaid format
           find ./docs -name '*.dot' -exec dot -Tmermaid -o ./mermaid-diagrams/{}-converted.mmd {} \;
 
-      - name: Debug Files
+      - name: Debug Files in mermaid-diagrams
         run: ls -R $GITHUB_WORKSPACE/mermaid-diagrams
+
 
       - name: Move Mermaid diagrams to a desired location
         run: |
