@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install Doxygen and Graphviz
         run: sudo apt-get install -y doxygen graphviz
@@ -42,7 +42,7 @@ jobs:
       - name: Move Mermaid diagrams to a desired location
         run: |
           mkdir -p ./diagrams
-          find ./mermaid-diagrams -name '*.mmd' -exec mv {} ./diagrams/ \;
+          mv $GITHUB_WORKSPACE/mermaid-diagrams/*.mmd ./diagrams/
 
 
       # - name: Clean Up
