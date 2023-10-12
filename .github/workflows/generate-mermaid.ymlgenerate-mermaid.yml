@@ -1,12 +1,12 @@
-name: Generate Emoji Documentation
+name: Generate Mermaid Class Diagrams
 
 on:
   push:
     branches:
-      - main  # Adjust to your main branch name
+      - main  
 
 jobs:
-  generate-emoji-docs:
+  generate-class-diagrams:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,26 +19,31 @@ jobs:
       - name: Generate Documentation
         run: |
           # Create a Doxygen configuration file
-          echo "PROJECT_NAME = My Emoji Documentation" > Doxyfile
+          echo "PROJECT_NAME = My Class Diagrams" > Doxyfile
           echo "OUTPUT_DIRECTORY = ./docs" >> Doxyfile
-          echo "INPUT = ." >> Doxyfile
-          echo "GENERATE_HTML = YES" >> Doxyfile
+          echo "INPUT = ./Assets/Scripts" >> Doxyfile  # Adjust the input path
+          echo "GENERATE_HTML = NO" >> Doxyfile
           echo "GENERATE_LATEX = NO" >> Doxyfile
-          echo "EXTRACT_ALL = YES" >> Doxyfile
-          echo "EXTRACT_STATIC = YES" >> Doxyfile
-          echo "EXTRACT_LOCAL_CLASSES = YES" >> Doxyfile
-          echo "EXTRACT_LOCAL_METHODS = YES" >> Doxyfile
-          echo "INPUT_FILTER = *.cpp *.h" >> Doxyfile
-          echo "WARN_LOGFILE = doxygen-warnings.log" >> Doxyfile
-          echo "WARN_FORMAT = \"$file:$line: $text\"" >> Doxyfile
+          echo "CLASS_DIAGRAMS = YES" >> Doxyfile
 
-          # Generate documentation
+          # Generate documentation with class diagrams
           doxygen Doxyfile
 
-      - name: Commit and Push Changes
+      - name: Convert to Mermaid
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git add ./docs
-          git commit -m "Update emoji documentation"
-          git push
+          # Convert Graphviz diagrams to Mermaid format
+          mkdir -p ./mermaid-diagrams
+          find ./docs -name '*.dot' -exec dot -Tmermaid -o ./mermaid-diagrams/{}-converted.mmd {} \;
+
+      - name: Save Mermaid Diagrams
+        run: |
+          # Move Mermaid diagrams to a desired location
+          mv ./mermaid-diagrams/*.mmd ./
+
+      - name: Clean Up
+        run: |
+          # Clean up intermediate files
+          rm -r ./docs
+          rm -r ./mermaid-diagrams
+
+      #  push the generated .mmd files
