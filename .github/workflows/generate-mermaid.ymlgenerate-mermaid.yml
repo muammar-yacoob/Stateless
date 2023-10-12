@@ -23,13 +23,14 @@ jobs:
 
       - name: Create Doxyfile
         run: |
-          PROJECT_NAME           = 'My Class Diagrams'
-          OUTPUT_DIRECTORY       = docs
-          INPUT                  = ./Assets/Scripts
-          RECURSIVE              = YES  # Recursively include subdirectories
-          GENERATE_HTML          = NO
-          GENERATE_LATEX         = NO
-          CLASS_DIAGRAMS         = YES
+          echo "PROJECT_NAME           = 'My Class Diagrams'"
+          echo "OUTPUT_DIRECTORY       = docs"
+          echo "INPUT                  = ./Assets/Scripts"
+          echo "RECURSIVE              = YES"  # Recursively include subdirectories
+          echo "GENERATE_HTML          = NO"
+          echo "GENERATE_LATEX         = NO"
+          echo "CLASS_DIAGRAMS         = YES"
+
 
 
 
