@@ -1,41 +1,33 @@
-name: Generate Mermaid Diagram
+name: Generate Class Diagrams
 
 on:
   push:
     branches:
-      - main  # Adjust to your main branch name
+      - main
 
 jobs:
-  generate-mermaid:
+  generate-diagrams:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 18  # Adjust to your Node.js version
+      - name: Install Doxygen and Graphviz
+        run: sudo apt-get install -y doxygen graphviz
 
-      - name: Install Dependencies
-        run: npm install -g @mermaid-js/mermaid-cli
+      - name: Generate Documentation
+        run: doxygen Doxyfile
 
-      - name: Generate Mermaid Diagram
+      - name: Convert Graphviz to Mermaid
         run: |
-          # Generate the Mermaid diagram from the scripts directory
-          mermaid-include -i Assets/Scripts -o ./diagrams/generated-diagram.mmd
-
-      # - name: Append to README
-      #   run: |
-      #     # Append the generated Mermaid diagram to the end of the README.md
-      #     cat generated-diagram.mmd >> README.md
-           
+          mkdir -p ./generated-diagrams
+          graphviz2mermaid -i ./docs/classdiagrams/ -o ./generated-diagrams/generated-diagram.mmd
 
       - name: Commit and Push Changes
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add GDD.md
-          git commit -m "Update GDD with Mermaid diagram"
+          git add ./generated-diagrams/generated-diagram.mmd
+          git commit -m "Update class diagrams with Mermaid syntax"
           git push
