@@ -24,12 +24,13 @@ jobs:
       - name: Generate Documentation
         run: |
           # Create a Doxygen configuration file
-          echo "PROJECT_NAME = My Class Diagrams" > Doxyfile
-          echo "OUTPUT_DIRECTORY = ./docs" >> Doxyfile
-          echo "INPUT = ./Assets/Scripts" >> Doxyfile  # Adjust the input path
-          echo "GENERATE_HTML = NO" >> Doxyfile
-          echo "GENERATE_LATEX = NO" >> Doxyfile
-          echo "CLASS_DIAGRAMS = YES" >> Doxyfile
+          PROJECT_NAME = My Class Diagrams
+          OUTPUT_DIRECTORY = ./docs
+          INPUT = ./Assets/Scripts
+          GENERATE_HTML = YES  # Enable HTML output
+          GENERATE_LATEX = NO
+          CLASS_DIAGRAMS = YES
+
 
           # Generate documentation with class diagrams
           doxygen Doxyfile
