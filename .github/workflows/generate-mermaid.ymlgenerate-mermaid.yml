@@ -21,15 +21,15 @@ jobs:
           mkdir -p ./docs
           mkdir -p ./mermaid-diagrams
 
-      - name: Generate Documentation
+      - name: Create Doxyfile
         run: |
-          # Create a Doxygen configuration file
-          PROJECT_NAME = My Class Diagrams
-          OUTPUT_DIRECTORY = ./docs
-          INPUT = ./Assets/Scripts
-          GENERATE_HTML = YES  # Enable HTML output
-          GENERATE_LATEX = NO
-          CLASS_DIAGRAMS = YES
+          echo "PROJECT_NAME           = 'My Class Diagrams'" > Doxyfile
+          echo "OUTPUT_DIRECTORY       = docs" >> Doxyfile
+          echo "INPUT                  = ./Assets/Scripts" >> Doxyfile
+          echo "GENERATE_HTML          = NO" >> Doxyfile
+          echo "GENERATE_LATEX         = NO" >> Doxyfile
+          echo "CLASS_DIAGRAMS         = YES" >> Doxyfile
+
 
 
           # Generate documentation with class diagrams
