@@ -25,14 +25,22 @@ jobs:
         run: |
           echo "PROJECT_NAME           = 'My Class Diagrams'"
           echo "OUTPUT_DIRECTORY       = docs"
-          echo "INPUT                  = ./Assets/Scripts/Player"
-          #echo "RECURSIVE              = YES"  # Recursively include subdirectories
+          echo "INPUT                  = ./Assets/Scripts"
+          echo "RECURSIVE              = YES"  # Recursively include subdirectories
           echo "GENERATE_HTML          = NO"
           echo "GENERATE_LATEX         = NO"
           echo "CLASS_DIAGRAMS         = YES"
 
-          # Generate documentation with class diagrams
-          doxygen Doxyfile
+      - name: Generate Documentation with Doxygen
+        run: |
+          doxygen Doxyfile 2>&1
+        continue-on-error: true  # Allow the step to continue even if the exit code is not 0
+
+      - name: Show Doxygen Error Output
+        run: |
+          cat ${{ github.workspace }}/docs/html/doxygen.err
+        if: failure()
+
 
       - name: Convert to Mermaid
         run: |
