@@ -39,9 +39,8 @@ jobs:
           # Convert Graphviz diagrams to Mermaid format
           find ./docs -name '*.dot' -exec dot -Tmermaid -o ./mermaid-diagrams/{}-converted.mmd {} \;
 
-      - name: List files in workspace
-        run: |
-          ls -R $GITHUB_WORKSPACE
+      - name: Debug Files
+        run: ls -R $GITHUB_WORKSPACE/mermaid-diagrams
 
       - name: Move Mermaid diagrams to a desired location
         run: |
