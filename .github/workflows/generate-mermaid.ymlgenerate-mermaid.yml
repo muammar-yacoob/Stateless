@@ -46,7 +46,8 @@ jobs:
       - name: Move Mermaid diagrams to a desired location
         run: |
           mkdir -p ./diagrams
-          mv $GITHUB_WORKSPACE/mermaid-diagrams/*.mmd $GITHUB_WORKSPACE/diagrams/
+          mv $GITHUB_WORKSPACE/mermaid-diagrams/*.mmd ./diagrams/
+
 
 
       # - name: Clean Up
