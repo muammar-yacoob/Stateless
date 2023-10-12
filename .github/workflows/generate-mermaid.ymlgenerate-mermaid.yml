@@ -1,9 +1,9 @@
-name: Generate Mermaid Class Diagrams
+name: Generate Class Diagrams
 
 on:
   push:
     branches:
-      - main  
+      - main
 
 jobs:
   generate-class-diagrams:
@@ -15,6 +15,11 @@ jobs:
 
       - name: Install Doxygen and Graphviz
         run: sudo apt-get install -y doxygen graphviz
+
+      - name: Prepare Directories
+        run: |
+          mkdir -p ./docs
+          mkdir -p ./mermaid-diagrams
 
       - name: Generate Documentation
         run: |
@@ -32,7 +37,6 @@ jobs:
       - name: Convert to Mermaid
         run: |
           # Convert Graphviz diagrams to Mermaid format
-          mkdir -p ./mermaid-diagrams
           find ./docs -name '*.dot' -exec dot -Tmermaid -o ./mermaid-diagrams/{}-converted.mmd {} \;
 
       - name: Save Mermaid Diagrams
@@ -45,5 +49,3 @@ jobs:
           # Clean up intermediate files
           rm -r ./docs
           rm -r ./mermaid-diagrams
-
-      #  push the generated .mmd files
