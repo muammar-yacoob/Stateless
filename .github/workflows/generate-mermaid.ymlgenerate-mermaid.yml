@@ -45,11 +45,11 @@ jobs:
           find ./mermaid-diagrams -name '*.mmd' -exec mv {} ./diagrams/ \;
 
 
-      - name: Clean Up
-        run: |
-          # Clean up intermediate files
-          rm -r ./docs
-          rm -r ./mermaid-diagrams
+      # - name: Clean Up
+      #   run: |
+      #     # Clean up intermediate files
+      #     rm -r ./docs
+      #     rm -r ./mermaid-diagrams
 
       - name: Commit and Push Changes
         run: |
