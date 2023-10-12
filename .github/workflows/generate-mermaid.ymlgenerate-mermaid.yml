@@ -33,13 +33,18 @@ jobs:
 
       - name: Generate Documentation with Doxygen
         run: |
-          doxygen Doxyfile 2>&1
+          doxygen Doxyfile > doxygen.log 2>&1
         continue-on-error: true  # Allow the step to continue even if the exit code is not 0
 
-      - name: Show Doxygen Error Output
+      - name: Show Doxygen Log if Error
         run: |
-          cat ${{ github.workspace }}/docs/html/doxygen.err
+          if [ -s doxygen.log ]; then
+            cat doxygen.log
+          else
+            echo "No error messages found in doxygen.log"
+          fi
         if: failure()
+
 
 
       - name: Convert to Mermaid
