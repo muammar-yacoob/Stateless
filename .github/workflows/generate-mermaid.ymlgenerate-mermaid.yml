@@ -1,12 +1,12 @@
-name: Generate Class Diagrams
+name: Generate Emoji Documentation
 
 on:
   push:
     branches:
-      - main
+      - main  # Adjust to your main branch name
 
 jobs:
-  generate-diagrams:
+  generate-emoji-docs:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,17 +17,28 @@ jobs:
         run: sudo apt-get install -y doxygen graphviz
 
       - name: Generate Documentation
-        run: doxygen Doxyfile
-
-      - name: Convert Graphviz to Mermaid
         run: |
-          mkdir -p ./generated-diagrams
-          graphviz2mermaid -i ./docs/classdiagrams/ -o ./generated-diagrams/generated-diagram.mmd
+          # Create a Doxygen configuration file
+          echo "PROJECT_NAME = My Emoji Documentation" > Doxyfile
+          echo "OUTPUT_DIRECTORY = ./docs" >> Doxyfile
+          echo "INPUT = ." >> Doxyfile
+          echo "GENERATE_HTML = YES" >> Doxyfile
+          echo "GENERATE_LATEX = NO" >> Doxyfile
+          echo "EXTRACT_ALL = YES" >> Doxyfile
+          echo "EXTRACT_STATIC = YES" >> Doxyfile
+          echo "EXTRACT_LOCAL_CLASSES = YES" >> Doxyfile
+          echo "EXTRACT_LOCAL_METHODS = YES" >> Doxyfile
+          echo "INPUT_FILTER = *.cpp *.h" >> Doxyfile
+          echo "WARN_LOGFILE = doxygen-warnings.log" >> Doxyfile
+          echo "WARN_FORMAT = \"$file:$line: $text\"" >> Doxyfile
+
+          # Generate documentation
+          doxygen Doxyfile
 
       - name: Commit and Push Changes
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add ./generated-diagrams/generated-diagram.mmd
-          git commit -m "Update class diagrams with Mermaid syntax"
+          git add ./docs
+          git commit -m "Update emoji documentation"
           git push
