@@ -39,10 +39,11 @@ jobs:
           # Convert Graphviz diagrams to Mermaid format
           find ./docs -name '*.dot' -exec dot -Tmermaid -o ./mermaid-diagrams/{}-converted.mmd {} \;
 
-      - name: Save Mermaid Diagrams
+      - name: Move Mermaid diagrams to a desired location
         run: |
-          # Move Mermaid diagrams to a desired location
-          mv ./mermaid-diagrams/*.mmd ./
+          mkdir -p ./diagrams
+          find ./mermaid-diagrams -name '*.mmd' -exec mv {} ./diagrams/ \;
+
 
       - name: Clean Up
         run: |
