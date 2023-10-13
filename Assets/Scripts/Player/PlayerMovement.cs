@@ -1,4 +1,5 @@
 ﻿using SparkCore.Runtime.Core;
+using Stateless.Candy;
 using UnityEngine;
 using VContainer;
 
@@ -19,6 +20,8 @@ namespace Stateless.Player
         private CharacterController _characterController;
         private Transform _cameraTransform;
         private PlayerJump playerJump;
+        private PlayerFire playerFire;
+        
         [Inject] IPlayerMovementManager playerMovementManager;
 
         protected override void Awake()
@@ -27,6 +30,7 @@ namespace Stateless.Player
             _characterController = GetComponent<CharacterController>();
             _cameraTransform = Camera.main?.transform;
             playerJump = GetComponent<PlayerJump>();
+            playerFire = GetComponent<PlayerFire>();
             
             playerMovementManager.RegisterPlayer(playerIndex, this);
         }
@@ -50,5 +54,6 @@ namespace Stateless.Player
         }
 
         public void Jump() => playerJump.Jump();
+        public void Fire() => playerFire.Fire();
     }
 }

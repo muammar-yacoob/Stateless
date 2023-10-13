@@ -6,6 +6,7 @@ using SparkCore.Runtime.Core;
 using Stateless.Player;
 using Stateless.Player.Events;
 using Stateless.Zombies.Events;
+using VContainer;
 
 namespace Stateless.Zombies
 {
@@ -27,6 +28,7 @@ namespace Stateless.Zombies
         [SerializeField] private float roamMaxX = 20f;
         [SerializeField] private float roamMinZ = -20f;
         [SerializeField] private float roamMaxZ = 20f;
+        [Inject] private IPlayerStatsProvider playerStatsProvider;
 
         private NavMeshAgent navAgent;
         private List<PlayerStats> players;
@@ -38,13 +40,13 @@ namespace Stateless.Zombies
         {
             navAgent = GetComponent<NavMeshAgent>();
             SubscribeEvent<PlayerSpawned>(OnPlayerSpawned);
-            players = PlayersStatsManager.Instance.GetPlayers();
+            players = playerStatsProvider.GetPlayers();
             RoamToRandomLocation().Forget();
         }
 
         private void OnPlayerSpawned(PlayerSpawned playerSpawned)
         {
-            players = PlayersStatsManager.Instance.GetPlayers();
+            players = playerStatsProvider.GetPlayers();
         }
 
         private void OnDestroy() => UnsubscribeEvent<PlayerSpawned>(OnPlayerSpawned);

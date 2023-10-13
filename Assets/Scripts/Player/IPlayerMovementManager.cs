@@ -8,5 +8,6 @@ namespace Stateless.Player
         void RegisterPlayer(int index, IPlayerMovement player);
         void SetInput(int index, Vector2 input);
         void Jump(int playerIndex);
+        void Fire(int playerIndex);
     }
 }
