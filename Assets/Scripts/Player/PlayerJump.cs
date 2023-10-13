@@ -1,10 +1,9 @@
-﻿using SparkCore.Runtime.Core;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Stateless.Player
 {
     [RequireComponent(typeof(CharacterController))]
-    public class PlayerJump : InjectableMonoBehaviour
+    public class PlayerJump : MonoBehaviour
     {
         [Header("Jump Settings")]
         [SerializeField] private float jumpHeight = 2f;
@@ -20,9 +19,8 @@ namespace Stateless.Player
 
         private float Gravity => -2 * jumpHeight / Mathf.Pow(jumpDuration, 2);
 
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
             _characterController = GetComponent<CharacterController>();
             _currentJumpCount = 0;
         }

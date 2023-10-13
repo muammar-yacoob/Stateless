@@ -6,5 +6,6 @@ namespace Stateless.Player
     {
         void SetInput(Vector2 input);
         void Jump();
+        void Fire();
     }
 }
