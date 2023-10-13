@@ -9,10 +9,16 @@ namespace Stateless.Player
     {
         private readonly Dictionary<int, IPlayerMovement> playerMovements = new();
 
-        public void RegisterPlayer(int index, IPlayerMovement player)
+        public Dictionary<int, IPlayerMovement> PlayerMovements => playerMovements;
+        public void RegisterPlayer(IPlayerMovement player)
         {
-            playerMovements[index] = player;
-        }
+            //Player index in player prefabs should be set to values from 0 to 3
+            playerMovements.TryAdd(playerMovements.Count, player);
+            foreach (var playerMovement in playerMovements)
+            {
+                Debug.Log($"Player {playerMovement.Key} registered");
+            }  
+         }
 
         public void SetInput(int index, Vector2 input)
         {

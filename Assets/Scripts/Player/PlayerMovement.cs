@@ -28,7 +28,7 @@ namespace Stateless.Player
             _cameraTransform = Camera.main?.transform;
             playerJump = GetComponent<PlayerJump>();
             
-            playerMovementManager.RegisterPlayer(playerIndex, this);
+            playerMovementManager.RegisterPlayer(this);
         }
 
         public void SetInput(Vector2 input)

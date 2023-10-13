@@ -20,6 +20,8 @@ namespace Stateless.Player
             playerInput = GetComponent<PlayerInput>();
             playerIndex = playerInput.playerIndex;
 
+            Debug.Log($"Mapping input for Player {playerIndex}");
+            
             moveAction = playerInput.actions.FindAction("Move");
             jumpAction = playerInput.actions.FindAction("Jump");
 
