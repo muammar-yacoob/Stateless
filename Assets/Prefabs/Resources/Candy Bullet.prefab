@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8093733139655566593}
   - component: {fileID: 9097027037999748260}
   - component: {fileID: 2991765401952907815}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Candy Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 4730785578359869570}
   - component: {fileID: 1462576872288615695}
   - component: {fileID: 7577925613537744085}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

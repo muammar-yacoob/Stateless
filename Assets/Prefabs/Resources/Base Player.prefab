@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 901137972465718854}
   - component: {fileID: 2600973305275996108}
   - component: {fileID: 8123036405729262334}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,8 @@ GameObject:
   - component: {fileID: 2861823304056780255}
   - component: {fileID: 1054119459684601313}
   - component: {fileID: 6888908031683444542}
-  m_Layer: 0
+  - component: {fileID: 4949842965643397650}
+  m_Layer: 7
   m_Name: Base Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,6 +227,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4949842965643397650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4499645724868872466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9880da807ed4486b0cb7023536e62eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpHeight: 2
+  jumpDuration: 0.4
+  maxJumpCount: 2
 --- !u!1 &6817801399126278836
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +253,7 @@ GameObject:
   - component: {fileID: 1147248834642983260}
   - component: {fileID: 3088510098065481887}
   - component: {fileID: 4690908132668051377}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
