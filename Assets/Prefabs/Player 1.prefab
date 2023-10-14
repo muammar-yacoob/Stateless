@@ -107,7 +107,6 @@ GameObject:
   - component: {fileID: 6612504647189278226}
   - component: {fileID: 4681923332970802428}
   - component: {fileID: 6792798481975627102}
-  - component: {fileID: 1806854456531894554}
   m_Layer: 7
   m_Name: Fire Point
   m_TagString: Untagged
@@ -181,19 +180,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1806854456531894554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368856139557348528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f48f46b8d2148e98c0242e30054cadc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 150
 --- !u!1 &1415047726252960730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1598,6 +1584,7 @@ GameObject:
   - component: {fileID: 5597587857087540932}
   - component: {fileID: 7313019100500470016}
   - component: {fileID: 3475697632405543433}
+  - component: {fileID: 7866374112057694511}
   m_Layer: 7
   m_Name: Player 1
   m_TagString: Untagged
@@ -1778,6 +1765,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 6612504647189278226}
   pool: {fileID: 11400000, guid: 486da83e7113ebb44958033348995b50, type: 2}
+  maxRotationAngle: 120
+  maxDistance: 10
+--- !u!114 &7866374112057694511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6336957253283155218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f48f46b8d2148e98c0242e30054cadc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 50
+  firePoint: {fileID: 6612504647189278226}
 --- !u!1 &6807648492229428194
 GameObject:
   m_ObjectHideFlags: 0

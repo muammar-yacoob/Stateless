@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Stateless.Zombies
 {
@@ -23,6 +24,27 @@ namespace Stateless.Zombies
         public void UnregisterZombie(Zombie zombie)
         {
             zombies.Remove(zombie);
+        }
+
+        public Zombie FindClosestZombie(Vector3 myPosition)
+        {
+            Zombie closestZombie = null;
+            float closestDistance = float.MaxValue;
+
+            foreach (var zombie in zombies)
+            {
+                if (zombie == null || zombie.IsDying) continue;
+
+                float distanceToZombie = Vector3.Distance(myPosition, zombie.transform.position);
+
+                if (distanceToZombie < closestDistance)
+                {
+                    closestZombie = zombie;
+                    closestDistance = distanceToZombie;
+                }
+            }
+
+            return closestZombie;
         }
     }
 }
