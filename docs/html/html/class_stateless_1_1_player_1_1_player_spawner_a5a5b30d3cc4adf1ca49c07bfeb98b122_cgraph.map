@@ -1,7 +1,0 @@
-<map id="Stateless.Player.PlayerSpawner.Awake" name="Stateless.Player.PlayerSpawner.Awake">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,218,48"/>
-<area shape="rect" id="Node000002" href="$class_stateless_1_1_player_1_1_player_spawner.html#a02760ae74045c3fd5f26b3566662ecd8" title=" " alt="" coords="266,5,478,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,24,251,24,251,29,218,29"/>
-<area shape="rect" id="Node000003" href="$class_stateless_1_1_player_1_1_players_stats_manager.html#a356e56387c483fac3d217a2c73859f27" title=" " alt="" coords="526,5,692,48"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="478,24,511,24,511,29,478,29"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="Stateless.House.IHouse" name="Stateless.House.IHouse">
-<area shape="rect" id="Node000001" title=" " alt="" coords="21,5,183,32"/>
-<area shape="rect" id="Node000002" href="$class_stateless_1_1_house_1_1_base_house.html" title=" " alt="" coords="8,80,196,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,47,105,80,99,80,99,47"/>
-<area shape="rect" id="Node000003" href="$class_stateless_1_1_house_1_1_green_house.html" title=" " alt="" coords="5,155,199,181"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="105,122,105,154,99,154,99,122"/>
-</map>

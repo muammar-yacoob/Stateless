@@ -1,7 +1,0 @@
-<map id="Stateless.Fire.Bullet_3D" name="Stateless.Fire.Bullet_3D">
-<area shape="rect" id="Node000001" title=" " alt="" coords="93,80,255,107"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,170,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,40,161,78,158,82,112,44"/>
-<area shape="rect" id="Node000003" href="$interface_stateless_1_1_fire_1_1_i_game_object_pooled.html" title="Provides access to the Pool." alt="" coords="194,5,331,32"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="237,44,191,82,188,78,234,40"/>
-</map>
