@@ -6,17 +6,24 @@ namespace Stateless.Player
     public class FaceClosestZombie : MonoBehaviour
     {
         [SerializeField] private float rotationSpeed = 5f;
+        [SerializeField] private float maxRotationAngle = 120f;
+        [SerializeField] private float maxDistance = 10f;
+
+        private Vector3 myPosition;
 
         void Update()
         {
+            myPosition = transform.position; // Cache position for optimization
             Zombie closestZombie = FindClosestZombie();
 
             if (closestZombie != null)
             {
                 RotateTowards(closestZombie.transform);
-                Debug.DrawRay(transform.position, (closestZombie.transform.position - transform.position).normalized * 10, Color.green);
             }
-            Debug.DrawRay(transform.position, transform.forward * 5, Color.red);
+            else if(transform.rotation != Quaternion.identity)
+            {
+                transform.localRotation = Quaternion.identity;
+            }
         }
 
         Zombie FindClosestZombie()
@@ -29,7 +36,7 @@ namespace Stateless.Player
             {
                 if (zombie == null || zombie.IsDying) continue;
 
-                float distanceToZombie = Vector3.Distance(transform.position, zombie.transform.position);
+                float distanceToZombie = Vector3.Distance(myPosition, zombie.transform.position);
 
                 if (distanceToZombie < closestDistance)
                 {
@@ -43,14 +50,29 @@ namespace Stateless.Player
 
         void RotateTowards(Transform target)
         {
-            Vector3 directionToZombie = (target.position - transform.position).normalized;
+            Vector3 directionToZombie = (target.position - myPosition).normalized;
             directionToZombie.y = 0; // Ignore y-axis for direction
-            Quaternion targetRotation = Quaternion.LookRotation(directionToZombie);
 
-            // Get only the y-component for the new rotation
+            Quaternion targetRotation = Quaternion.LookRotation(directionToZombie);
             Quaternion finalRotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
 
             transform.rotation = Quaternion.Slerp(transform.rotation, finalRotation, Time.deltaTime * rotationSpeed);
+
+            float angle = Vector3.Angle(transform.forward, directionToZombie);
+            float distance = Vector3.Distance(myPosition, target.position);
+
+            Color rayColor;
+
+            if (angle <= maxRotationAngle && distance <= maxDistance)
+            {
+                rayColor = Color.green;
+            }
+            else
+            {
+                rayColor = Color.red;
+            }
+            
+            Debug.DrawRay(myPosition, directionToZombie * 10, rayColor);
         }
     }
 }
