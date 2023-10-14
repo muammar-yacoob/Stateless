@@ -1,0 +1,118 @@
+\doxysection{UIPlayer\+Health.\+cs}
+\hypertarget{_u_i_player_health_8cs_source}{}\label{_u_i_player_health_8cs_source}\index{D:/Unity/UnityProjects/Stateless/Assets/Scripts/UI/UIPlayerHealth.cs@{D:/Unity/UnityProjects/Stateless/Assets/Scripts/UI/UIPlayerHealth.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }DG.Tweening;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }SparkCore.Runtime.Core;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_stateless_1_1_player}{Stateless.Player}};}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_stateless_1_1_player_1_1_events}{Stateless.Player.Events}};}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_stateless_1_1_zombies_1_1_events}{Stateless.Zombies.Events}};}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }TMPro;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00010}00010\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_stateless_1_1_u_i}{Stateless.UI}}}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00012}\mbox{\hyperlink{class_stateless_1_1_u_i_1_1_u_i_player_health}{00012}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_stateless_1_1_u_i_1_1_u_i_player_health}{UIPlayerHealth}}\ :\ InjectableMonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00013}00013\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ playerIndex;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ [Header(\textcolor{stringliteral}{"{}UI\ Elements"{}})]}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ TMP\_Text\ healthText;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ Image\ healthBar;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Bar\ Colors"{}})]}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ Color\ healthyColor\ =\ Color.green;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ Color\ injuredColor\ =\ Color.yellow;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ Color\ criticalColor\ =\ Color.red;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00022}00022\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ currentHealth;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ maxHealth;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_stateless_1_1_player_1_1_player_stats}{PlayerStats}}\ playerStats;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ Awake()}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ base.Awake();}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ SubscribeEvent<PlayerSpawned>(OnPlayerSpawned);}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ SubscribeEvent<PlayerDamaged>(OnPlayerDamaged);}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnDisable()}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ UnsubscribeEvent<PlayerSpawned>(OnPlayerSpawned);}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ UnsubscribeEvent<PlayerDamaged>(OnPlayerDamaged);}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnValidate()}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ playerIndex\ =\ transform.GetSiblingIndex();}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ (playerIndex\ <\ 0\ ||\ playerIndex\ >\ 3)\ Debug.LogError("{}Player\ index\ must\ be\ between\ 0\ and\ 3"{},this);}}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnPlayerSpawned(\mbox{\hyperlink{class_stateless_1_1_player_1_1_events_1_1_player_spawned}{PlayerSpawned}}\ playerSpawned)}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Debug.Log(\$"{}Initializing\ player\ \{playerIndex\}\ health"{});}}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ spawnedPlayerIndex\ =\ playerSpawned.PlayerStats.PlayerIndex;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (spawnedPlayerIndex\ !=\ playerIndex)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\$\textcolor{stringliteral}{"{}Player\ \{playerIndex\}\ health\ initialized"{}});}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ maxHealth\ =\ \mbox{\hyperlink{class_stateless_1_1_player_1_1_players_stats_manager}{PlayersStatsManager}}.Instance.PlayerStats[spawnedPlayerIndex].Health;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ currentHealth\ =\ maxHealth;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ this.playerStats\ =\ playerSpawned.PlayerStats;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnDestroy()\ =>\ UnsubscribeEvent<PlayerDamaged>(OnPlayerDamaged);}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnPlayerDamaged(\mbox{\hyperlink{class_stateless_1_1_zombies_1_1_events_1_1_player_damaged}{PlayerDamaged}}\ playerDamaged)}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerDamaged.PlayerIndex\ !=\ playerIndex)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ currentHealth\ -\/=\ playerDamaged.Damage;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ currentHealth\ =\ Mathf.Clamp(currentHealth,\ 0,\ maxHealth);}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ UpdateUI();}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ async\ \textcolor{keywordtype}{void}\ UpdateUI()}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fillValue\ =\ currentHealth\ /\ maxHealth;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ fillValue\ =\ Mathf.Round(fillValue\ *\ 100)\ /\ 100;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ fillValue\ =\ Mathf.Clamp(fillValue,\ 0,\ 1);}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Debug.Log(\$"{}Fill\ value:\ \{fillValue\}"{});}}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(healthText\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}Health\ text\ is\ null"{}},\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ healthText.text\ =\ fillValue.ToString(\textcolor{stringliteral}{"{}P0"{}});}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Debug.Log(\$"{}Ouch!\ \{currentHealth\}\%"{});}}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ await\ healthBar.DOFillAmount(fillValue,\ 0.2f).AsyncWaitForCompletion();}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(currentHealth\ <=\ 0)}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PublishEvent(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_stateless_1_1_player_1_1_events_1_1_player_died}{PlayerDied}}(playerStats));}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentHealth\ /\ maxHealth\ <=\ 0.2f)}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ healthBar.DOKill();}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ healthBar.DOFade(0.5f,\ 0.5f).SetLoops(-\/1,\ LoopType.Yoyo).SetEase(Ease.InOutSine);}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ healthBar.color\ =\ criticalColor;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentHealth\ /\ maxHealth\ <=\ 0.5f)}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ healthBar.DOKill();\ }
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ healthBar.color\ =\ injuredColor;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ healthBar.DOFade(1f,\ 0.5f);\ }
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentHealth\ /\ maxHealth\ >\ 0.5f)}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ healthBar.DOKill();}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ healthBar.color\ =\ healthyColor;}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ healthBar.DOFade(1f,\ 0.5f);\ }
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00111}00111\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_player_health_8cs_source_l00112}00112\ \}}
+
+\end{DoxyCode}

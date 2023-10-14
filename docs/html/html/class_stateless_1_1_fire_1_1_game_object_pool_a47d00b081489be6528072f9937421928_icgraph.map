@@ -1,0 +1,5 @@
+<map id="Stateless.Fire.GameObjectPool.Prewarm" name="Stateless.Fire.GameObjectPool.Prewarm">
+<area shape="rect" id="Node000001" title="Prewarms the pool with the specified prewarm Count on the GameObjectPool Scriptable Object." alt="" coords="238,5,417,48"/>
+<area shape="rect" id="Node000002" href="$class_stateless_1_1_player_1_1_player_fire.html#a663243d9835ca2a7b5003171e712dcd0" title=" " alt="" coords="5,5,190,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="223,29,190,29,190,24,223,24"/>
+</map>

@@ -1,0 +1,41 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$de/d25/interface_stateless_1_1_zombies_1_1_i_damageable.html" title=" " alt="" coords="5,13,214,40"/>
+<area shape="rect" id="Node000001" href="$dd/d53/class_stateless_1_1_zombies_1_1_zombie_damage.html" title=" " alt="" coords="287,5,462,48"/>
+<area shape="poly" id="edge17_Node000000_Node000001" title=" " alt="" coords="228,24,286,24,286,29,228,29"/>
+<area shape="rect" id="Node000006" href="$d5/dce/interface_stateless_1_1_fire_1_1_i_game_object_pooled.html" title="Provides access to the Pool." alt="" coords="18,64,201,107"/>
+<area shape="rect" id="Node000005" href="$d7/da8/class_stateless_1_1_fire_1_1_bullet__3_d.html" title=" " alt="" coords="293,72,456,99"/>
+<area shape="poly" id="edge18_Node000006_Node000005" title=" " alt="" coords="216,83,293,83,293,88,216,88"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="27,416,192,443"/>
+<area shape="poly" id="edge32_Node000002_Node000001" title=" " alt="" coords="116,401,141,322,176,219,218,122,239,84,260,58,285,42,288,46,263,62,243,87,222,124,181,221,146,323,121,402"/>
+<area shape="poly" id="edge21_Node000002_Node000005" title=" " alt="" coords="113,401,128,340,155,260,174,219,198,178,226,141,260,109,292,92,294,97,263,113,230,144,202,181,179,221,160,262,133,341,118,402"/>
+<area shape="rect" id="Node000003" href="$da/dc4/class_stateless_1_1_candy_1_1_u_i_candy_to_stats.html" title=" " alt="" coords="282,189,467,232"/>
+<area shape="poly" id="edge19_Node000002_Node000003" title=" " alt="" coords="123,402,145,366,176,323,215,279,260,242,281,230,284,235,263,246,219,283,180,326,150,369,127,405"/>
+<area shape="rect" id="Node000004" href="$d9/d60/class_stateless_1_1_candy_1_1_world_candy.html" title=" " alt="" coords="278,256,471,283"/>
+<area shape="poly" id="edge20_Node000002_Node000004" title=" " alt="" coords="130,403,185,346,221,317,260,292,289,281,291,286,263,297,224,321,188,350,133,406"/>
+<area shape="rect" id="Node000007" href="$d6/dc2/class_stateless_1_1_player_1_1_player_animation.html" title=" " alt="" coords="266,307,483,333"/>
+<area shape="poly" id="edge22_Node000002_Node000007" title=" " alt="" coords="142,405,196,373,261,343,298,331,299,336,263,348,199,378,145,410"/>
+<area shape="rect" id="Node000008" href="$d5/d11/class_stateless_1_1_player_1_1_player_fire.html" title=" " alt="" coords="284,357,465,384"/>
+<area shape="poly" id="edge23_Node000002_Node000008" title=" " alt="" coords="186,410,310,382,311,387,188,415"/>
+<area shape="rect" id="Node000009" href="$d7/ddc/class_stateless_1_1_player_1_1_player_input_handler.html" title=" " alt="" coords="281,408,468,451"/>
+<area shape="poly" id="edge24_Node000002_Node000009" title=" " alt="" coords="206,427,281,427,281,432,206,432"/>
+<area shape="rect" id="Node000010" href="$d4/d26/class_stateless_1_1_player_1_1_player_movement.html" title=" " alt="" coords="266,760,483,787"/>
+<area shape="poly" id="edge25_Node000002_Node000010" title=" " alt="" coords="118,457,133,518,160,596,179,638,202,678,230,714,263,746,282,757,279,762,260,750,226,718,198,681,174,640,155,598,128,519,113,458"/>
+<area shape="rect" id="Node000012" href="$d8/d95/class_stateless_1_1_player_1_1_player_spawner.html" title=" " alt="" coords="270,815,479,841"/>
+<area shape="poly" id="edge26_Node000002_Node000012" title=" " alt="" coords="121,456,145,536,181,638,222,735,243,772,263,797,288,812,285,816,260,801,239,775,217,737,176,640,140,537,116,458"/>
+<area shape="rect" id="Node000014" href="$de/d42/class_stateless_1_1_player_1_1_players_joining.html" title=" " alt="" coords="292,475,457,517"/>
+<area shape="poly" id="edge27_Node000002_Node000014" title=" " alt="" coords="181,444,292,473,291,478,179,449"/>
+<area shape="rect" id="Node000015" href="$df/da5/class_stateless_1_1_u_i_1_1_game_announcements.html" title=" " alt="" coords="262,541,487,568"/>
+<area shape="poly" id="edge28_Node000002_Node000015" title=" " alt="" coords="140,450,195,490,263,527,296,538,294,543,261,532,192,494,137,454"/>
+<area shape="rect" id="Node000016" href="$d6/dfe/class_stateless_1_1_u_i_1_1_u_i_player_health.html" title=" " alt="" coords="283,592,466,619"/>
+<area shape="poly" id="edge29_Node000002_Node000016" title=" " alt="" coords="131,453,185,516,222,550,263,578,289,589,287,594,260,582,219,554,182,520,127,457"/>
+<area shape="rect" id="Node000017" href="$d1/dd6/class_stateless_1_1_u_i_1_1_u_i_players_stats_controller.html" title=" " alt="" coords="283,643,466,685"/>
+<area shape="poly" id="edge30_Node000002_Node000017" title=" " alt="" coords="126,455,147,493,178,540,217,588,263,628,284,640,281,645,260,633,213,592,174,544,143,496,121,457"/>
+<area shape="rect" id="Node000018" href="$d5/d0e/class_stateless_1_1_zombies_1_1_zombie.html" title=" " alt="" coords="287,709,462,736"/>
+<area shape="poly" id="edge31_Node000002_Node000018" title=" " alt="" coords="121,456,138,508,167,573,208,640,234,669,263,695,288,708,285,713,260,700,230,673,204,643,162,576,133,510,116,458"/>
+<area shape="rect" id="Node000019" href="$de/dba/class_stateless_1_1_zombies_1_1_zombie_spawner.html" title=" " alt="" coords="287,123,462,165"/>
+<area shape="poly" id="edge33_Node000002_Node000019" title=" " alt="" coords="117,401,136,352,166,292,207,229,232,200,260,175,285,160,288,165,263,179,236,204,211,232,171,294,141,355,122,403"/>
+<area shape="rect" id="Node000011" href="$d9/d27/interface_stateless_1_1_player_1_1_i_player_movement.html" title=" " alt="" coords="29,748,190,791"/>
+<area shape="poly" id="edge34_Node000011_Node000010" title=" " alt="" coords="205,768,265,769,265,774,205,773"/>
+<area shape="rect" id="Node000013" href="$d7/deb/interface_stateless_1_1_player_1_1_i_player_spawner.html" title=" " alt="" coords="29,815,190,857"/>
+<area shape="poly" id="edge35_Node000013_Node000012" title=" " alt="" coords="205,830,270,828,270,834,205,836"/>
+</map>

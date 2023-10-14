@@ -1,0 +1,7 @@
+<map id="Stateless.Player.PlayerMovement" name="Stateless.Player.PlayerMovement">
+<area shape="rect" id="Node000001" title=" " alt="" coords="62,80,279,107"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,170,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,40,158,78,154,82,111,44"/>
+<area shape="rect" id="Node000003" href="$interface_stateless_1_1_player_1_1_i_player_movement.html" title=" " alt="" coords="194,5,314,32"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="231,44,186,82,183,78,227,40"/>
+</map>

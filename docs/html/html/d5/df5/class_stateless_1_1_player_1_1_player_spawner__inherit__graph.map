@@ -1,0 +1,7 @@
+<map id="Stateless.Player.PlayerSpawner" name="Stateless.Player.PlayerSpawner">
+<area shape="rect" id="Node000001" title=" " alt="" coords="63,80,272,107"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,170,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,40,156,78,152,82,110,44"/>
+<area shape="rect" id="Node000003" href="$d7/deb/interface_stateless_1_1_player_1_1_i_player_spawner.html" title=" " alt="" coords="193,5,305,32"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="226,44,183,82,180,78,222,40"/>
+</map>

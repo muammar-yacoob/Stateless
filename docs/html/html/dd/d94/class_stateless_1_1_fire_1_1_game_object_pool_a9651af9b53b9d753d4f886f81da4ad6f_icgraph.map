@@ -1,0 +1,5 @@
+<map id="Stateless.Fire.GameObjectPool.Get" name="Stateless.Fire.GameObjectPool.Get">
+<area shape="rect" id="Node000001" title="Fetches the next GameObject from the pool." alt="" coords="260,5,439,48"/>
+<area shape="rect" id="Node000002" href="$d5/d11/class_stateless_1_1_player_1_1_player_fire.html#aff8bd20cc76d3e2f366f3e342ca28c88" title=" " alt="" coords="5,13,212,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="245,29,212,29,212,24,245,24"/>
+</map>

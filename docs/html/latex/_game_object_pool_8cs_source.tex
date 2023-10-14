@@ -1,0 +1,92 @@
+\doxysection{Game\+Object\+Pool.\+cs}
+\hypertarget{_game_object_pool_8cs_source}{}\label{_game_object_pool_8cs_source}\index{D:/Unity/UnityProjects/Stateless/Assets/Scripts/Fire/GameObjectPool.cs@{D:/Unity/UnityProjects/Stateless/Assets/Scripts/Fire/GameObjectPool.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00006}00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_stateless_1_1_fire}{Stateless.Fire}}}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00008}00008\ \ \ \ \ [CreateAssetMenu(fileName\ =\ \textcolor{stringliteral}{"{}New\ GameObject\ Pool"{}},\ menuName\ =\ \textcolor{stringliteral}{"{}Poseidon/GameObject\ Pool"{}})]}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00009}\mbox{\hyperlink{class_stateless_1_1_fire_1_1_game_object_pool}{00009}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_stateless_1_1_fire_1_1_game_object_pool}{GameObjectPool}}\ :\ ScriptableObject}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ [SerializeField]\ GameObject\ prefab;}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ [SerializeField]\ \textcolor{keywordtype}{int}\ prewarmCount\ =\ 20;}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ Queue<GameObject>\ objects\ =\ \textcolor{keyword}{new}\ Queue<GameObject>();}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ Transform\ poolContainer;}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00020}\mbox{\hyperlink{class_stateless_1_1_fire_1_1_game_object_pool_a47d00b081489be6528072f9937421928}{00020}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stateless_1_1_fire_1_1_game_object_pool_a47d00b081489be6528072f9937421928}{Prewarm}}(\textcolor{keywordtype}{string}\ prentTransformName\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ var\ pName\ =\ \$\textcolor{stringliteral}{"{}\{name\}-\/\ Pool"{}};}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (prentTransformName\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ g\ =\ GameObject.Find(pName);}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (g\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ g\ =\ \textcolor{keyword}{new}\ GameObject(pName);}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.poolContainer\ =\ g.transform;}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.poolContainer\ =\ \textcolor{keyword}{new}\ GameObject(\$\textcolor{stringliteral}{"{}\{prentTransformName\}\ -\/\ Pool"{}}).transform;}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ AddObjects(prewarmCount);}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00044}\mbox{\hyperlink{class_stateless_1_1_fire_1_1_game_object_pool_a9651af9b53b9d753d4f886f81da4ad6f}{00044}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ \mbox{\hyperlink{class_stateless_1_1_fire_1_1_game_object_pool_a9651af9b53b9d753d4f886f81da4ad6f}{Get}}()}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (objects.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AddObjects(1);}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ var\ obj\ =\ objects.Dequeue();}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ obj.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ obj;}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ AddObjects(\textcolor{keywordtype}{int}\ count)}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ count;\ i++)}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ newObject\ =\ Instantiate(prefab);}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ newObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ objects.Enqueue(newObject);}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ newObject.GetComponent<\mbox{\hyperlink{interface_stateless_1_1_fire_1_1_i_game_object_pooled}{IGameObjectPooled}}>().Pool\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ newObject.transform.parent\ =\ poolContainer;}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00073}\mbox{\hyperlink{class_stateless_1_1_fire_1_1_game_object_pool_a5cb0cc4ac2d552869175036df3aa64a2}{00073}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ async\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stateless_1_1_fire_1_1_game_object_pool_a5cb0cc4ac2d552869175036df3aa64a2}{ReturnToPool}}(GameObject\ objectToReturn,\ \textcolor{keywordtype}{float}\ delay\ =\ 0)}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (objectToReturn\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delay\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Disable\ Visuals}}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ rends\ =\ objectToReturn.GetComponents<Renderer>().ToList();}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rends.ForEach(r\ =>\ r.enabled\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Induce\ some\ delay}}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ endTime\ =\ Time.time\ +\ delay;}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (Time.time\ <\ endTime)}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ Task.Yield();}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ objectToReturn.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ objects.Enqueue(objectToReturn);}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00093}00093\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00098}\mbox{\hyperlink{interface_stateless_1_1_fire_1_1_i_game_object_pooled}{00098}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{interface\ }\mbox{\hyperlink{interface_stateless_1_1_fire_1_1_i_game_object_pooled}{IGameObjectPooled}}}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00099}00099\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00103}\mbox{\hyperlink{interface_stateless_1_1_fire_1_1_i_game_object_pooled_a1066ad9efeed990df1f4e0ccc71e23b3}{00103}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_stateless_1_1_fire_1_1_game_object_pool}{GameObjectPool}}\ \mbox{\hyperlink{interface_stateless_1_1_fire_1_1_i_game_object_pooled_a1066ad9efeed990df1f4e0ccc71e23b3}{Pool}}\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00104}00104\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_object_pool_8cs_source_l00105}00105\ \}}
+
+\end{DoxyCode}

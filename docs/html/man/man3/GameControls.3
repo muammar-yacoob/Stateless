@@ -1,0 +1,153 @@
+.TH "GameControls" 3 "Version 1.0.0" "Stateless" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GameControls
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IInputActionCollection2, and IDisposable\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBGamePlayActions\fP"
+.br
+.ti -1c
+.RI "interface \fBIGamePlayActions\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGameControls\fP ()"
+.br
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.ti -1c
+.RI "bool \fBContains\fP (InputAction action)"
+.br
+.ti -1c
+.RI "IEnumerator< InputAction > \fBGetEnumerator\fP ()"
+.br
+.ti -1c
+.RI "void \fBEnable\fP ()"
+.br
+.ti -1c
+.RI "void \fBDisable\fP ()"
+.br
+.ti -1c
+.RI "InputAction \fBFindAction\fP (string actionNameOrId, bool throwIfNotFound=false)"
+.br
+.ti -1c
+.RI "int \fBFindBinding\fP (InputBinding \fBbindingMask\fP, out InputAction action)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "InputActionAsset \fBasset\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "InputBinding? \fBbindingMask\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ReadOnlyArray< InputDevice >? \fBdevices\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ReadOnlyArray< InputControlScheme > \fBcontrolSchemes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< InputBinding > \fBbindings\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBGamePlayActions\fP \fBGamePlay\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "InputControlScheme \fBKeyboardScheme\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "InputControlScheme \fBGamepadScheme\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB18\fP of file \fBGameControls\&.cs\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "GameControls\&.GameControls ()"
+
+.PP
+Definition at line \fB21\fP of file \fBGameControls\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool GameControls\&.Contains (InputAction action)"
+
+.PP
+Definition at line \fB287\fP of file \fBGameControls\&.cs\fP\&.
+.SS "void GameControls\&.Disable ()"
+
+.PP
+Definition at line \fB307\fP of file \fBGameControls\&.cs\fP\&.
+.SS "void GameControls\&.Dispose ()"
+
+.PP
+Definition at line \fB268\fP of file \fBGameControls\&.cs\fP\&.
+.SS "void GameControls\&.Enable ()"
+
+.PP
+Definition at line \fB302\fP of file \fBGameControls\&.cs\fP\&.
+.SS "InputAction GameControls\&.FindAction (string actionNameOrId, bool throwIfNotFound = \fCfalse\fP)"
+
+.PP
+Definition at line \fB314\fP of file \fBGameControls\&.cs\fP\&.
+.SS "int GameControls\&.FindBinding (InputBinding bindingMask, out InputAction action)"
+
+.PP
+Definition at line \fB319\fP of file \fBGameControls\&.cs\fP\&.
+.SS "IEnumerator< InputAction > GameControls\&.GetEnumerator ()"
+
+.PP
+Definition at line \fB292\fP of file \fBGameControls\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "InputActionAsset GameControls\&.asset\fC [get]\fP"
+
+.PP
+Definition at line \fB20\fP of file \fBGameControls\&.cs\fP\&.
+.SS "InputBinding? GameControls\&.bindingMask\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Definition at line \fB273\fP of file \fBGameControls\&.cs\fP\&.
+.SS "IEnumerable<InputBinding> GameControls\&.bindings\fC [get]\fP"
+
+.PP
+Definition at line \fB312\fP of file \fBGameControls\&.cs\fP\&.
+.SS "ReadOnlyArray<InputControlScheme> GameControls\&.controlSchemes\fC [get]\fP"
+
+.PP
+Definition at line \fB285\fP of file \fBGameControls\&.cs\fP\&.
+.SS "ReadOnlyArray<InputDevice>? GameControls\&.devices\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Definition at line \fB279\fP of file \fBGameControls\&.cs\fP\&.
+.SS "InputControlScheme GameControls\&.GamepadScheme\fC [get]\fP"
+
+.PP
+Definition at line \fB411\fP of file \fBGameControls\&.cs\fP\&.
+.SS "\fBGamePlayActions\fP GameControls\&.GamePlay\fC [get]\fP"
+
+.PP
+Definition at line \fB400\fP of file \fBGameControls\&.cs\fP\&.
+.SS "InputControlScheme GameControls\&.KeyboardScheme\fC [get]\fP"
+
+.PP
+Definition at line \fB402\fP of file \fBGameControls\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Stateless from the source code\&.

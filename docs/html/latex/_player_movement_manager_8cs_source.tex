@@ -1,0 +1,59 @@
+\doxysection{Player\+Movement\+Manager.\+cs}
+\hypertarget{_player_movement_manager_8cs_source}{}\label{_player_movement_manager_8cs_source}\index{D:/Unity/UnityProjects/Stateless/Assets/Scripts/Player/PlayerMovementManager.cs@{D:/Unity/UnityProjects/Stateless/Assets/Scripts/Player/PlayerMovementManager.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }SparkCore.Runtime.Injection;}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00005}00005\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_stateless_1_1_player}{Stateless.Player}}}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00007}00007\ \ \ \ \ [RuntimeObject(RuntimeObjectType.Singleton)]}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00008}\mbox{\hyperlink{class_stateless_1_1_player_1_1_player_movement_manager}{00008}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_stateless_1_1_player_1_1_player_movement_manager}{PlayerMovementManager}}\ :\ \mbox{\hyperlink{interface_stateless_1_1_player_1_1_i_player_movement_manager}{IPlayerMovementManager}}}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ Dictionary<int,\ IPlayerMovement>\ playerMovements\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Dictionary<int,\ IPlayerMovement>\ PlayerMovements\ =>\ playerMovements;}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RegisterPlayer(\mbox{\hyperlink{interface_stateless_1_1_player_1_1_i_player_movement}{IPlayerMovement}}\ player)}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Player\ index\ in\ player\ prefabs\ should\ be\ set\ to\ values\ from\ 0\ to\ 3}}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ playerMovements.TryAdd(playerMovements.Count,\ player);}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ playerMovement\ \textcolor{keywordflow}{in}\ playerMovements)}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\$\textcolor{stringliteral}{"{}Player\ \{playerMovement.Key\}\ registered"{}});}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RemovePlayer(\mbox{\hyperlink{interface_stateless_1_1_player_1_1_i_player_movement}{IPlayerMovement}}\ player)}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ playerMovements.Remove(playerMovements.Count);}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetInput(\textcolor{keywordtype}{int}\ index,\ Vector2\ input)}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerMovements.TryGetValue(index,\ out\ var\ player))}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ player.SetInput(input);}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Jump(\textcolor{keywordtype}{int}\ playerIndex)}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerMovements.TryGetValue(playerIndex,\ out\ var\ player))}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ player.Jump();}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Fire(\textcolor{keywordtype}{int}\ playerIndex)}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerMovements.TryGetValue(playerIndex,\ out\ var\ player))}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ player.Fire();}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_movement_manager_8cs_source_l00053}00053\ \}}
+
+\end{DoxyCode}

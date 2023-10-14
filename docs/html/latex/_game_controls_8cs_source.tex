@@ -1,0 +1,433 @@
+\doxysection{Game\+Controls.\+cs}
+\hypertarget{_game_controls_8cs_source}{}\label{_game_controls_8cs_source}\index{D:/Unity/UnityProjects/Stateless/Assets/Scripts/Input/GameControls.cs@{D:/Unity/UnityProjects/Stateless/Assets/Scripts/Input/GameControls.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00001}00001\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00002}00002\ \textcolor{comment}{//\ <auto-\/generated>}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00003}00003\ \textcolor{comment}{//\ \ \ \ \ This\ code\ was\ auto-\/generated\ by\ com.unity.inputsystem:InputActionCodeGenerator}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00004}00004\ \textcolor{comment}{//\ \ \ \ \ version\ 1.6.3}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00005}00005\ \textcolor{comment}{//\ \ \ \ \ from\ Assets/Scripts/Input/GameControls.inputactions}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00006}00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00007}00007\ \textcolor{comment}{//\ \ \ \ \ Changes\ to\ this\ file\ may\ cause\ incorrect\ behavior\ and\ will\ be\ lost\ if}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00008}00008\ \textcolor{comment}{//\ \ \ \ \ the\ code\ is\ regenerated.}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00009}00009\ \textcolor{comment}{//\ </auto-\/generated>}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00010}00010\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00012}00012\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00013}00013\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00014}00014\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00015}00015\ \textcolor{keyword}{using\ }UnityEngine.InputSystem;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00016}00016\ \textcolor{keyword}{using\ }UnityEngine.InputSystem.Utilities;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00018}\mbox{\hyperlink{class_game_controls}{00018}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{partial\ class\ }@\mbox{\hyperlink{class_game_controls}{GameControls}}:\ IInputActionCollection2,\ IDisposable}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00019}00019\ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00020}00020\ \ \ \ \ \textcolor{keyword}{public}\ InputActionAsset\ asset\ \{\ \textcolor{keyword}{get};\ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{public}\ @\mbox{\hyperlink{class_game_controls}{GameControls}}()}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ asset\ =\ InputActionAsset.FromJson(\textcolor{stringliteral}{@"{}\{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00024}00024\ \textcolor{stringliteral}{\ \ \ \ "{}"{}name"{}"{}:\ "{}"{}GameControls"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00025}00025\ \textcolor{stringliteral}{\ \ \ \ "{}"{}maps"{}"{}:\ [}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00026}00026\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00027}00027\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}GamePlay"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00028}00028\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}265c38f5-\/dd18-\/4d34-\/b198-\/aec58e1627ff"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00029}00029\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ "{}"{}actions"{}"{}:\ [}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00030}00030\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00031}00031\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}Move"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00032}00032\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}type"{}"{}:\ "{}"{}PassThrough"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00033}00033\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}50fd2809-\/3aa3-\/4a90-\/988e-\/1facf6773553"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00034}00034\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}expectedControlType"{}"{}:\ "{}"{}Vector2"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00035}00035\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00036}00036\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00037}00037\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}initialStateCheck"{}"{}:\ true}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00038}00038\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00039}00039\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00040}00040\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}look"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00041}00041\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}type"{}"{}:\ "{}"{}Value"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00042}00042\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}c60e0974-\/d140-\/4597-\/a40e-\/9862193067e9"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00043}00043\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}expectedControlType"{}"{}:\ "{}"{}Vector2"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00044}00044\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00045}00045\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00046}00046\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}initialStateCheck"{}"{}:\ true}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00047}00047\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00048}00048\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00049}00049\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}Jump"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00050}00050\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}type"{}"{}:\ "{}"{}Button"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00051}00051\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}c55b67a7-\/8c5d-\/4be0-\/a05b-\/159cfe53f1a1"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00052}00052\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}expectedControlType"{}"{}:\ "{}"{}Button"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00053}00053\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00054}00054\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}Press"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00055}00055\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}initialStateCheck"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00056}00056\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00057}00057\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00058}00058\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}Fire"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00059}00059\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}type"{}"{}:\ "{}"{}Button"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00060}00060\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}2bfa741f-\/6359-\/4df0-\/90b6-\/44b6ccc8e09d"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00061}00061\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}expectedControlType"{}"{}:\ "{}"{}Button"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00062}00062\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00063}00063\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}Press"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00064}00064\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}initialStateCheck"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00065}00065\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00066}00066\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00067}00067\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}Join"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00068}00068\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}type"{}"{}:\ "{}"{}Button"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00069}00069\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}50b4a690-\/3789-\/4839-\/a2cf-\/545aa630f908"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00070}00070\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}expectedControlType"{}"{}:\ "{}"{}Button"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00071}00071\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00072}00072\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00073}00073\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}initialStateCheck"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00074}00074\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00075}00075\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ ],}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00076}00076\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ "{}"{}bindings"{}"{}:\ [}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00077}00077\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00078}00078\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00079}00079\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}e1b8c4dd-\/7b3a-\/4db6-\/a93a-\/0889b59b1afc"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00080}00080\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<Gamepad>/leftStick"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00081}00081\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00082}00082\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00083}00083\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}Gamepad"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00084}00084\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Move"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00085}00085\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00086}00086\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00087}00087\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00088}00088\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00089}00089\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}WASD"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00090}00090\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}0f217c60-\/3ace-\/4e8b-\/b983-\/f3409c01b486"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00091}00091\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}2DVector"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00092}00092\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00093}00093\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00094}00094\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00095}00095\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Move"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00096}00096\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ true,}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00097}00097\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00098}00098\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00099}00099\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00100}00100\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}up"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00101}00101\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}529ce422-\/25bd-\/48c7-\/989c-\/68f74185cf72"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00102}00102\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<Keyboard>/w"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00103}00103\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00104}00104\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00105}00105\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}Keyboard"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00106}00106\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Move"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00107}00107\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00108}00108\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ true}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00109}00109\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00110}00110\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00111}00111\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}left"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00112}00112\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}d5506f6d-\/f82e-\/4b93-\/b401-\/7ac7c474afc7"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00113}00113\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<Keyboard>/a"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00114}00114\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00115}00115\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00116}00116\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}Keyboard"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00117}00117\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Move"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00118}00118\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00119}00119\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ true}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00120}00120\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00121}00121\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00122}00122\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}down"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00123}00123\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}9a074fc7-\/293d-\/4bb2-\/b1c4-\/209a6427bfd2"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00124}00124\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<Keyboard>/s"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00125}00125\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00126}00126\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00127}00127\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}Keyboard"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00128}00128\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Move"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00129}00129\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00130}00130\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ true}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00131}00131\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00132}00132\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00133}00133\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}right"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00134}00134\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}eba2bd94-\/450b-\/4bf1-\/884b-\/439b951bdd2d"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00135}00135\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<Keyboard>/d"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00136}00136\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00137}00137\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00138}00138\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}Keyboard"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00139}00139\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Move"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00140}00140\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00141}00141\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ true}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00142}00142\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00143}00143\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00144}00144\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00145}00145\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}c106d6e6-\/2780-\/47ff-\/b318-\/396171bd54cc"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00146}00146\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<Gamepad>/rightStick"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00147}00147\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00148}00148\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00149}00149\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}Gamepad"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00150}00150\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}look"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00151}00151\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00152}00152\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00153}00153\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00154}00154\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00155}00155\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00156}00156\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}578caa03-\/6827-\/4797-\/adfc-\/a59770c437fe"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00157}00157\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<Pointer>/delta"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00158}00158\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00159}00159\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}ScaleVector2(x=2,y=2)"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00160}00160\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}Keyboard"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00161}00161\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}look"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00162}00162\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00163}00163\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00164}00164\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00165}00165\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00166}00166\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00167}00167\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}49f6af40-\/3385-\/4761-\/8f8a-\/44b89bd3cd26"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00168}00168\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<Keyboard>/space"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00169}00169\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00170}00170\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00171}00171\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}Keyboard"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00172}00172\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Jump"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00173}00173\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00174}00174\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00175}00175\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00176}00176\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00177}00177\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00178}00178\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}7439f5e2-\/d30a-\/451a-\/9abe-\/57422a6565da"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00179}00179\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<Gamepad>/buttonNorth"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00180}00180\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00181}00181\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00182}00182\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}Gamepad"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00183}00183\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Jump"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00184}00184\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00185}00185\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00186}00186\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00187}00187\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00188}00188\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00189}00189\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}1d88754b-\/9faf-\/46ca-\/ae21-\/d21fa295435e"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00190}00190\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<Keyboard>/anyKey"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00191}00191\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00192}00192\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00193}00193\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}Keyboard"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00194}00194\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Join"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00195}00195\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00196}00196\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00197}00197\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00198}00198\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00199}00199\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00200}00200\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}1e76cd86-\/c94d-\/44c7-\/bbf2-\/28684b35f72e"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00201}00201\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<Gamepad>/start"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00202}00202\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00203}00203\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00204}00204\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}Gamepad"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00205}00205\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Join"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00206}00206\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00207}00207\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00208}00208\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00209}00209\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00210}00210\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00211}00211\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}06fe5bcd-\/f2af-\/466e-\/b2ff-\/396cc9cf1dfc"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00212}00212\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<Keyboard>/rightCtrl"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00213}00213\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00214}00214\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00215}00215\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}Keyboard"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00216}00216\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Fire"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00217}00217\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00218}00218\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00219}00219\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00220}00220\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00221}00221\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00222}00222\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}58cff9bb-\/be6e-\/40ef-\/82d7-\/8246ada8ad18"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00223}00223\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<Gamepad>/buttonSouth"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00224}00224\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00225}00225\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00226}00226\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}Gamepad"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00227}00227\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Fire"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00228}00228\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00229}00229\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00230}00230\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00231}00231\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ ]}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00232}00232\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00233}00233\ \textcolor{stringliteral}{\ \ \ \ ],}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00234}00234\ \textcolor{stringliteral}{\ \ \ \ "{}"{}controlSchemes"{}"{}:\ [}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00235}00235\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00236}00236\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}Keyboard"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00237}00237\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ "{}"{}bindingGroup"{}"{}:\ "{}"{}Keyboard"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00238}00238\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ "{}"{}devices"{}"{}:\ [}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00239}00239\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00240}00240\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}devicePath"{}"{}:\ "{}"{}<Keyboard>"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00241}00241\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isOptional"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00242}00242\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isOR"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00243}00243\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00244}00244\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ ]}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00245}00245\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00246}00246\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00247}00247\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}Gamepad"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00248}00248\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ "{}"{}bindingGroup"{}"{}:\ "{}"{}Gamepad"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00249}00249\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ "{}"{}devices"{}"{}:\ [}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00250}00250\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00251}00251\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}devicePath"{}"{}:\ "{}"{}<Gamepad>"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00252}00252\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isOptional"{}"{}:\ true,}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00253}00253\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isOR"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00254}00254\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00255}00255\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ ]}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00256}00256\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00257}00257\ \textcolor{stringliteral}{\ \ \ \ ]}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00258}00258\ \textcolor{stringliteral}{\}"{}});}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00259}00259\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ GamePlay}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00260}00260\ \ \ \ \ \ \ \ \ m\_GamePlay\ =\ asset.FindActionMap(\textcolor{stringliteral}{"{}GamePlay"{}},\ throwIfNotFound:\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ m\_GamePlay\_Move\ =\ m\_GamePlay.FindAction(\textcolor{stringliteral}{"{}Move"{}},\ throwIfNotFound:\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ m\_GamePlay\_look\ =\ m\_GamePlay.FindAction(\textcolor{stringliteral}{"{}look"{}},\ throwIfNotFound:\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ m\_GamePlay\_Jump\ =\ m\_GamePlay.FindAction(\textcolor{stringliteral}{"{}Jump"{}},\ throwIfNotFound:\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ m\_GamePlay\_Fire\ =\ m\_GamePlay.FindAction(\textcolor{stringliteral}{"{}Fire"{}},\ throwIfNotFound:\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ m\_GamePlay\_Join\ =\ m\_GamePlay.FindAction(\textcolor{stringliteral}{"{}Join"{}},\ throwIfNotFound:\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00266}00266\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00268}00268\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Dispose()}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00269}00269\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00270}00270\ \ \ \ \ \ \ \ \ UnityEngine.Object.Destroy(asset);}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00271}00271\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00272}00272\ }
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00273}00273\ \ \ \ \ \textcolor{keyword}{public}\ InputBinding?\ bindingMask}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00274}00274\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00275}00275\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ =>\ asset.bindingMask;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00276}00276\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ =>\ asset.bindingMask\ =\ value;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00277}00277\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00279}00279\ \ \ \ \ \textcolor{keyword}{public}\ ReadOnlyArray<InputDevice>?\ devices}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00280}00280\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00281}00281\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ =>\ asset.devices;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00282}00282\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ =>\ asset.devices\ =\ value;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00283}00283\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00285}00285\ \ \ \ \ \textcolor{keyword}{public}\ ReadOnlyArray<InputControlScheme>\ controlSchemes\ =>\ asset.controlSchemes;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00286}00286\ }
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00287}00287\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ Contains(InputAction\ action)}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00288}00288\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00289}00289\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ asset.Contains(action);}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00290}00290\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00292}00292\ \ \ \ \ \textcolor{keyword}{public}\ IEnumerator<InputAction>\ GetEnumerator()}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00293}00293\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00294}00294\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ asset.GetEnumerator();}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00295}00295\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00296}00296\ }
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00297}00297\ \ \ \ \ IEnumerator\ IEnumerable.GetEnumerator()}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00298}00298\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00299}00299\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GetEnumerator();}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00300}00300\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00301}00301\ }
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00302}00302\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Enable()}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00303}00303\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00304}00304\ \ \ \ \ \ \ \ \ asset.Enable();}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00305}00305\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00306}00306\ }
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00307}00307\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Disable()}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00308}00308\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00309}00309\ \ \ \ \ \ \ \ \ asset.Disable();}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00310}00310\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00311}00311\ }
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00312}00312\ \ \ \ \ \textcolor{keyword}{public}\ IEnumerable<InputBinding>\ bindings\ =>\ asset.bindings;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00314}00314\ \ \ \ \ \textcolor{keyword}{public}\ InputAction\ FindAction(\textcolor{keywordtype}{string}\ actionNameOrId,\ \textcolor{keywordtype}{bool}\ throwIfNotFound\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00315}00315\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00316}00316\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ asset.FindAction(actionNameOrId,\ throwIfNotFound);}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00317}00317\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00318}00318\ }
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00319}00319\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ FindBinding(InputBinding\ bindingMask,\ out\ InputAction\ action)}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00320}00320\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00321}00321\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ asset.FindBinding(bindingMask,\ out\ action);}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00322}00322\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00324}00324\ \ \ \ \ \textcolor{comment}{//\ GamePlay}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00325}00325\ \ \ \ \ \textcolor{keyword}{private}\ readonly\ InputActionMap\ m\_GamePlay;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00326}00326\ \ \ \ \ \textcolor{keyword}{private}\ List<IGamePlayActions>\ m\_GamePlayActionsCallbackInterfaces\ =\ \textcolor{keyword}{new}\ List<IGamePlayActions>();}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00327}00327\ \ \ \ \ \textcolor{keyword}{private}\ readonly\ InputAction\ m\_GamePlay\_Move;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00328}00328\ \ \ \ \ \textcolor{keyword}{private}\ readonly\ InputAction\ m\_GamePlay\_look;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00329}00329\ \ \ \ \ \textcolor{keyword}{private}\ readonly\ InputAction\ m\_GamePlay\_Jump;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00330}00330\ \ \ \ \ \textcolor{keyword}{private}\ readonly\ InputAction\ m\_GamePlay\_Fire;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00331}00331\ \ \ \ \ \textcolor{keyword}{private}\ readonly\ InputAction\ m\_GamePlay\_Join;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00332}\mbox{\hyperlink{struct_game_controls_1_1_game_play_actions}{00332}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_game_controls_1_1_game_play_actions}{GamePlayActions}}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00333}00333\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00334}00334\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ @\mbox{\hyperlink{class_game_controls}{GameControls}}\ m\_Wrapper;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00335}00335\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_game_controls_1_1_game_play_actions}{GamePlayActions}}(@\mbox{\hyperlink{class_game_controls}{GameControls}}\ wrapper)\ \{\ m\_Wrapper\ =\ wrapper;\ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00336}00336\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ InputAction\ @Move\ =>\ m\_Wrapper.m\_GamePlay\_Move;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00337}00337\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ InputAction\ @look\ =>\ m\_Wrapper.m\_GamePlay\_look;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00338}00338\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ InputAction\ @Jump\ =>\ m\_Wrapper.m\_GamePlay\_Jump;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00339}00339\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ InputAction\ @Fire\ =>\ m\_Wrapper.m\_GamePlay\_Fire;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00340}00340\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ InputAction\ @Join\ =>\ m\_Wrapper.m\_GamePlay\_Join;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00341}00341\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ InputActionMap\ Get()\ \{\ \textcolor{keywordflow}{return}\ m\_Wrapper.m\_GamePlay;\ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00342}00342\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Enable()\ \{\ Get().Enable();\ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00343}00343\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Disable()\ \{\ Get().Disable();\ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00344}00344\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ enabled\ =>\ Get().enabled;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00345}00345\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ implicit\ \textcolor{keyword}{operator}\ InputActionMap(\mbox{\hyperlink{struct_game_controls_1_1_game_play_actions}{GamePlayActions}}\ \textcolor{keyword}{set})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{set}.Get();\ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00346}00346\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ AddCallbacks(\mbox{\hyperlink{interface_game_controls_1_1_i_game_play_actions}{IGamePlayActions}}\ instance)}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00347}00347\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00348}00348\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (instance\ ==\ \textcolor{keyword}{null}\ ||\ m\_Wrapper.m\_GamePlayActionsCallbackInterfaces.Contains(instance))\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ m\_Wrapper.m\_GamePlayActionsCallbackInterfaces.Add(instance);}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ @Move.started\ +=\ instance.OnMove;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ @Move.performed\ +=\ instance.OnMove;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ @Move.canceled\ +=\ instance.OnMove;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ @look.started\ +=\ instance.OnLook;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ @look.performed\ +=\ instance.OnLook;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ @look.canceled\ +=\ instance.OnLook;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ @Jump.started\ +=\ instance.OnJump;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00357}00357\ \ \ \ \ \ \ \ \ \ \ \ \ @Jump.performed\ +=\ instance.OnJump;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00358}00358\ \ \ \ \ \ \ \ \ \ \ \ \ @Jump.canceled\ +=\ instance.OnJump;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ @Fire.started\ +=\ instance.OnFire;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00360}00360\ \ \ \ \ \ \ \ \ \ \ \ \ @Fire.performed\ +=\ instance.OnFire;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ @Fire.canceled\ +=\ instance.OnFire;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00362}00362\ \ \ \ \ \ \ \ \ \ \ \ \ @Join.started\ +=\ instance.OnJoin;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ @Join.performed\ +=\ instance.OnJoin;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ @Join.canceled\ +=\ instance.OnJoin;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00365}00365\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00366}00366\ }
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00367}00367\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ UnregisterCallbacks(\mbox{\hyperlink{interface_game_controls_1_1_i_game_play_actions}{IGamePlayActions}}\ instance)}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00368}00368\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00369}00369\ \ \ \ \ \ \ \ \ \ \ \ \ @Move.started\ -\/=\ instance.OnMove;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00370}00370\ \ \ \ \ \ \ \ \ \ \ \ \ @Move.performed\ -\/=\ instance.OnMove;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ @Move.canceled\ -\/=\ instance.OnMove;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00372}00372\ \ \ \ \ \ \ \ \ \ \ \ \ @look.started\ -\/=\ instance.OnLook;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00373}00373\ \ \ \ \ \ \ \ \ \ \ \ \ @look.performed\ -\/=\ instance.OnLook;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ @look.canceled\ -\/=\ instance.OnLook;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ @Jump.started\ -\/=\ instance.OnJump;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00376}00376\ \ \ \ \ \ \ \ \ \ \ \ \ @Jump.performed\ -\/=\ instance.OnJump;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00377}00377\ \ \ \ \ \ \ \ \ \ \ \ \ @Jump.canceled\ -\/=\ instance.OnJump;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00378}00378\ \ \ \ \ \ \ \ \ \ \ \ \ @Fire.started\ -\/=\ instance.OnFire;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00379}00379\ \ \ \ \ \ \ \ \ \ \ \ \ @Fire.performed\ -\/=\ instance.OnFire;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00380}00380\ \ \ \ \ \ \ \ \ \ \ \ \ @Fire.canceled\ -\/=\ instance.OnFire;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ @Join.started\ -\/=\ instance.OnJoin;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00382}00382\ \ \ \ \ \ \ \ \ \ \ \ \ @Join.performed\ -\/=\ instance.OnJoin;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00383}00383\ \ \ \ \ \ \ \ \ \ \ \ \ @Join.canceled\ -\/=\ instance.OnJoin;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00384}00384\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00385}00385\ }
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00386}00386\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RemoveCallbacks(\mbox{\hyperlink{interface_game_controls_1_1_i_game_play_actions}{IGamePlayActions}}\ instance)}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00387}00387\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00388}00388\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_Wrapper.m\_GamePlayActionsCallbackInterfaces.Remove(instance))}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UnregisterCallbacks(instance);}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00390}00390\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00391}00391\ }
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00392}00392\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetCallbacks(\mbox{\hyperlink{interface_game_controls_1_1_i_game_play_actions}{IGamePlayActions}}\ instance)}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00393}00393\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00394}00394\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ item\ \textcolor{keywordflow}{in}\ m\_Wrapper.m\_GamePlayActionsCallbackInterfaces)}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00395}00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UnregisterCallbacks(item);}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00396}00396\ \ \ \ \ \ \ \ \ \ \ \ \ m\_Wrapper.m\_GamePlayActionsCallbackInterfaces.Clear();}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00397}00397\ \ \ \ \ \ \ \ \ \ \ \ \ AddCallbacks(instance);}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00398}00398\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00399}00399\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00400}00400\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_game_controls_1_1_game_play_actions}{GamePlayActions}}\ @GamePlay\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{struct_game_controls_1_1_game_play_actions}{GamePlayActions}}(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00401}00401\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ m\_KeyboardSchemeIndex\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00402}00402\ \ \ \ \ \textcolor{keyword}{public}\ InputControlScheme\ KeyboardScheme}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00403}00403\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00404}00404\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00405}00405\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00406}00406\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_KeyboardSchemeIndex\ ==\ -\/1)\ m\_KeyboardSchemeIndex\ =\ asset.FindControlSchemeIndex(\textcolor{stringliteral}{"{}Keyboard"{}});}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00407}00407\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ asset.controlSchemes[m\_KeyboardSchemeIndex];}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00408}00408\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00409}00409\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00410}00410\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ m\_GamepadSchemeIndex\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00411}00411\ \ \ \ \ \textcolor{keyword}{public}\ InputControlScheme\ GamepadScheme}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00412}00412\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00413}00413\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00414}00414\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00415}00415\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_GamepadSchemeIndex\ ==\ -\/1)\ m\_GamepadSchemeIndex\ =\ asset.FindControlSchemeIndex(\textcolor{stringliteral}{"{}Gamepad"{}});}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00416}00416\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ asset.controlSchemes[m\_GamepadSchemeIndex];}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00417}00417\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00418}00418\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00419}\mbox{\hyperlink{interface_game_controls_1_1_i_game_play_actions}{00419}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{interface\ }\mbox{\hyperlink{interface_game_controls_1_1_i_game_play_actions}{IGamePlayActions}}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00420}00420\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00421}00421\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ OnMove(InputAction.CallbackContext\ context);}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00422}00422\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ OnLook(InputAction.CallbackContext\ context);}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00423}00423\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ OnJump(InputAction.CallbackContext\ context);}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00424}00424\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ OnFire(InputAction.CallbackContext\ context);}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00425}00425\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ OnJoin(InputAction.CallbackContext\ context);}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00426}00426\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_controls_8cs_source_l00427}00427\ \}}
+
+\end{DoxyCode}
