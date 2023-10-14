@@ -33,7 +33,18 @@ namespace Stateless.Player
             
             playerMovementManager.RegisterPlayer(this);
         }
+        
+        private void OnDestroy()
+        {
+            playerMovementManager.RemovePlayer(this);
+        }
 
+        public void DestroyPlayer()
+        {
+            playerMovementManager.RemovePlayer(this);
+            Destroy(gameObject);
+        }
+        
         public void SetInput(Vector2 input)
         {
             speed = input.magnitude;

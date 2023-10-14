@@ -1,4 +1,5 @@
-﻿using SparkCore.Runtime.Core;
+﻿using System.Linq;
+using SparkCore.Runtime.Core;
 using Stateless.Player.Events;
 using UnityEditor;
 using UnityEngine;
@@ -14,8 +15,10 @@ namespace Stateless.Player
 
         protected override void Awake()
         {
+            CleanupSceneObjects();
             inputManager.onPlayerJoined += SpawnPlayer;
         }
+        private void CleanupSceneObjects() => FindObjectsOfType<PlayerMovement>().ToList().ForEach(p => p.DestroyPlayer());
 
         public void SpawnPlayer(PlayerInput playerInput)
         {

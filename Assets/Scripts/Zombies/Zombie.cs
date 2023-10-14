@@ -33,6 +33,7 @@ namespace Stateless.Zombies
 
         private bool isAttacking = false;
         private bool inCooldown = false;
+        public bool IsDying;
 
         private void Start()
         {
@@ -51,6 +52,8 @@ namespace Stateless.Zombies
 
         private void Update()
         {
+            if(IsDying) return; //Zombie has been destroyed
+
             if (players.Count == 0) return;
             var targetPlayer = FindClosestPlayerInSight();
             if (targetPlayer != null && !isAttacking)
@@ -89,6 +92,7 @@ namespace Stateless.Zombies
 
         private async UniTaskVoid ChaseAndAttack(PlayerStats targetPlayer)
         {
+            if(IsDying) return; //Zombie has been destroyed
             isAttacking = true;
             Transform playerTransform = targetPlayer.PlayerInstance.transform;
 
@@ -111,6 +115,7 @@ namespace Stateless.Zombies
 
         private bool IsPlayerInSight(Transform playerTransform)
         {
+            if(IsDying) return false; //Zombie has been destroyed
             if (playerTransform == null) return false;
             Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
             float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
@@ -128,6 +133,7 @@ namespace Stateless.Zombies
                     UnityEngine.Random.Range(roamMinZ, roamMaxZ)
                 );
 
+                if(navAgent == null) return; //Zombie has been destroyed
                 navAgent.SetDestination(randomPosition);
                 await UniTask.Delay(roamCooldown);
             }

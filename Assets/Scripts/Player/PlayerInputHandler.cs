@@ -38,6 +38,19 @@ namespace Stateless.Player
             fireAction.canceled += OnInput;
         }
 
+        private void OnDestroy()
+        {
+            jumpAction.started -= OnInput;
+            jumpAction.performed -= OnInput;
+            jumpAction.canceled -= OnInput;
+            
+            //Fire
+            fireAction = playerInput.actions.FindAction("Fire");
+            fireAction.started -= OnInput;
+            fireAction.performed -= OnInput;
+            fireAction.canceled -= OnInput;
+        }
+
         private void Update()
         {
             if (moveAction == null) return;

@@ -10,6 +10,7 @@ namespace Stateless.Player
         private readonly Dictionary<int, IPlayerMovement> playerMovements = new();
 
         public Dictionary<int, IPlayerMovement> PlayerMovements => playerMovements;
+
         public void RegisterPlayer(IPlayerMovement player)
         {
             //Player index in player prefabs should be set to values from 0 to 3
@@ -17,8 +18,13 @@ namespace Stateless.Player
             foreach (var playerMovement in playerMovements)
             {
                 Debug.Log($"Player {playerMovement.Key} registered");
-            }  
-         }
+            }
+        }
+
+        public void RemovePlayer(IPlayerMovement player)
+        {
+            playerMovements.Remove(playerMovements.Count);
+        }
 
         public void SetInput(int index, Vector2 input)
         {
@@ -34,7 +40,9 @@ namespace Stateless.Player
             {
                 player.Jump();
             }
-        }        public void Fire(int playerIndex)
+        }
+
+        public void Fire(int playerIndex)
         {
             if (playerMovements.TryGetValue(playerIndex, out var player))
             {
