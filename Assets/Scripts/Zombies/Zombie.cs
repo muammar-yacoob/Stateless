@@ -28,6 +28,9 @@ namespace Stateless.Zombies
         [SerializeField] private float roamMinZ = -20f;
         [SerializeField] private float roamMaxZ = 20f;
 
+        [Header("Debug")]
+        [SerializeField] private bool debugRays;
+        
         private NavMeshAgent navAgent;
         private List<PlayerStats> players;
 
@@ -79,11 +82,12 @@ namespace Stateless.Zombies
                 Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
                 float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
                 float angle = Vector3.Angle(transform.forward, directionToPlayer);
-                Debug.DrawRay(transform.position, directionToPlayer * sightRange, Color.red); 
+                
+                if(debugRays) Debug.DrawRay(transform.position, directionToPlayer * sightRange, Color.red); 
 
                 if (distanceToPlayer <= sightRange && angle < sightAngle * 0.5f)
                 {
-                    Debug.DrawRay(transform.position, directionToPlayer * sightRange, Color.green); 
+                    if(debugRays) Debug.DrawRay(transform.position, directionToPlayer * sightRange, Color.green); 
 
                     if (distanceToPlayer < closestDistance)
                     {
