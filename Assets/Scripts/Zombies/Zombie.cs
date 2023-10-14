@@ -40,15 +40,20 @@ namespace Stateless.Zombies
             navAgent = GetComponent<NavMeshAgent>();
             SubscribeEvent<PlayerSpawned>(OnPlayerSpawned);
             players = PlayersStatsManager.Instance.GetPlayers();
+            ZombieManager.Instance.RegisterZombie(this); // Register this zombie
             RoamToRandomLocation().Forget();
+        }
+
+        private void OnDestroy()
+        {
+            UnsubscribeEvent<PlayerSpawned>(OnPlayerSpawned);
+            ZombieManager.Instance.UnregisterZombie(this); // Unregister this zombie
         }
 
         private void OnPlayerSpawned(PlayerSpawned playerSpawned)
         {
             players = PlayersStatsManager.Instance.GetPlayers();
         }
-
-        private void OnDestroy() => UnsubscribeEvent<PlayerSpawned>(OnPlayerSpawned);
 
         private void Update()
         {
