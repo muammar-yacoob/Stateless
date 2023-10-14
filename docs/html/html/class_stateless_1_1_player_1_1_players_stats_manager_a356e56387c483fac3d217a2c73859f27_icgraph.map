@@ -1,0 +1,7 @@
+<map id="Stateless.Player.PlayersStatsManager.AddPlayer" name="Stateless.Player.PlayersStatsManager.AddPlayer">
+<area shape="rect" id="Node000001" title=" " alt="" coords="526,5,692,48"/>
+<area shape="rect" id="Node000002" href="$class_stateless_1_1_player_1_1_player_spawner.html#a02760ae74045c3fd5f26b3566662ecd8" title=" " alt="" coords="266,5,478,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="510,29,478,29,478,24,510,24"/>
+<area shape="rect" id="Node000003" href="$class_stateless_1_1_player_1_1_player_spawner.html#a5a5b30d3cc4adf1ca49c07bfeb98b122" title=" " alt="" coords="5,5,218,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="250,29,218,29,218,24,250,24"/>
+</map>

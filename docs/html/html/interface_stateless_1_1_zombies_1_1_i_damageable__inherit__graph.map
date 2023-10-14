@@ -1,0 +1,5 @@
+<map id="Stateless.Zombies.IDamageable" name="Stateless.Zombies.IDamageable">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,214,32"/>
+<area shape="rect" id="Node000002" href="$class_stateless_1_1_zombies_1_1_zombie_damage.html" title=" " alt="" coords="22,80,197,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,48,112,80,107,80,107,48"/>
+</map>
