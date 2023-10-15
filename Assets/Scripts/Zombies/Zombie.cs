@@ -10,6 +10,7 @@ using Stateless.Zombies.Events;
 namespace Stateless.Zombies
 {
     [RequireComponent(typeof(NavMeshAgent))]
+    [RequireComponent(typeof(Animator))]
     public class Zombie : InjectableMonoBehaviour
     {
         [Header("Zombie Attributes")]
@@ -37,6 +38,7 @@ namespace Stateless.Zombies
         private bool isAttacking = false;
         private bool inCooldown = false;
         public bool IsDying;
+        private Animator anim;
 
         private void Start()
         {
@@ -45,6 +47,7 @@ namespace Stateless.Zombies
             players = PlayersStatsManager.Instance.GetPlayers();
             ZombieManager.Instance.RegisterZombie(this); // Register this zombie
             RoamToRandomLocation().Forget();
+            anim = GetComponent<Animator>();
         }
 
         private void OnDestroy()
@@ -69,6 +72,7 @@ namespace Stateless.Zombies
                 StopRoaming();
                 ChaseAndAttack(targetPlayer).Forget();
             }
+            anim.SetFloat("Speed", navAgent.velocity.magnitude);
         }
 
         private PlayerStats FindClosestPlayerInSight()
