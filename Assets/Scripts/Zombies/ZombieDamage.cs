@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using SparkCore.Runtime.Core;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,8 +14,8 @@ namespace Stateless.Zombies
         [SerializeField] private ParticleSystem deathParticles;
         [SerializeField] private ParticleSystem hitParticles;
         
-        private static readonly int Hit = Animator.StringToHash("Hit");
-        private static readonly int Die1 = Animator.StringToHash("Die");
+        private static readonly int Damage = Animator.StringToHash("Hit");
+        private static readonly int Fall = Animator.StringToHash("Fall");
         
         private Zombie zombie;
         private Animator anim;
@@ -32,15 +33,18 @@ namespace Stateless.Zombies
             health -= damageAmount;
             healthFill.fillAmount = (float)health / 10f;
             hitParticles.Play();
-            anim.SetTrigger(Hit);
+            anim.CrossFade(Damage, 0.1f);
             
-            if (health <= 0) Die();
+            if (health <= 0)
+            {
+                _ = Die();
+            }
         }
 
         private async UniTask Die()
         {
             zombie.IsDying = true;
-            anim.SetTrigger(Die1);
+            anim.CrossFade(Fall, 0.1f);
             await UniTask.Delay(1000);
             deathParticles.Play();
             Destroy(gameObject);
