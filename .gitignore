@@ -52,6 +52,7 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
+.idea/
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -80,3 +81,5 @@ crashlytics-build.properties
 # Others
 *.bak
 *.bak.meta
+
+/Assets/Artwork/SimplePeople/
