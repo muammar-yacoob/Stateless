@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Stateless.Player
 {
-    [RuntimeObject(RuntimeObjectType.Singleton)]
+    [ServiceProvider(ServiceLifetime.Singleton)]
     public class PlayerMovementManager : IPlayerMovementManager
     {
         private readonly Dictionary<int, IPlayerMovement> playerMovements = new();

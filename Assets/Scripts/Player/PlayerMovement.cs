@@ -1,6 +1,6 @@
 ﻿using SparkCore.Runtime.Core;
+using SparkCore.Runtime.Injection;
 using UnityEngine;
-using VContainer;
 
 namespace Stateless.Player
 {
