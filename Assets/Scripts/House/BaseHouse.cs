@@ -11,7 +11,8 @@ namespace Stateless.House
     public abstract class BaseHouse : MonoBehaviour, IHouse
     {
         [SerializeField] private string houseId;
-        [SerializeField] protected string houseName;
+        [SerializeField] private Sprite speakerSprite;
+        [SerializeField] protected string speakerName;
         [Header("Candy")]
         [SerializeField] protected int initialCandyInventory;
         [SerializeField] protected int candyCountPerCollection;
@@ -40,7 +41,7 @@ namespace Stateless.House
 
         public virtual async UniTask EnterHouseAsync(CancellationToken token, int playerIndex)
         {
-            Debug.Log($"Welcome player{this.playerIndex} to the {houseName}!");
+            Debug.Log($"Welcome player{this.playerIndex} to the {speakerName}!");
             this.playerIndex = playerIndex;
             HouseEntered?.Invoke(this);
             await ExecuteStepsAsync(token);
@@ -56,7 +57,7 @@ namespace Stateless.House
             var candyGiveAway = Mathf.Min(currentCandyInventory, candyCountPerCollection);
             if(candyGiveAway <= 0)
             {
-                HouseEvents.Instance.StartDialogue($"We're out of candy, Sorry!", token);
+                HouseEvents.Instance.StartDialogue(speakerSprite, speakerName, "We're out of candy, Sorry!", token);
                 return;
             }
 
@@ -75,14 +76,14 @@ namespace Stateless.House
                 _stepReadySource = new UniTaskCompletionSource();
                 if(step.DialogText.Length > 0)
                 {
-                    HouseEvents.Instance.StartDialogue(step.DialogText, token);
+                    HouseEvents.Instance.StartDialogue(speakerSprite, speakerName, step.DialogText, token);
                     await _stepReadySource.Task;
                 }
                 
                 await UniTask.DelayFrame(1, cancellationToken: token);
             }
             
-            HouseEvents.Instance.StartDialogue($"Here's {candyGiveAway} Candies! \nThanks for visiting the {houseName}! Good night!", token);
+            HouseEvents.Instance.StartDialogue(speakerSprite,  speakerName, $"Here's {candyGiveAway} Candies! \nThanks for visiting the {speakerName}! Good night!", token);
             CandyCollected?.Invoke(playerIndex, candyGiveAway);
             currentCandyInventory -= candyGiveAway;
         }
