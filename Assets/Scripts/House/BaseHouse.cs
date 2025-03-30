@@ -4,6 +4,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Stateless.House.Events;
 using UnityEngine;
+using System.Linq;
 
 namespace Stateless.House
 {
@@ -68,73 +69,61 @@ namespace Stateless.House
                 return;
             }
 
-            // Track if this is the first step
-            bool isFirstStep = true;
+            // First step executes without waiting for prompt initially
+            if (Steps.Count > 0) await ExecuteStepAsync(Steps[0], token, waitForPromptBeforeAnimation: false, waitForPromptAfterAnimation: stepsFlowType == StepsFlowType.Prompt);
 
-            foreach (var step in Steps)
-            {
-                //Activate Objects 
-                step.GameObjectsToActivate.ForEach(obj => obj.SetActive(true));
-                //Tint Objects
-                step.GameObjectsToActivate.ForEach(obj => obj.GetComponent<Renderer>().material.color = step.TintColor);
-
-                //Play VoiceOver
-                float voiceOverLength = 0;
-                if (step.VoiceOver != null)
-                {
-                    audioSource.PlayOneShot(step.VoiceOver);
-                    voiceOverLength = step.VoiceOver.length;
-                    // await UniTask.Delay((int)(step.VoiceOver.length * 1000), cancellationToken: token);
-                }
-
-                _stepReadySource = new UniTaskCompletionSource();
-                if (step.DialogText.Length > 0)
-                {
-                    HouseEvents.Instance.StartDialogue(speakerSprite, speakerName, step.DialogText, token);
-                }
-
-                // For steps after the first one, wait for user to proceed before playing animation
-                if (stepsFlowType == StepsFlowType.Prompt && !isFirstStep) 
-                {
-                    await _stepReadySource.Task;
-                }
-
-                //Play Animation
-                float animationLength = 0;
-                if (!string.IsNullOrEmpty(step.AnimationTrigger))
-                {
-                    var animator = GetComponentInChildren<Animator>();
-                    animator?.SetTrigger(step.AnimationTrigger);
-                    animationLength = animator?.GetCurrentAnimatorStateInfo(0).length ?? 0;
-                }
-
-                float delayBetweenSteps = Mathf.Max(animationLength, voiceOverLength);
-
-                // For continuous mode, or for the first step in prompt mode, wait for animation/voiceover
-                if (stepsFlowType == StepsFlowType.Continous || (stepsFlowType == StepsFlowType.Prompt && isFirstStep))
-                {
-                    await UniTask.Delay((int)(delayBetweenSteps * 1000), cancellationToken: token);
-                    
-                    // After the first step in prompt mode, wait for user input before proceeding to the next step
-                    if (stepsFlowType == StepsFlowType.Prompt && isFirstStep)
-                    {
-                        await _stepReadySource.Task;
-                    }
-                }
-                
-                // After the first step, we should wait for prompt before each subsequent step
-                isFirstStep = false;
-            }
+            // Remaining steps wait for prompt before animation (in prompt mode)
+            foreach (var step in Steps.Skip(1)) await ExecuteStepAsync(step, token, waitForPromptBeforeAnimation: stepsFlowType == StepsFlowType.Prompt, waitForPromptAfterAnimation: false);
 
             HouseEvents.Instance.StartDialogue(speakerSprite, speakerName, $"Here's {candyGiveAway} Candies! \nThanks for visiting the {speakerName}! Good night!", token);
             CandyCollected?.Invoke(playerIndex, candyGiveAway);
             currentCandyInventory -= candyGiveAway;
         }
 
-        public void ProceedToNextStep()
+        private async UniTask ExecuteStepAsync(HouseStep step, CancellationToken token, bool waitForPromptBeforeAnimation, bool waitForPromptAfterAnimation)
         {
-            _stepReadySource?.TrySetResult();
+            // Activate objects and setup UI
+            step.GameObjectsToActivate.ForEach(obj => obj.SetActive(true));
+            step.GameObjectsToActivate.ForEach(obj => obj.GetComponent<Renderer>().material.color = step.TintColor);
+
+            // Play voiceover and display dialogue
+            float voiceOverLength = 0;
+            if (step.VoiceOver != null)
+            {
+                audioSource.PlayOneShot(step.VoiceOver);
+                voiceOverLength = step.VoiceOver.length;
+            }
+            
+            _stepReadySource = new UniTaskCompletionSource();
+            if (step.DialogText.Length > 0) HouseEvents.Instance.StartDialogue(speakerSprite, speakerName, step.DialogText, token);
+            
+            // Wait for prompt before animation if needed
+            if (waitForPromptBeforeAnimation) await _stepReadySource.Task;
+            
+            // Play animation
+            float animationLength = 0;
+            if (!string.IsNullOrEmpty(step.AnimationTrigger))
+            {
+                var animator = GetComponentInChildren<Animator>();
+                animator?.SetTrigger(step.AnimationTrigger);
+                animationLength = animator?.GetCurrentAnimatorStateInfo(0).length ?? 0;
+            }
+            
+            // Wait for animation to complete if in continuous mode or if it's the first step in prompt mode
+            float delayBetweenSteps = Mathf.Max(animationLength, voiceOverLength);
+            if (stepsFlowType == StepsFlowType.Continous || (!waitForPromptBeforeAnimation && stepsFlowType == StepsFlowType.Prompt))
+                await UniTask.Delay((int)(delayBetweenSteps * 1000), cancellationToken: token);
+                
+            // Wait for prompt after animation if needed
+            if (waitForPromptAfterAnimation) 
+            {
+                // Reset the completion source if it was already used
+                if (waitForPromptBeforeAnimation) _stepReadySource = new UniTaskCompletionSource();
+                await _stepReadySource.Task;
+            }
         }
+
+        public void ProceedToNextStep() => _stepReadySource?.TrySetResult();
 
         public virtual async UniTask ExitHouseAsync(CancellationToken token)
         {
