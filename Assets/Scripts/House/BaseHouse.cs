@@ -142,7 +142,7 @@ namespace Stateless.House
                 step.GameObjectsToActivate.ForEach(obj => obj.GetComponent<Renderer>().material.color = Color.white);
 
                 var anim = GetComponentInChildren<Animator>();
-                anim?.SetBool(step.AnimationTrigger, false);
+                if (anim != null && !string.IsNullOrEmpty(step.AnimationTrigger)) anim.SetBool(step.AnimationTrigger, false);
             }
         }
     }
