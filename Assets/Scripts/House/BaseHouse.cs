@@ -68,6 +68,9 @@ namespace Stateless.House
                 return;
             }
 
+            // Track if this is the first step
+            bool isFirstStep = true;
+
             foreach (var step in Steps)
             {
                 //Activate Objects 
@@ -84,6 +87,18 @@ namespace Stateless.House
                     // await UniTask.Delay((int)(step.VoiceOver.length * 1000), cancellationToken: token);
                 }
 
+                _stepReadySource = new UniTaskCompletionSource();
+                if (step.DialogText.Length > 0)
+                {
+                    HouseEvents.Instance.StartDialogue(speakerSprite, speakerName, step.DialogText, token);
+                }
+
+                // For steps after the first one, wait for user to proceed before playing animation
+                if (stepsFlowType == StepsFlowType.Prompt && !isFirstStep) 
+                {
+                    await _stepReadySource.Task;
+                }
+
                 //Play Animation
                 float animationLength = 0;
                 if (!string.IsNullOrEmpty(step.AnimationTrigger))
@@ -91,19 +106,24 @@ namespace Stateless.House
                     var animator = GetComponentInChildren<Animator>();
                     animator?.SetTrigger(step.AnimationTrigger);
                     animationLength = animator?.GetCurrentAnimatorStateInfo(0).length ?? 0;
-                    // await UniTask.Delay((int)(animationLength * 1000), cancellationToken: token); //already awaited between steps
-                }
-
-                _stepReadySource = new UniTaskCompletionSource();
-                if (step.DialogText.Length > 0)
-                {
-                    HouseEvents.Instance.StartDialogue(speakerSprite, speakerName, step.DialogText, token);
                 }
 
                 float delayBetweenSteps = Mathf.Max(animationLength, voiceOverLength);
 
-                if (stepsFlowType == StepsFlowType.Prompt) await _stepReadySource.Task;
-                else await UniTask.Delay((int)(delayBetweenSteps * 1000), cancellationToken: token);
+                // For continuous mode, or for the first step in prompt mode, wait for animation/voiceover
+                if (stepsFlowType == StepsFlowType.Continous || (stepsFlowType == StepsFlowType.Prompt && isFirstStep))
+                {
+                    await UniTask.Delay((int)(delayBetweenSteps * 1000), cancellationToken: token);
+                    
+                    // After the first step in prompt mode, wait for user input before proceeding to the next step
+                    if (stepsFlowType == StepsFlowType.Prompt && isFirstStep)
+                    {
+                        await _stepReadySource.Task;
+                    }
+                }
+                
+                // After the first step, we should wait for prompt before each subsequent step
+                isFirstStep = false;
             }
 
             HouseEvents.Instance.StartDialogue(speakerSprite, speakerName, $"Here's {candyGiveAway} Candies! \nThanks for visiting the {speakerName}! Good night!", token);
