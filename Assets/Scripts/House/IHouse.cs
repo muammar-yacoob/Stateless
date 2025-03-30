@@ -5,7 +5,6 @@ namespace Stateless.House
 {
     public interface IHouse
     {
-        string HouseName { get; }
         UniTask EnterHouseAsync(CancellationToken token, int playerIndex);
         UniTask UpdateHouseAsync(CancellationToken token);
         UniTask ExitHouseAsync(CancellationToken token);

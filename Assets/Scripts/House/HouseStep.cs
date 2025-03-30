@@ -9,6 +9,7 @@ namespace Stateless.House
     {
         public AudioClip VoiceOver;
         public List<GameObject> GameObjectsToActivate;
+        public string AnimationTrigger;
         public Color TintColor = Color.white;
         public string DialogText;
     }

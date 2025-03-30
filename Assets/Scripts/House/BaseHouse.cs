@@ -7,10 +7,12 @@ using UnityEngine;
 
 namespace Stateless.House
 {
+
+
     [RequireComponent(typeof(Collider))]
     public abstract class BaseHouse : MonoBehaviour, IHouse
     {
-        [SerializeField] private string houseId;
+        [SerializeField] protected StepsFlowType stepsFlowType;
         [SerializeField] private Sprite speakerSprite;
         [SerializeField] protected string speakerName;
         [Header("Candy")]
@@ -18,7 +20,6 @@ namespace Stateless.House
         [SerializeField] protected int candyCountPerCollection;
         [SerializeField] protected List<HouseStep> Steps;
 
-        public string HouseName => houseId;
         private AudioSource audioSource;
         private UniTaskCompletionSource _stepReadySource;
         private int playerIndex;
@@ -26,10 +27,16 @@ namespace Stateless.House
         const float typingDurationPerCharacter = 0.02f;
 
 
-        public event Action<int,int> CandyCollected;
+        public event Action<int, int> CandyCollected;
         public event Action<IHouse> HouseEntered;
 
-        private  void Awake()
+        public enum StepsFlowType
+        {
+            Continous,
+            Prompt
+        }
+
+        private void Awake()
         {
             GetComponent<Collider>().isTrigger = true;
             audioSource = GetComponent<AudioSource>();
@@ -55,7 +62,7 @@ namespace Stateless.House
         private async UniTask ExecuteStepsAsync(CancellationToken token)
         {
             var candyGiveAway = Mathf.Min(currentCandyInventory, candyCountPerCollection);
-            if(candyGiveAway <= 0)
+            if (candyGiveAway <= 0)
             {
                 HouseEvents.Instance.StartDialogue(speakerSprite, speakerName, "We're out of candy, Sorry!", token);
                 return;
@@ -63,27 +70,43 @@ namespace Stateless.House
 
             foreach (var step in Steps)
             {
-                //TODO: Play VoiceOver and animation here
+                //Activate Objects 
                 step.GameObjectsToActivate.ForEach(obj => obj.SetActive(true));
+                //Tint Objects
                 step.GameObjectsToActivate.ForEach(obj => obj.GetComponent<Renderer>().material.color = step.TintColor);
-                
-                if(step.VoiceOver != null)
+
+                //Play VoiceOver
+                float voiceOverLength = 0;
+                if (step.VoiceOver != null)
                 {
                     audioSource.PlayOneShot(step.VoiceOver);
-                    await UniTask.Delay((int)(step.VoiceOver.length * 1000), cancellationToken: token);
+                    voiceOverLength = step.VoiceOver.length;
+                    // await UniTask.Delay((int)(step.VoiceOver.length * 1000), cancellationToken: token);
                 }
-                
+
+                //Play Animation
+                float animationLength = 0;
+                if (!string.IsNullOrEmpty(step.AnimationTrigger))
+                {
+                    var animator = GetComponentInChildren<Animator>();
+                    animator?.SetTrigger(step.AnimationTrigger);
+                    animationLength = animator?.GetCurrentAnimatorStateInfo(0).length ?? 0;
+                    // await UniTask.Delay((int)(animationLength * 1000), cancellationToken: token); //already awaited between steps
+                }
+
                 _stepReadySource = new UniTaskCompletionSource();
-                if(step.DialogText.Length > 0)
+                if (step.DialogText.Length > 0)
                 {
                     HouseEvents.Instance.StartDialogue(speakerSprite, speakerName, step.DialogText, token);
-                    await _stepReadySource.Task;
                 }
-                
-                await UniTask.DelayFrame(1, cancellationToken: token);
+
+                float delayBetweenSteps = Mathf.Max(animationLength, voiceOverLength);
+
+                if (stepsFlowType == StepsFlowType.Prompt) await _stepReadySource.Task;
+                else await UniTask.Delay((int)(delayBetweenSteps * 1000), cancellationToken: token);
             }
-            
-            HouseEvents.Instance.StartDialogue(speakerSprite,  speakerName, $"Here's {candyGiveAway} Candies! \nThanks for visiting the {speakerName}! Good night!", token);
+
+            HouseEvents.Instance.StartDialogue(speakerSprite, speakerName, $"Here's {candyGiveAway} Candies! \nThanks for visiting the {speakerName}! Good night!", token);
             CandyCollected?.Invoke(playerIndex, candyGiveAway);
             currentCandyInventory -= candyGiveAway;
         }
@@ -92,12 +115,12 @@ namespace Stateless.House
         {
             _stepReadySource?.TrySetResult();
         }
-        
+
         public virtual async UniTask ExitHouseAsync(CancellationToken token)
         {
             ResetSteps();
             HouseEvents.Instance.ExitHouse();
-            
+
             await UniTask.DelayFrame(1, cancellationToken: token);
         }
 
@@ -108,6 +131,9 @@ namespace Stateless.House
             {
                 step.GameObjectsToActivate.ForEach(obj => obj.SetActive(false));
                 step.GameObjectsToActivate.ForEach(obj => obj.GetComponent<Renderer>().material.color = Color.white);
+
+                var anim = GetComponentInChildren<Animator>();
+                anim?.SetBool(step.AnimationTrigger, false);
             }
         }
     }
