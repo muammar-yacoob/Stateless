@@ -1,0 +1,33 @@
+{
+    "dotnet.preferCSharpExtension": true,
+    "files.exclude": {
+      "**/*.meta": true,
+      "**/*.*.meta": true,
+      "**/*.unity": true,
+      "**/*.unityproj": true,
+      "**/*.mat": true,
+      "**/*.fbx": true,
+      "**/*.FBX": true,
+      "**/*.tga": true,
+      "**/*.cubemap": true,
+      "**/*.prefab": true,
+      "**/Library": true,
+      "**/ProjectSettings": true,
+      "**/Temp": true,
+      "/Scenes": true,
+      "/Resources": true,
+      "/Plugins": true,
+      "**/*.asset": true,
+      "**/*.choices": true,
+      "Assets/Settings": true,
+      "Assets/TextMesh Pro": true,
+      "Assets/Resources": true,
+      "Assets/Artwork": true,
+      "Assets/Scenes": true,
+      "Build": true,
+      "obj": true,
+      "Assets/Scripts/ScriptableObjects": true,
+      "Assets/AddressableAssetsData": true
+    },
+    "dotnet.defaultSolution": "Stateless.sln"
+  }
